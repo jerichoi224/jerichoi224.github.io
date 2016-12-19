@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="dist/img/icon.png">
+
+        <title>Just In Time</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="dist/css/projects.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <nav class="blog-nav">
+                <a class="blog-nav-item" href="/home.html">Home</a>
+                <a class="blog-nav-item" href="/about.html">About</a>
+                <a class="blog-nav-item" href="/resume.html">Resume</a>
+                <a class="blog-nav-item active" href="/projects.html">Projects</a>
+            </nav>
+            <hr class="dark-line">
+            <div class="container">
+                <div class="blog-header">
+                    <h1 class="blog-title">Projects</h1>
+                    <div class="container">
+                        <br>
+                        <div class="projectinfo"><projectname id="projectname">Click below for details</projectname><br><div id="projectinfo"></div></div>
+                        <p href="#" class="card" id="webcrawler">Python<br><projectname>Web Crawler</projectname></p>
+                        <p href="#" class="card" id="website">HTML<br><projectname>(This Website)</projectname></p>    
+                        <br>  
+                    </div><!-- /.container -->
+                </div><!-- /.blog-header -->
+                <hr class="dark-line">
+            </div><!-- /.container -->
+        </div>
+        <footer class="blog-footer">
+            <div>© 2016 by Daniel Choi</div>
+        </footer>
+        
+         <!--Script for Changing img/file based on the button-->
+        <script>
+            var projectinfo = document.getElementById('projectinfo');
+            var projectname = document.getElementById('projectname');
+            var webcrawler = document.getElementById('webcrawler');
+            var website = document.getElementById('website');
+            website.addEventListener('click', displayWebsite);
+            webcrawler.addEventListener('click', displayWebcrawler)
+
+
+            function displayWebcrawler() {
+                projectname.innerHTML = "<b>WebCrawler - Python</b>";
+                projectinfo.innerHTML = " This project was what I did during my summer internship in Fasoo. I wrote a webcrawler that took the xml files provided from the Common Vulnerabilities and Exposures (CVE) website, and outputed a database file that contained the urls that contained vulnerability related source codes. It was somewhat challenging as I had to figure out how to differentiate between actual source codes and non-code texts that looked like source code.";
+            }
+
+            function displayWebsite() {
+                projectname.innerHTML = "<b>[This Website] - HTML</b>";
+                projectinfo.innerHTML = " Well, I don't know if this needs much explaining. Literally, this website, which you are reading this text from, was and is one of my projects.";
+            }
+
+        </script>
+
+        <!-- Bootstrap core JavaScript
+================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
+</html>
