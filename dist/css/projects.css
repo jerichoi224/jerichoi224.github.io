@@ -37,8 +37,10 @@ h6, .h6 { /*Header Color, Dark Black */
     display:inline-block;
     font-size: 40px;
     border-radius:5px;
-    width: 200px;
-    height: 200px;
+    position: relative;
+    width: 30%;
+    height: 0;
+    padding-bottom: 20%;
     text-align: center;
     vertical-align: middle; 
     border: 1px solid #868e96;
