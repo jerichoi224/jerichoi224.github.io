@@ -8,6 +8,32 @@ body {/*Text Color, light black*/
     margin-top: 70px;
 } 
 
+
+.typewriter h1 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    white-space: nowrap; /* Keeps the content on a single line */
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size:60px;
+    text-align: left;
+    animation: 
+        typing 3s steps(20, end),
+        blink-caret .20s step-end ;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0px }
+    to { width: 50% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black; }
+}
+
+
+
 h1, .h1,
 h2, .h2,
 h3, .h3,
@@ -125,21 +151,6 @@ textarea[type="large"]
 .blog-nav .active {
     color: #151515;
 }
-/* Small Triangle
-.blog-nav .active:after {
-position: absolute;
-bottom: 0;
-left: 50%;
-width: 0;
-height: 0;
-margin-left: -5px;
-vertical-align: middle;
-content: " ";
-border-right: 5px solid transparent;
-border-bottom: 5px solid;
-border-left: 5px solid transparent;
-}
-
 
 /*
 * Blog name and description
