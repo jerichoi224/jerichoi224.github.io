@@ -111,9 +111,10 @@ border-left: 5px solid transparent;
 .blog-header {
 }
 .blog-title {
+    font-family: "Comic Sans MS", cursive, sans-serif;
     margin-top: 30px;
     margin-bottom: 0;
-    font-size: 60px;
+    font-size: 55px;
     font-weight: normal;
 }
 .blog-description {
@@ -259,7 +260,9 @@ border-color:black
 /*
 * Footer
 */
-
+.col-sm-4{
+    height:100%;
+}
 .blog-footer {
     padding: 20px 0;
     color: #000000;

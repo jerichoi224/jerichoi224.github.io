@@ -118,9 +118,10 @@ border-left: 5px solid transparent;
 .blog-header {
 }
 .blog-title {   
+    font-family: "Comic Sans MS", cursive, sans-serif;
     margin-top: 30px;
     margin-bottom: 0;
-    font-size: 60px;
+    font-size: 55px;
     font-weight: normal;
 }
 .blog-description {
@@ -190,7 +191,7 @@ border-left: 5px solid transparent;
 .dark-line {
     width: 770px;
     margin-top: 0px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     border: 0;
     border-top: 1px solid #151515;
 }
@@ -205,6 +206,7 @@ border-left: 5px solid transparent;
     text-align: center;
     background-color: #ffffff;
     border-top: 1px solid #ffffff;
+    font-size: 14px;
 }
 .blog-footer p:last-child {
     margin-bottom: 0;

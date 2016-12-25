@@ -8,32 +8,6 @@ body {/*Text Color, light black*/
     margin-top: 70px;
 } 
 
-
-.typewriter h1 {
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    white-space: nowrap; /* Keeps the content on a single line */
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    font-size:60px;
-    text-align: left;
-    animation: 
-        typing 3s steps(20, end),
-        blink-caret .20s step-end ;
-}
-
-/* The typing effect */
-@keyframes typing {
-    from { width: 0px }
-    to { width: 50% }
-}
-
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: black; }
-}
-
-
-
 h1, .h1,
 h2, .h2,
 h3, .h3,
@@ -151,6 +125,21 @@ textarea[type="large"]
 .blog-nav .active {
     color: #151515;
 }
+/* Small Triangle
+.blog-nav .active:after {
+position: absolute;
+bottom: 0;
+left: 50%;
+width: 0;
+height: 0;
+margin-left: -5px;
+vertical-align: middle;
+content: " ";
+border-right: 5px solid transparent;
+border-bottom: 5px solid;
+border-left: 5px solid transparent;
+}
+
 
 /*
 * Blog name and description
@@ -162,10 +151,11 @@ textarea[type="large"]
     font-family: "Comic Sans MS", cursive, sans-serif;
     margin-top: 30px;
     margin-bottom: 0;
-    font-size: 60px;
+    font-size: 55px;
     font-weight: normal;
 }
 .blog-description {
+    padding-top: 10px;
     font-size: 20px;
     color: #999;
 }
@@ -181,7 +171,9 @@ textarea[type="large"]
     padding-left: 10px;
     padding-right: 30px;
 }
-
+.blank{
+    color: white;
+}
 /* Sidebar modules for boxing content */
 .sidebar-module {
     padding: 15px;
@@ -216,7 +208,7 @@ textarea[type="large"]
 */
 
 .blog-post {
-    margin-bottom: 60px;
+    margin-bottom: 25px;
 }
 .blog-post-title {
     margin-bottom: 5px;
@@ -229,25 +221,39 @@ textarea[type="large"]
 
 
 .dark-line {
-    width: 770px;
+    width: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
     border: 0;
     border-top: 1px solid #151515;
 }
-
+.grey-line {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 0;
+    border-top: 1px solid #adb5bd;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
 /*
 * Footer
 */
-
+a{
+    color: black;
+}
 .blog-footer {
     padding: 20px 0;
     color: #000000;
     text-align: center;
     background-color: #ffffff;
     border-top: 1px solid #ffffff;
-    font-size: 14px;
 }
+.paging{
+    text-align: center;
+}
+.split-para      { display:block;margin:10px;}
+.split-para span { display:block;float:right;text-align: right}
 .blog-footer p:last-child {
     margin-bottom: 0;
 }
