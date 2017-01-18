@@ -20,6 +20,10 @@ h6, .h6 { /*Header Color, Dark Black */
     color: #333;
 }
 
+.a{
+    color: black;
+    display:inline-block;
+}
 .projectinfo{
     font-size: 15px;
     width: 100%;
