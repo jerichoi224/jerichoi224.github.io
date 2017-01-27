@@ -49,14 +49,27 @@
                         <p style="text-indent: 1.5em">I also like art, especially drawing and sculpting. My hobbies are listening to music, taking pictures, watching videos on YouTube, and hanging out with my friends. You can contact me below if you want to ask anything about me. Thanks!!</p>
                         <hr>
                         <p>Email Me :&#41; </p>
-                        <div class="col-sm-3">
-                            <input type="text" name="name" placeholder="Name"><br>
-                            <input type="email" name="mail" placeholder="Email"><br>
-                            <Button id="trigger-overlay" type="button">Send</Button>
-                        </div>
-                        <div class="col-sm-9">    
-                            <textarea type="large" name="comment" rows="4" placeholder="Message"></textarea><br>
-                        </div>
+
+                        <table cellspacing="5" cellpadding="10" border="0" align="left" width="100%">
+                            <form action="mailto:dc9db@virginia.edu" method="post" enctype="text/plain"> 
+                                <tr>
+                                    <td width="20%">
+                                        <table>
+                                            <tr><input type="text" name="Name" id="name" placeholder="Name" size="5% "</tr>
+                                            <tr><input type="text" name="Name" id="name" placeholder="Email" size="5% "</tr>
+                                            <tr>
+                                                <td><input size="50%" type="reset" value="Reset"> </td>
+                                                <td><input size="50%" type="submit" value="Send"> </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                         <textarea type="large" size="100%" name="Message" rows="4" placeholder="Message"></textarea>
+                                    </td>
+                                </tr>
+                            </form> 
+                        </table>
+
                     </div><!-- /.blog-post -->
                 </div><!-- /.blog-main -->
             </div><!-- /.container -->
