@@ -177,6 +177,7 @@ border-left: 5px solid transparent;
     text-align: center;
     background-color: #ffffff;
     border-top: 1px solid #ffffff;
+    font-size: 10px;
 }
 .blog-footer p:last-child {
     margin-bottom: 0;
