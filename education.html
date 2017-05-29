@@ -1,0 +1,167 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Choi &mdash; Resume</title>
+  <meta name="description" content="Page description goes here">
+  <link rel="icon" href="./img/icon.png">
+  <link href="css/hawthorne_type2_color3.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <script src="js/vendor/modernizr.js"></script>
+  <script src="./js/vex/vex.combined.min.js"></script>
+  <script>
+    vex.defaultOptions.className = 'vex-theme-wireframe'
+  </script>
+  <link rel="stylesheet" href="./css/vex/vex.css" />
+  <link rel="stylesheet" href="./css/vex/vex-theme-wireframe.css" />
+</head>
+
+<body>
+  <style>
+    header {
+      padding-top: 70px;
+      padding-bottom: 50px;
+    }
+
+    footer {
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+  </style>
+  <div class="row">
+    <div class="small-12 medium-12 large-12 small-centered columns">
+      <header>
+        <h1><a href="index.html">Daniel Choi</a></h1>
+        <h2><a href="index.html">Programmer &amp; Graphics Hobbyist</a></h2>
+        <!--
+			<div class="logo">
+				<a href="index.html"><img src="img/logo.png" alt="Your Name Here" /></a>
+			</div>
+			-->
+      </header>
+    </div>
+    <div class="small-12 medium-12 large-12 small-centered columns">
+      <nav>
+        <ul class="inline-list-custom">
+          <li><a href="about.html">About</a></li>
+          <li><a href="education.html" class="current">Education</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-7 large-7 columns">
+      <h2>University of Virginia</h2>
+      <br>
+      <h3>Anticipated Bachelor of Arts in Computer Science</h3>
+      <h3>Expected Graduation: May 2019</h3>
+      <h3>Cumulative GPA: 3.706</h3>
+      <br>
+      <h3>View Résumé/Transcirpt</h3><br>
+      <a href="./resume.pdf"><button>Résumé</button></a>&nbsp;&nbsp;&nbsp;<a href="./transcript.pdf"><button>Transcript</button></a>
+
+    </div>
+    <div class="small-12 medium-5 large-5 columns">
+      <h2>Courses Taken</h2>
+      <div class="lined-list">
+        <ul>
+          <li><strong>CS2110:</strong> <a onclick="openInfo('CS2110')">Software Development Methods</a></li>
+          <li><strong>CS2102:</strong> <a onclick="openInfo('CS2102')">Discrete Mathematics I</a></li>
+          <li><strong>CS2150:</strong> <a onclick="openInfo('CS2150')">Program and Data Representation</a></li>
+          <li><strong>ECE2330:</strong> <a onclick="openInfo('ECE2330')">Digital Logic Design</a></li>
+          <li><strong>CS3102:</strong> <a onclick="openInfo('CS3102')">Theory of Computation</a></li>
+          <li><strong>CS3330:</strong> <a onclick="openInfo('CS3330')">Computer Architecture</a></li>
+          <li><strong>CS4102:</strong> <a onclick="openInfo('CS4102')">Algorithms</a></li>
+          <li><strong>CS4640:</strong> <a onclick="openInfo('CS4640')">Programming Languaegs for Web Applications</a></li>
+          <!--<li><strong>Résumé:</strong> <a href="resume.pdf" target="_blank">resume.pdf</a></li>-->
+        </ul>
+      </div>
+    </div>
+  </div>
+  <input type="hidden" id="extra" value="">
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <footer>
+        <ul>
+          <li>&copy; 2017 <a href="index.html">Daniel Choi</a>. All rights reserved.</li>
+          <li><a href="mailto:dc9db@virginia.edu"><i class="fa fa-envelope-o"></i> dc9db@virginia.edu</a></li>
+
+          <!-- *****************************************************************************************
+				The "Powered by Type & Grids" link in the footer is required in the Free version
+				typeandgrids.com/pirates -->
+          <li>Powered by <a href="http://www.typeandgrids.com" target="_blank">Type &amp; Grids</a></li>
+          <!--  ************************************************************************************ -->
+
+        </ul>
+      </footer>
+    </div>
+  </div>
+  <script src="js/vendor/jquery.min.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script src="js/hawthorne.js"></script>
+  <script>
+  function openInfo(className){
+    var message = '<b style=\"font-size:18pt\">' + className
+    if(className == "CS2110"){
+      message +=' Software Development Methods</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
+      message +="A second course in computing with an emphasis on modern software development and principles \
+      central to computer science. Topics include software requirements, testing, object-oriented design, abstraction, encapsulation, recursion, and time-complexity."
+    }
+    else if(className == "CS2102"){
+      message +=' Discrete Mathematics I</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Course introducing discrete mathematics and proof techniques involving first order predicate \
+      logic and induction. Application areas include finite and infinite sets, elementary combinatorial \
+      problems, and graph theory. Development of tools and mechanisms for reasoning about discrete problems."
+    }
+    else if(className == "CS2150"){
+      message +=' Program and Data Representation</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +="Introduces programs and data representation at the machine level. Data structuring techniques \
+      and the representation of data structures during program execution. Operations and control structures and \
+      their representation during program execution. Representations of numbers, arithmetic operations, arrays, \
+      records, recursion, hashing, stacks, queues, trees, graphs, and related concepts"
+    }
+    else if(className == "ECE2330"){
+      message +=' Digital Logic Design</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +="Includes number systems and conversion; Boolean algebra and logic gates; minimization \
+      of switching functions; combinational network design; flip-flops; sequential network design; \
+      arithmetic networks. Introduces computer organization and assembly language."
+    }
+    else if(className == "CS3102"){
+      message +=' Theory of Computation</b><br><b style=\"font-size:12pt\">Grade: A-</b><br><p><br>'
+      message +="An introductory course to computation theory including languages, grammars, finite state machines, pushdown automata, and Turing machines."
+    }
+    else if(className == "CS3330"){
+      message +=' Computer Architecture</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +="Includes the organization and architecture of computer systems hardware; instruction \
+      set architectures; addressing modes; register transfer notation; processor design and computer \
+      arithmetic; memory systems; hardware implementations of virtual memory, and input/output control and devices"
+    }
+    else if(className == "CS4102"){
+      message +=' Algorithms</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +="Introduces the analysis of algorithms and the effects of data structures on them. Algorithms \
+      selected from areas such as sorting, searching, shortest paths, greedy algorithms, backtracking, \
+      divide-and-conquer, and dynamic programming. Data structures include heaps and search, splay, and spanning trees. \
+      Analysis techniques include asymtotic worst case, expected time, amortized analysis, and reductions between problems."
+    }
+    else if(className == "CS4640"){
+      message +=' Programming Languages<br> for Web Applications</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
+      message +=" Presents programming languages and implementations used in developing web applications. Both client and server \
+      side languages are presented as well as database languages. In addition, frameworks that enable interactive web pages are \
+      discussed as well as formatting languages. Language features and efficiencies including scoping, parameter passing, object \
+      orientation, just in time compilation and dynamic binary translation are included."
+    }
+
+
+    vex.dialog.open({
+      unsafeMessage: message,
+      className: 'vex-theme-wireframe' // Overwrites defaultOptions
+    })
+  }
+  </script>
+</body>
+
+</html>
