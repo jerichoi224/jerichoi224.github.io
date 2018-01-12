@@ -10,7 +10,7 @@
 	<link href="../css/hawthorne_type2_color3.css" rel="stylesheet">
 	<link href="../css/font-awesome.min.css" rel="stylesheet">
 	<script src="../js/vendor/modernizr.js"></script>
-	<link href="../css/lightbox.css" rel="stylesheet">
+		<link href="../css/lightbox.css" rel="stylesheet">
 	<script src="../js/lightbox.js"></script>
 </head>
 
@@ -42,28 +42,26 @@
 					<li><a href="../extra.html">???</a></li>
 				</ul>
 			</nav>
-		</div>
+		</div> 
 	</div>
 
 	<div class="row">
 		<div class="small-12 medium-7 large-7 columns">
-			<h2>Dead Life of Samantha Yarn</h2>
+			<h2>Context-Relevant Term Search</h2>
 			<p>
-				First Game developed with Unity in the Computer Game Design course (CS4730) in University of Virginia during Fall of 2017. Its a puzzle adventure game inspird by Zelda, Pokemon and Earthbound.
+				This was a research project done during the course of CS4501, Information Retrieval in Fall of 2017 with Eric McCord Snook. The purpose of this research was to develop a system for retrieving context-relavant definitions of a term given the context.
 			</p>
 			<p>
-				The story follows the player who's sister is sick, and asks to solve the puzzles in the town while before its too late.
+				The developed system was able to perform significnatly, in that the proper definition was listed within the first two in average. The Jelinek-Mercer smoothed language model was used as the main system, and others like Apache OpenNPL library's Part of Speech tagging to increase the accuracy of the system. The detailed research paper can be found on the right.
 			</p>
 		</div>
 		<div class="small-12 medium-5 large-5 columns">
 			<div class="lined-list">
 				<ul>
 					<li><strong>Role:</strong> Programmer</li>
-					<li><strong>Language:</strong> C#, Unity</li>
+					<li><strong>Language:</strong> Java, Lucene Library</li>
 					<li><strong>Year:</strong> 2017 Fall</li>
-					<li><strong>Downloads (Mega): </strong>
-						<a href="https://mega.nz/#!UAZ3XJJK!0ZQbJWMxnJSy6rbVciCUa_XdwDlxwnDPu3ObdGRKmpA">Windows</a>, 
-						<a href="https://mega.nz/#!gFRgVIqB!8ocF46NWqjFnwEuAOBO-vXJ_c0OyVom53ztjWl6WUUc">Mac</a></li>
+					<li><strong>Research Paper: </strong><a href="./Context-Relevant Term Search.pdf">[PDF]</a></li>
 
 				</ul>
 			</div>
@@ -72,35 +70,40 @@
 
 	<div class="row">
 		<div class="small-12 medium-12 large-12 columns">
-			<hr class="project-detail-hr" style="margin-top: 14px;"/>
-			
+			<hr class="project-detail-hr" style="margin-top: 14px;"/>						
 			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-2 inline-list-custom">
 				<li>
-					<!-- Begin project image -->
+					<!-- Begin project image -->			
 					<div class="project-img">
-					    <img src="../img/deadlife/0.png" onclick="openModal();currentSlide(1)" class="hover-shadow">
-						<h6>Figure 1: Load Screen</h6>
+					    <img src="../img/context_search/0.png" onclick="openModal();currentSlide(1)" class="hover-shadow">
+						<h6>Figure 1: Example Usage</h6>
 					</div>
 					<!-- End project image -->
 				</li>
+
 				<li>
-					<!-- Begin project image -->
+					<!-- Begin project image -->			
 					<div class="project-img">
-					    <img src="../img/deadlife/1.png" onclick="openModal();currentSlide(2)" class="hover-shadow">
-						<h6>Figure 2: Start Screen</h6>
+					    <img src="../img/context_search/1.png" onclick="openModal();currentSlide(2)" class="hover-shadow">
+						<h6>Figure 2: Graph of test cases</h6>
 					</div>
 					<!-- End project image -->
 				</li>
+
 				<li>
-					<!-- Begin project image -->
+					<!-- Begin project image -->			
 					<div class="project-img">
-					    <img src="../img/deadlife/2.png" onclick="openModal();currentSlide(3)" class="hover-shadow">
-						<h6>Figure 3: Example Puzzle</h6>
+					    <img src="../img/context_search/2.png" onclick="openModal();currentSlide(3)" class="hover-shadow">
+						<h6>Figure 3: Table of test cases</h6>
 					</div>
 					<!-- End project image -->
 				</li>
 			</ul>
+
 			
+			<!-- Begin project image -->
+			
+			<!-- End project image -->
 
 		</div>
 	</div>
@@ -129,24 +132,24 @@
 		</div>
 	</div>
 
-		<!-- The Modal/Lightbox -->
+	<!-- The Modal/Lightbox -->
 	<div id="myModal" class="modal">
 	  <span class="close cursor" onclick="closeModal()">&times;</span>
 	  <div class="modal-content">
 
 	    <div class="mySlides">
 	      <div class="numbertext">1 / 3</div>
-	      <img src="../img/deadlife/0.png" style="width:100%">
+	      <img src="../img/context_search/0.png" style="width:100%">
 	    </div>
 
 	    <div class="mySlides">
 	      <div class="numbertext">2 / 3</div>
-	      <img src="../img/deadlife/1.png" style="width:100%">
+	      <img src="../img/context_search/1.png" style="width:100%">
 	    </div>
 
 	    <div class="mySlides">
 	      <div class="numbertext">3 / 3</div>
-	      <img src="../img/deadlife/2.png" style="width:100%">
+	      <img src="../img/context_search/2.png" style="width:100%">
 	    </div>
 
 	    <!-- Next/previous controls -->
@@ -160,15 +163,15 @@
 
 	    <!-- Thumbnail image controls -->
 	    <div class="column">
-	      <img class="demo" src="../img/deadlife/0.png" onclick="currentSlide(1)" alt="Load Screen">
+	      <img class="demo" src="../img/context_search/0.png" onclick="currentSlide(1)" alt="Example Usage">
 	    </div>
 
 	    <div class="column">
-	      <img class="demo" src="../img/deadlife/1.png" onclick="currentSlide(2)" alt="Start Screen">
+	      <img class="demo" src="../img/context_search/1.png" onclick="currentSlide(2)" alt="Data from Test Runs">
 	    </div>
 
 	    <div class="column">
-	      <img class="demo" src="../img/deadlife/2.png" onclick="currentSlide(3)" alt="Example puzzle">
+	      <img class="demo" src="../img/context_search/2.png" onclick="currentSlide(3)" alt="Table from Test Runs">
 	    </div>
 	  </div>
 	</div>

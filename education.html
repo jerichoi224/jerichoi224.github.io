@@ -55,30 +55,33 @@
   </div>
 
   <div class="row">
-    <div class="small-12 medium-7 large-7 columns">
+    <div class="small-4 medium-4 large-6 columns">
       <h2>University of Virginia</h2>
       <br>
       <h3>Anticipated Bachelor of Arts in Computer Science</h3>
       <h3>Expected Graduation: May 2019</h3>
-      <h3>Cumulative GPA: 3.706</h3>
+      <h3>Cumulative GPA: 3.727</h3>
       <br>
       <h3>View Résumé/Transcript</h3><br>
       <a href="./resume.pdf"><button>Résumé</button></a>&nbsp;&nbsp;&nbsp;<a href="./transcript.pdf"><button>Transcript</button></a>
 
     </div>
-    <div class="small-12 medium-5 large-5 columns">
+    <div class="small-4 medium-4 large-6 columns">
       <h2>Courses Taken</h2>
       <div class="lined-list">
         <ul>
+          <li><strong>CS4730:</strong> <a onclick="openInfo('CS4730')">Computer Game Design</a></li>
+          <li><strong>CS4630:</strong> <a onclick="openInfo('CS4630')">Defense Against the Dark Arts</a></li>
+          <li><strong>CS4501:</strong> <a onclick="openInfo('CS4501-1')">Information Retrieval</a></li>
+          <li><strong>CS4457:</strong> <a onclick="openInfo('CS4457')">Computer Networks</a></li>
+          <li><strong>CS4640:</strong> <a onclick="openInfo('CS4640')">Programming Languages for Web Applications</a></li>
+          <li><strong>CS4102:</strong> <a onclick="openInfo('CS4102')">Algorithms</a></li>
+          <li><strong>CS3330:</strong> <a onclick="openInfo('CS3330')">Computer Architecture</a></li>
+          <li><strong>CS3102:</strong> <a onclick="openInfo('CS3102')">Theory of Computation</a></li>
+          <li><strong>ECE2330:</strong> <a onclick="openInfo('ECE2330')">Digital Logic Design</a></li>
+          <li><strong>CS2150:</strong> <a onclick="openInfo('CS2150')">Program and Data Representation</a></li>
           <li><strong>CS2110:</strong> <a onclick="openInfo('CS2110')">Software Development Methods</a></li>
           <li><strong>CS2102:</strong> <a onclick="openInfo('CS2102')">Discrete Mathematics I</a></li>
-          <li><strong>CS2150:</strong> <a onclick="openInfo('CS2150')">Program and Data Representation</a></li>
-          <li><strong>ECE2330:</strong> <a onclick="openInfo('ECE2330')">Digital Logic Design</a></li>
-          <li><strong>CS3102:</strong> <a onclick="openInfo('CS3102')">Theory of Computation</a></li>
-          <li><strong>CS3330:</strong> <a onclick="openInfo('CS3330')">Computer Architecture</a></li>
-          <li><strong>CS4102:</strong> <a onclick="openInfo('CS4102')">Algorithms</a></li>
-          <li><strong>CS4640:</strong> <a onclick="openInfo('CS4640')">Programming Languages for Web Applications</a></li>
-          <!--<li><strong>Résumé:</strong> <a href="resume.pdf" target="_blank">resume.pdf</a></li>-->
         </ul>
       </div>
     </div>
@@ -106,54 +109,66 @@
   <script src="js/hawthorne.js"></script>
   <script>
   function openInfo(className){
-    var message = '<b style=\"font-size:18pt\">' + className
+    var message = '<b style=\"font-size:18pt\">'
     if(className == "CS2110"){
-      message +=' Software Development Methods</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
+      message +=' CS2110 Software Development Methods</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
       message +="A second course in computing with an emphasis on modern software development and principles \
       central to computer science. Topics include software requirements, testing, object-oriented design, abstraction, encapsulation, recursion, and time-complexity."
     }
     else if(className == "CS2102"){
-      message +=' Discrete Mathematics I</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=' CS2102 Discrete Mathematics I</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
       message +=" Course introducing discrete mathematics and proof techniques involving first order predicate \
       logic and induction. Application areas include finite and infinite sets, elementary combinatorial \
       problems, and graph theory. Development of tools and mechanisms for reasoning about discrete problems."
     }
     else if(className == "CS2150"){
-      message +=' Program and Data Representation</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=' CS2150 Program and Data Representation</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
       message +="Introduces programs and data representation at the machine level. Data structuring techniques \
       and the representation of data structures during program execution. Operations and control structures and \
       their representation during program execution. Representations of numbers, arithmetic operations, arrays, \
       records, recursion, hashing, stacks, queues, trees, graphs, and related concepts"
     }
     else if(className == "ECE2330"){
-      message +=' Digital Logic Design</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=' ECE2330 Digital Logic Design</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
       message +="Includes number systems and conversion; Boolean algebra and logic gates; minimization \
       of switching functions; combinational network design; flip-flops; sequential network design; \
       arithmetic networks. Introduces computer organization and assembly language."
     }
     else if(className == "CS3102"){
-      message +=' Theory of Computation</b><br><b style=\"font-size:12pt\">Grade: A-</b><br><p><br>'
+      message +=' CS3102 Theory of Computation</b><br><b style=\"font-size:12pt\">Grade: A-</b><br><p><br>'
       message +="An introductory course to computation theory including languages, grammars, finite state machines, pushdown automata, and Turing machines."
     }
     else if(className == "CS3330"){
-      message +=' Computer Architecture</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=' CS3330 Computer Architecture</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
       message +="Includes the organization and architecture of computer systems hardware; instruction \
       set architectures; addressing modes; register transfer notation; processor design and computer \
       arithmetic; memory systems; hardware implementations of virtual memory, and input/output control and devices"
     }
     else if(className == "CS4102"){
-      message +=' Algorithms</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
-      message +="Introduces the analysis of algorithms and the effects of data structures on them. Algorithms \
+      message +=' CS4102 Algorithms</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Introduces the analysis of algorithms and the effects of data structures on them. Algorithms \
       selected from areas such as sorting, searching, shortest paths, greedy algorithms, backtracking, \
       divide-and-conquer, and dynamic programming. Data structures include heaps and search, splay, and spanning trees. \
       Analysis techniques include asymtotic worst case, expected time, amortized analysis, and reductions between problems."
     }
     else if(className == "CS4640"){
-      message +=' Programming Languages<br> for Web Applications</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
+      message +=' CS4640 Programming Languages<br> for Web Applications</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
       message +=" Presents programming languages and implementations used in developing web applications. Both client and server \
       side languages are presented as well as database languages. In addition, frameworks that enable interactive web pages are \
       discussed as well as formatting languages. Language features and efficiencies including scoping, parameter passing, object \
       orientation, just in time compilation and dynamic binary translation are included."
+    }else if(className == "CS4457"){
+      message +=' CS4457 Computer Networks</b><br><b style=\"font-size:12pt\">Grade: B+</b><br><p><br>'
+      message +=" A first course in communication networks for upper-level undergraduate students. Topics include the design of modern communication networks; point-to-point and broadcast network solutions; advanced issues such as Gigabit networks; ATM networks; and real-time communications. "
+    }else if(className == "CS4501-1"){
+      message +=' CS4501 Information Retrieval</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" This course will introduce the basics of modern search engine architecture, focus on exploring the cutting-edge solutions in fundamental retrieval problems, including query understanding, mining and modeling search activities, interactive search, mobile search, learning to rank, user interaction based evaluation, question answering, privacy, recommendation, and personalization."
+    }else if(className == "CS4630"){
+      message +=' CS4630 Defense Against the Dark Arts<br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Viruses, worms, and other malicious software are an ever-increasing threat to computer systems. There is an escalating battle between computer security specialists and the designers of malicious software. This course provides an essential understanding of the techniques used by both sides of the computer security battle."
+    }else if(className == "CS4730"){
+      message +=' CS4730 Computer Game Design</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" This course will introduce students to the concepts and tools used in the development of modern 2-D and 3-D real-time interactive computer video games. Topics covered in this include graphics, parallel processing, human-computer interaction, networking, artificial intelligence, and software engineering."
     }
 
 
