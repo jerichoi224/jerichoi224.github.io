@@ -60,7 +60,7 @@
       <br>
       <h3>Anticipated Bachelor of Arts in Computer Science</h3>
       <h3>Expected Graduation: May 2019</h3>
-      <h3>Cumulative GPA: 3.727</h3>
+      <h3>Cumulative GPA: 3.757</h3>
       <br>
       <h3>View Résumé/Transcript</h3><br>
       <a href="./resume.pdf"><button>Résumé</button></a>&nbsp;&nbsp;&nbsp;<a href="./transcript.pdf"><button>Transcript</button></a>
@@ -70,6 +70,7 @@
       <h2>Courses Taken</h2>
       <div class="lined-list">
         <ul>
+          <li><strong>CS4501:</strong> <a onclick="openInfo('CS4501-2')">Intro to Computer Vision</a></li>
           <li><strong>CS4730:</strong> <a onclick="openInfo('CS4730')">Computer Game Design</a></li>
           <li><strong>CS4630:</strong> <a onclick="openInfo('CS4630')">Defense Against the Dark Arts</a></li>
           <li><strong>CS4501:</strong> <a onclick="openInfo('CS4501-1')">Information Retrieval</a></li>
@@ -163,6 +164,9 @@
     }else if(className == "CS4501-1"){
       message +=' CS4501 Information Retrieval</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
       message +=" This course will introduce the basics of modern search engine architecture, focus on exploring the cutting-edge solutions in fundamental retrieval problems, including query understanding, mining and modeling search activities, interactive search, mobile search, learning to rank, user interaction based evaluation, question answering, privacy, recommendation, and personalization."
+    }else if(className == "CS4501-2"){
+      message +=' CS4501 Intro to Computer Vision</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
+      message +=" This course will study how images are represented in a computer, how to manipulate them, and how to extract information (features) from images for various applications including image matching, reconstruction, and recognition. It will particulary cover basic techniques to recover geometry from images, camera calibration, automatic image alignment, boundary detection, object recognition, image classification, and image retrieval/search. Studnets develop the intuitions, study the mathematical methods, and learn to use these in practical computer vision systems."
     }else if(className == "CS4630"){
       message +=' CS4630 Defense Against the Dark Arts<br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
       message +=" Viruses, worms, and other malicious software are an ever-increasing threat to computer systems. There is an escalating battle between computer security specialists and the designers of malicious software. This course provides an essential understanding of the techniques used by both sides of the computer security battle."
