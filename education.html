@@ -60,7 +60,7 @@
       <br>
       <h3>Anticipated Bachelor of Arts in Computer Science</h3>
       <h3>Expected Graduation: May 2019</h3>
-      <h3>Cumulative GPA: 3.757</h3>
+      <h3>Cumulative GPA: 3.767</h3>
       <br>
       <h3>View Résumé/Transcript</h3><br>
       <a href="./resume.pdf"><button>Résumé</button></a>&nbsp;&nbsp;&nbsp;<a href="./transcript.pdf"><button>Transcript</button></a>
@@ -70,6 +70,8 @@
       <h2>Courses Taken</h2>
       <div class="lined-list">
         <ul>
+          <li><strong>CS4810:</strong> <a onclick="openInfo('CS4810')">Intro to Computer Graphics</a></li>
+          <li><strong>CS4720:</strong> <a onclick="openInfo('CS4720')">Mobile Application Development</a></li>
           <li><strong>CS4501:</strong> <a onclick="openInfo('CS4501-2')">Intro to Computer Vision</a></li>
           <li><strong>CS4730:</strong> <a onclick="openInfo('CS4730')">Computer Game Design</a></li>
           <li><strong>CS4630:</strong> <a onclick="openInfo('CS4630')">Defense Against the Dark Arts</a></li>
@@ -173,6 +175,12 @@
     }else if(className == "CS4730"){
       message +=' CS4730 Computer Game Design</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
       message +=" This course will introduce students to the concepts and tools used in the development of modern 2-D and 3-D real-time interactive computer video games. Topics covered in this include graphics, parallel processing, human-computer interaction, networking, artificial intelligence, and software engineering."
+    }else if(className == "CS4720"){
+      message +=' CS4720 Mobile Application Development</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Mobile computing devices have become ubiquitous in our communities. In this course, we focus on the creation of mobile solutions for various modern platforms, including major mobile operating systems. Topics include mobile device architecture, programming languages, software engineering, user interface design, and app distribution. "
+    }else if(className == "CS4810"){
+      message +=' CS4810 Intro to Computer Graphics</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Introduces the fundamentals of three-dimensional computer graphics: rendering, modeling, and animation. Students learn how to represent three-dimensional objects (modeling) and the movement of those objects over time (animation). Students learn and implement the standard rendering pipeline, defined as the stages of turning a three-dimensional model into a shaded, lit, texture-mapped two-dimensional image."
     }
 
 
