@@ -58,9 +58,10 @@
     <div class="small-4 medium-4 large-6 columns">
       <h2>University of Virginia</h2>
       <br>
-      <h3>Anticipated Bachelor of Arts in Computer Science</h3>
-      <h3>Expected Graduation: May 2019</h3>
-      <h3>Cumulative GPA: 3.767</h3>
+      <h3>Anticipated Masters in Computer Science</h3>
+      <h6>Expected Graduation: December 2020</h6>
+      <h3>Bachelor of Arts in Computer Science</h3>
+      <h6>Cumulative GPA: 3.774</h6>
       <br>
       <h3>View Résumé/Transcript</h3><br>
       <a href="./resume.pdf"><button>Résumé</button></a>&nbsp;&nbsp;&nbsp;<a href="./transcript.pdf"><button>Transcript</button></a>
@@ -70,6 +71,7 @@
       <h2>Courses Taken</h2>
       <div class="lined-list">
         <ul>
+          <li><strong>CS6501:</strong> <a onclick="openInfo('CS6501-1')">Software Engineering for Robotics</a></li>
           <li><strong>CS4810:</strong> <a onclick="openInfo('CS4810')">Intro to Computer Graphics</a></li>
           <li><strong>CS4720:</strong> <a onclick="openInfo('CS4720')">Mobile Application Development</a></li>
           <li><strong>CS4501:</strong> <a onclick="openInfo('CS4501-2')">Intro to Computer Vision</a></li>
@@ -94,7 +96,7 @@
     <div class="small-12 medium-12 large-12 columns">
       <footer>
         <ul>
-          <li>&copy; 2017 <a href="index.html">Daniel Choi</a>. All rights reserved.</li>
+          <li>&copy; 2019 <a href="index.html">Daniel Choi</a>. All rights reserved.</li>
           <li><a href="mailto:dc9db@virginia.edu"><i class="fa fa-envelope-o"></i> dc9db@virginia.edu</a></li>
 
           <!-- *****************************************************************************************
@@ -181,6 +183,9 @@
     }else if(className == "CS4810"){
       message +=' CS4810 Intro to Computer Graphics</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
       message +=" Introduces the fundamentals of three-dimensional computer graphics: rendering, modeling, and animation. Students learn how to represent three-dimensional objects (modeling) and the movement of those objects over time (animation). Students learn and implement the standard rendering pipeline, defined as the stages of turning a three-dimensional model into a shaded, lit, texture-mapped two-dimensional image."
+    }else if(className == "CS6501-1"){
+      message +=' CS6501 Software Engineering for Robotics</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
+      message +=" Introduces specialized software engineering approaches,techniques, and tools for the development of robotic systems. Topics include domain-specific archi-tectures and design principles, modeling robot and environmental states, abstractions for mapping,localization, and navigation, and planning, control structures and properties, filtering mechanismsfor sensors and actuators, and analysis, verification, and simulation for dependability"
     }
 
 
