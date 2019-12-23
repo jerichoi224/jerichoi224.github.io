@@ -71,6 +71,9 @@
       <h2>Courses Taken</h2>
       <div class="lined-list">
         <ul>
+          <li><strong>CS6316:</strong> <a onclick="openInfo('CS6316')">Machine Learning</a></li>
+          <li><strong>CS6501:</strong> <a onclick="openInfo('CS6501-3')">Software Security</a></li>
+          <li><strong>CS6501:</strong> <a onclick="openInfo('CS6501-2')">Advanced Embedded Systmes</a></li>
           <li><strong>CS6501:</strong> <a onclick="openInfo('CS6501-1')">Software Engineering for Robotics</a></li>
           <li><strong>CS4810:</strong> <a onclick="openInfo('CS4810')">Intro to Computer Graphics</a></li>
           <li><strong>CS4720:</strong> <a onclick="openInfo('CS4720')">Mobile Application Development</a></li>
@@ -186,6 +189,15 @@
     }else if(className == "CS6501-1"){
       message +=' CS6501 Software Engineering for Robotics</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
       message +=" Introduces specialized software engineering approaches,techniques, and tools for the development of robotic systems. Topics include domain-specific archi-tectures and design principles, modeling robot and environmental states, abstractions for mapping,localization, and navigation, and planning, control structures and properties, filtering mechanismsfor sensors and actuators, and analysis, verification, and simulation for dependability"
+    }else if(className == "CS6501-2"){
+      message +=' CS6501 Advanced Embedded Systems</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Provides the foundational knowledge and hands-on experience in design and validation of embedded systems, with a focus on embedded C programming and real-time operating systems for ARM® Cortex™-M Microcontrollers. In the second half of the class, related topics in safety, security, cyber-physical systems (CPS), internet of things (IoT), and robotics are explored."
+    }else if(className == "CS6501-3"){
+      message +=' CS6501 Software Security via Program Analysis</b><br><b style=\"font-size:12pt\">Grade: A-</b><br><p><br>'
+      message +=" Introduces recent advances in cyberattack prevention and analysis via program analysis and reverse-engineering. In particular, focusing on understanding recent advances in the topics by reading, presenting, and discussing details of recent publications in top security conferences (S&P, USENIX Security, CCS, and NDSS)."
+    }else if(className == "CS6316"){
+      message +=' CS6316 Machine Learning</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Introduces introductory topics about the theory and practical algorithms for machine learning from a variety of perspectives. Topics include supervised learning, unsupervised learning and learning theory. "
     }
 
 
