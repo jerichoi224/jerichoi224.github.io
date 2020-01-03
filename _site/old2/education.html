@@ -1,0 +1,212 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Choi &mdash; Resume</title>
+  <meta name="description" content="Page description goes here">
+  <link rel="icon" href="./img/icon.png">
+  <link href="css/hawthorne_type2_color3.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <script src="js/vendor/modernizr.js"></script>
+  <script src="./js/vex/vex.combined.min.js"></script>
+  <script>
+    vex.defaultOptions.className = 'vex-theme-wireframe'
+  </script>
+  <link rel="stylesheet" href="./css/vex/vex.css" />
+  <link rel="stylesheet" href="./css/vex/vex-theme-wireframe.css" />
+</head>
+
+<body>
+  <style>
+    header {
+      padding-top: 70px;
+      padding-bottom: 50px;
+    }
+
+    footer {
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+  </style>
+  <div class="row">
+    <div class="small-12 medium-12 large-12 small-centered columns">
+      <header>
+        <h1><a href="index.html">Daniel Choi</a></h1>
+        <h2><a href="index.html">Programmer &amp; Graphics Hobbyist</a></h2>
+        <!--
+			<div class="logo">
+				<a href="index.html"><img src="img/logo.png" alt="Your Name Here" /></a>
+			</div>
+			-->
+      </header>
+    </div>
+    <div class="small-12 medium-12 large-12 small-centered columns">
+      <nav>
+        <ul class="inline-list-custom">
+          <li><a href="about.html">About</a></li>
+          <li><a href="education.html" class="current">Education</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="extra.html">???</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-4 medium-4 large-6 columns">
+      <h2>University of Virginia</h2>
+      <br>
+      <h3>Anticipated Masters in Computer Science</h3>
+      <h6>Expected Graduation: December 2020</h6>
+      <h3>Bachelor of Arts in Computer Science</h3>
+      <h6>Cumulative GPA: 3.774</h6>
+      <br>
+      <h3>View Résumé/Transcript</h3><br>
+      <a href="./resume.pdf"><button>Résumé</button></a>&nbsp;&nbsp;&nbsp;<a href="./transcript.pdf"><button>Transcript</button></a>
+
+    </div>
+    <div class="small-4 medium-4 large-6 columns">
+      <h2>Courses Taken</h2>
+      <div class="lined-list">
+        <ul>
+          <li><strong>CS6316:</strong> <a onclick="openInfo('CS6316')">Machine Learning</a></li>
+          <li><strong>CS6501:</strong> <a onclick="openInfo('CS6501-3')">Software Security</a></li>
+          <li><strong>CS6501:</strong> <a onclick="openInfo('CS6501-2')">Advanced Embedded Systmes</a></li>
+          <li><strong>CS6501:</strong> <a onclick="openInfo('CS6501-1')">Software Engineering for Robotics</a></li>
+          <li><strong>CS4810:</strong> <a onclick="openInfo('CS4810')">Intro to Computer Graphics</a></li>
+          <li><strong>CS4720:</strong> <a onclick="openInfo('CS4720')">Mobile Application Development</a></li>
+          <li><strong>CS4501:</strong> <a onclick="openInfo('CS4501-2')">Intro to Computer Vision</a></li>
+          <li><strong>CS4730:</strong> <a onclick="openInfo('CS4730')">Computer Game Design</a></li>
+          <li><strong>CS4630:</strong> <a onclick="openInfo('CS4630')">Defense Against the Dark Arts</a></li>
+          <li><strong>CS4501:</strong> <a onclick="openInfo('CS4501-1')">Information Retrieval</a></li>
+          <li><strong>CS4457:</strong> <a onclick="openInfo('CS4457')">Computer Networks</a></li>
+          <li><strong>CS4640:</strong> <a onclick="openInfo('CS4640')">Programming Languages for Web Applications</a></li>
+          <li><strong>CS4102:</strong> <a onclick="openInfo('CS4102')">Algorithms</a></li>
+          <li><strong>CS3330:</strong> <a onclick="openInfo('CS3330')">Computer Architecture</a></li>
+          <li><strong>CS3102:</strong> <a onclick="openInfo('CS3102')">Theory of Computation</a></li>
+          <li><strong>ECE2330:</strong> <a onclick="openInfo('ECE2330')">Digital Logic Design</a></li>
+          <li><strong>CS2150:</strong> <a onclick="openInfo('CS2150')">Program and Data Representation</a></li>
+          <li><strong>CS2110:</strong> <a onclick="openInfo('CS2110')">Software Development Methods</a></li>
+          <li><strong>CS2102:</strong> <a onclick="openInfo('CS2102')">Discrete Mathematics I</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <input type="hidden" id="extra" value="">
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <footer>
+        <ul>
+          <li>&copy; 2019 <a href="index.html">Daniel Choi</a>. All rights reserved.</li>
+          <li><a href="mailto:dc9db@virginia.edu"><i class="fa fa-envelope-o"></i> dc9db@virginia.edu</a></li>
+
+          <!-- *****************************************************************************************
+				The "Powered by Type & Grids" link in the footer is required in the Free version
+				typeandgrids.com/pirates -->
+          <li>Powered by <a href="http://www.typeandgrids.com" target="_blank">Type &amp; Grids</a></li>
+          <!--  ************************************************************************************ -->
+
+        </ul>
+      </footer>
+    </div>
+  </div>
+  <script src="js/vendor/jquery.min.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script src="js/hawthorne.js"></script>
+  <script>
+  function openInfo(className){
+    var message = '<b style=\"font-size:18pt\">'
+    if(className == "CS2110"){
+      message +=' CS2110 Software Development Methods</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
+      message +="A second course in computing with an emphasis on modern software development and principles \
+      central to computer science. Topics include software requirements, testing, object-oriented design, abstraction, encapsulation, recursion, and time-complexity."
+    }
+    else if(className == "CS2102"){
+      message +=' CS2102 Discrete Mathematics I</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Course introducing discrete mathematics and proof techniques involving first order predicate \
+      logic and induction. Application areas include finite and infinite sets, elementary combinatorial \
+      problems, and graph theory. Development of tools and mechanisms for reasoning about discrete problems."
+    }
+    else if(className == "CS2150"){
+      message +=' CS2150 Program and Data Representation</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +="Introduces programs and data representation at the machine level. Data structuring techniques \
+      and the representation of data structures during program execution. Operations and control structures and \
+      their representation during program execution. Representations of numbers, arithmetic operations, arrays, \
+      records, recursion, hashing, stacks, queues, trees, graphs, and related concepts"
+    }
+    else if(className == "ECE2330"){
+      message +=' ECE2330 Digital Logic Design</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +="Includes number systems and conversion; Boolean algebra and logic gates; minimization \
+      of switching functions; combinational network design; flip-flops; sequential network design; \
+      arithmetic networks. Introduces computer organization and assembly language."
+    }
+    else if(className == "CS3102"){
+      message +=' CS3102 Theory of Computation</b><br><b style=\"font-size:12pt\">Grade: A-</b><br><p><br>'
+      message +="An introductory course to computation theory including languages, grammars, finite state machines, pushdown automata, and Turing machines."
+    }
+    else if(className == "CS3330"){
+      message +=' CS3330 Computer Architecture</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +="Includes the organization and architecture of computer systems hardware; instruction \
+      set architectures; addressing modes; register transfer notation; processor design and computer \
+      arithmetic; memory systems; hardware implementations of virtual memory, and input/output control and devices"
+    }
+    else if(className == "CS4102"){
+      message +=' CS4102 Algorithms</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Introduces the analysis of algorithms and the effects of data structures on them. Algorithms \
+      selected from areas such as sorting, searching, shortest paths, greedy algorithms, backtracking, \
+      divide-and-conquer, and dynamic programming. Data structures include heaps and search, splay, and spanning trees. \
+      Analysis techniques include asymtotic worst case, expected time, amortized analysis, and reductions between problems."
+    }
+    else if(className == "CS4640"){
+      message +=' CS4640 Programming Languages<br> for Web Applications</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
+      message +=" Presents programming languages and implementations used in developing web applications. Both client and server \
+      side languages are presented as well as database languages. In addition, frameworks that enable interactive web pages are \
+      discussed as well as formatting languages. Language features and efficiencies including scoping, parameter passing, object \
+      orientation, just in time compilation and dynamic binary translation are included."
+    }else if(className == "CS4457"){
+      message +=' CS4457 Computer Networks</b><br><b style=\"font-size:12pt\">Grade: B+</b><br><p><br>'
+      message +=" A first course in communication networks for upper-level undergraduate students. Topics include the design of modern communication networks; point-to-point and broadcast network solutions; advanced issues such as Gigabit networks; ATM networks; and real-time communications. "
+    }else if(className == "CS4501-1"){
+      message +=' CS4501 Information Retrieval</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" This course will introduce the basics of modern search engine architecture, focus on exploring the cutting-edge solutions in fundamental retrieval problems, including query understanding, mining and modeling search activities, interactive search, mobile search, learning to rank, user interaction based evaluation, question answering, privacy, recommendation, and personalization."
+    }else if(className == "CS4501-2"){
+      message +=' CS4501 Intro to Computer Vision</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
+      message +=" This course will study how images are represented in a computer, how to manipulate them, and how to extract information (features) from images for various applications including image matching, reconstruction, and recognition. It will particulary cover basic techniques to recover geometry from images, camera calibration, automatic image alignment, boundary detection, object recognition, image classification, and image retrieval/search. Studnets develop the intuitions, study the mathematical methods, and learn to use these in practical computer vision systems."
+    }else if(className == "CS4630"){
+      message +=' CS4630 Defense Against the Dark Arts<br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Viruses, worms, and other malicious software are an ever-increasing threat to computer systems. There is an escalating battle between computer security specialists and the designers of malicious software. This course provides an essential understanding of the techniques used by both sides of the computer security battle."
+    }else if(className == "CS4730"){
+      message +=' CS4730 Computer Game Design</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" This course will introduce students to the concepts and tools used in the development of modern 2-D and 3-D real-time interactive computer video games. Topics covered in this include graphics, parallel processing, human-computer interaction, networking, artificial intelligence, and software engineering."
+    }else if(className == "CS4720"){
+      message +=' CS4720 Mobile Application Development</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Mobile computing devices have become ubiquitous in our communities. In this course, we focus on the creation of mobile solutions for various modern platforms, including major mobile operating systems. Topics include mobile device architecture, programming languages, software engineering, user interface design, and app distribution. "
+    }else if(className == "CS4810"){
+      message +=' CS4810 Intro to Computer Graphics</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Introduces the fundamentals of three-dimensional computer graphics: rendering, modeling, and animation. Students learn how to represent three-dimensional objects (modeling) and the movement of those objects over time (animation). Students learn and implement the standard rendering pipeline, defined as the stages of turning a three-dimensional model into a shaded, lit, texture-mapped two-dimensional image."
+    }else if(className == "CS6501-1"){
+      message +=' CS6501 Software Engineering for Robotics</b><br><b style=\"font-size:12pt\">Grade: A+</b><br><p><br>'
+      message +=" Introduces specialized software engineering approaches,techniques, and tools for the development of robotic systems. Topics include domain-specific archi-tectures and design principles, modeling robot and environmental states, abstractions for mapping,localization, and navigation, and planning, control structures and properties, filtering mechanismsfor sensors and actuators, and analysis, verification, and simulation for dependability"
+    }else if(className == "CS6501-2"){
+      message +=' CS6501 Advanced Embedded Systems</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Provides the foundational knowledge and hands-on experience in design and validation of embedded systems, with a focus on embedded C programming and real-time operating systems for ARM® Cortex™-M Microcontrollers. In the second half of the class, related topics in safety, security, cyber-physical systems (CPS), internet of things (IoT), and robotics are explored."
+    }else if(className == "CS6501-3"){
+      message +=' CS6501 Software Security via Program Analysis</b><br><b style=\"font-size:12pt\">Grade: A-</b><br><p><br>'
+      message +=" Introduces recent advances in cyberattack prevention and analysis via program analysis and reverse-engineering. In particular, focusing on understanding recent advances in the topics by reading, presenting, and discussing details of recent publications in top security conferences (S&P, USENIX Security, CCS, and NDSS)."
+    }else if(className == "CS6316"){
+      message +=' CS6316 Machine Learning</b><br><b style=\"font-size:12pt\">Grade: A</b><br><p><br>'
+      message +=" Introduces introductory topics about the theory and practical algorithms for machine learning from a variety of perspectives. Topics include supervised learning, unsupervised learning and learning theory. "
+    }
+
+
+    vex.dialog.open({
+      unsafeMessage: message,
+      className: 'vex-theme-wireframe' // Overwrites defaultOptions
+    })
+  }
+  </script>
+</body>
+
+</html>

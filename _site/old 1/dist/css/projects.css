@@ -1,0 +1,310 @@
+/*
+* Globals
+*/
+
+body {/*Text Color, light black*/
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #555;
+    margin-top: 70px;
+} 
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 { /*Header Color, Dark Black */
+    margin-top: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    color: #333;
+}
+
+.a{
+    color: black;
+    display:inline-block;
+}
+.projectinfo{
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+    min-height: 170px;
+    border: 1px solid black;
+    padding-left: 12px;
+    padding-right: 10px;
+    padding-top: 5px;
+    margin-bottom: 20px;
+}
+
+.card{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display:inline-block;
+    font-size: 40px;
+    border-radius:5px;
+    position: relative;
+    width: 30%;
+    height: 0;
+    padding-bottom: 20%;
+    text-align: center;
+    vertical-align: middle; 
+    border: 1px solid #868e96;
+    background-color: #f1f3f5;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 30px;
+}   
+/*
+* Override Bootstrap's default container.
+*/
+
+@media (min-width: 770px) {
+    .container {
+        width: 770px;
+    }
+}
+
+/*
+* Masthead for nav
+*/
+projectname{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 25px;
+}
+.blog-masthead {
+    background-color: #151515;
+    /*background-color: #428bca;
+    background-color: #BDBDBD;*/
+    -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+    box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+}
+
+/* Nav links */
+.blog-nav-item {
+    font-family: ;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    font-weight: 500;
+    color: #BDBDBD;
+    /*color: #cdddeb;*/
+}
+.blog-nav-item:hover,
+.blog-nav-item:focus {
+    color: #151515;
+    text-decoration: none;
+}
+
+/* Active state gets a caret at the bottom */
+.blog-nav .active {
+    color: #151515;
+}
+/* Small Triangle
+.blog-nav .active:after {
+position: absolute;
+bottom: 0;
+left: 50%;
+width: 0;
+height: 0;
+margin-left: -5px;
+vertical-align: middle;
+content: " ";
+border-right: 5px solid transparent;
+border-bottom: 5px solid;
+border-left: 5px solid transparent;
+}
+
+
+/*
+* Blog name and description
+*/
+
+.blog-header {
+}
+.blog-title {   
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-size: 55px;
+    font-weight: normal;
+}
+.blog-description {
+    font-size: 20px;
+    color: #999;
+}
+
+
+/*
+* Main column and sidebar layout
+*/
+
+.blog-main {
+    font-size: 18px;
+    line-height: 1.5;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+    padding: 15px;
+    margin: 0 -15px 15px;
+}
+.sidebar-module-inset {
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+.sidebar-module-inset p:last-child,
+.sidebar-module-inset ul:last-child,
+.sidebar-module-inset ol:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Pagination */
+.pager {
+    margin-bottom: 60px;
+    text-align: left;
+}
+.pager > li > a {
+    width: 140px;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 30px;
+}
+
+
+/*
+* Blog posts
+*/
+
+.blog-post {
+    margin-bottom: 20px;
+}
+.blog-post-title {
+    margin-bottom: 5px;
+    font-size: 40px;
+}
+.blog-post-meta {
+    margin-bottom: 20px;
+    color: #999;
+}
+
+
+.dark-line {
+    width: 770px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 0;
+    border-top: 1px solid #151515;
+}
+
+/*
+* Footer
+*/
+
+.blog-footer {
+    padding: 20px 0;
+    color: #000000;
+    text-align: center;
+    background-color: #ffffff;
+    border-top: 1px solid #ffffff;
+    font-size: 10px;
+}
+.blog-footer p:last-child {
+    margin-bottom: 0;
+}
+
+
+
+
+
+
+
+
+
+@import "bourbon";
+
+$color_purple: #5133AB;
+$color_red: #AC193D;
+$color_orange: #DC572E;
+$color_green: #00A600;
+$color_blue: #2672EC;
+
+// colors from http://www.creepyed.com/2012/09/windows-8-colors-hex-code/
+
+$base_font_size: 14px;
+$base_line_height: 1.5em;
+$text_font_family: 'Open Sans', "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+$display_font_family: 'Open Sans', "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+
+body {
+    font-family: $text_font_family;
+    font-size: $base_font_size;
+    line-height: $base_line_height;
+    font-weight: 400;
+}
+
+p, span, a, ul, li, button {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+strong {
+    font-weight: 600;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $display_font_family;
+    line-height: $base_line_height;
+    font-weight: 300;	
+}
+
+strong {
+    font-weight: 400;
+}
+
+.tile {  
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 20%;
+    display: inline-block;
+    border-style: solid;
+    border-width: 2px;
+    box-sizing: border-box;
+    background: #fff;		
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.tile:before {
+    content: "";
+    display: block;
+    padding-top: 100%; /* initial ratio of 1:1*/
+}
+
+.content {
+    position: absolute;
+    top:      0;
+    left:     0;
+    bottom:   0;
+    right:    0;
+}
+
+/* Other ratios - just apply the desired class to the "box" element */
+.ratio2_1:before{
+    padding-top: 50%;
+}
+.ratio1_2:before{
+    padding-top: 200%;
+}
+.ratio4_3:before{
+    padding-top: 75%;
+}
+.ratio16_9:before{
+    padding-top: 56.25%;
+}

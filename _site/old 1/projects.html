@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=1024, initial-scale=0.3">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="keywords" content="Daniel, Junyoung, Choi, UVA"/>
+        <meta name="description" content="Daniel Choi's Website">
+        <meta name="author" content="Daniel Choi">
+        <link rel="icon" href="./dist/img/icon.png">
+
+        <title>Just In Time</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="./dist/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="./dist/css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="./dist/css/style1.css" />
+        <script src="dist/js/modernizr.custom.js"></script>
+
+        <!-- Custom styles for this template -->
+        <link href="./dist/css/projects.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <nav class="blog-nav">
+                <a class="blog-nav-item" href="./index.html">Home</a>
+                <a class="blog-nav-item" href="./about.html">About</a>
+                <a class="blog-nav-item" href="./resume.html">Resume</a>
+                <a class="blog-nav-item active" href="./projects.html">Projects</a>
+                <a class="blog-nav-item" href="./posts/001.html">Posts</a>
+            </nav>
+            <hr class="dark-line">
+            <div class="container">
+                <div class="blog-header">
+                    <h1 class="blog-title">Projects</h1>
+                    <p class="lead blog-description">(BTW, I'm still working on the design for this page)</p>
+                    <div class="container">
+                        <br>
+                        <div class="projectinfo"><projectname id="projectname">Click below for details</projectname><br><div id="projectinfo"></div></div>
+                        <p href="#" class="card" id="webcrawler">Python<br><projectname>Web Crawler</projectname></p>
+                        <p href="#" class="card" id="wilderness">Python<br><projectname>Wilderness</projectname></p>    
+                        <p href="#" class="card" id="website">HTML<br><projectname>(This Website)</projectname></p>
+                        <p href="#" class="card" id="webpl">WEB PL<br><projectname>CS 4640</projectname></p>    
+                        <br>  
+                    </div><!-- /.container -->
+                </div><!-- /.blog-header -->
+                <hr class="dark-line">
+            </div><!-- /.container -->
+        </div>
+        <footer class="blog-footer">
+
+        </footer>
+
+        <!--Script for Changing img/file based on the button-->
+        <script>
+            var projectinfo = document.getElementById('projectinfo');
+            var projectname = document.getElementById('projectname');
+            var webcrawler = document.getElementById('webcrawler');
+            var wilderness = document.getElementById('wilderness');
+            var website = document.getElementById('website');
+            var webpl = document.getElementById('webpl');
+            website.addEventListener('click', displayWebsite);
+            webcrawler.addEventListener('click', displayWebcrawler);
+            wilderness.addEventListener('click', displayWilderness);
+            webpl.addEventListener('click', displayWebpl);
+
+
+            function displayWebcrawler() {
+                projectname.innerHTML = "<b>WebCrawler - Python</b>";
+                projectinfo.innerHTML = " This project was what I did during my summer internship in Fasoo. I wrote a webcrawler that took the xml files provided from the Common Vulnerabilities and Exposures (CVE) website, and outputed a database file that contained the urls that contained vulnerability related source codes. It was somewhat challenging as I had to figure out how to differentiate between actual source codes and non-code texts that looked like source code.";
+            }
+
+            function displayWebsite() {
+                projectname.innerHTML = "<b>[This Website] - HTML</b>";
+                projectinfo.innerHTML = " Well, I don't know if this needs much explaining. Literally, this website, which you are reading this text from, was and is one of my projects... I guess??";
+            }
+
+            function displayWilderness() {
+                projectname.innerHTML = "<b>Wilderness - Python</b>";
+                projectinfo.innerHTML = " Participated in the Text-based Adventure Game \"Wilderness\" developed in the Student Game Development Club in UVA during the Fall 2016 Semester.I've mostly contributed on parsing the script so that the the game takes in scripts and puts the texts into the according data structure so the game can interpret it properly, and in researching the plugin to warp the package into a single executable. <br><br> More information can be found in the github repository: <a href=\"https://github.com/SebastianJay/Wilderness\"><u>Wilderness</u></a>";
+            }
+            function displayWebpl() {
+                projectname.innerHTML = "<b>CS4640 - HTML, Javascript, PHP</b>";
+                projectinfo.innerHTML = " Well, techinically, not a project. This is a course I'm taking right now, where I'm learning about HTML, CSS ,Javascript and PHP. I'll probably remake my website after I finish this course. But to see what I'm doing, you can check the website. <br><br><a href=\"https://plato.cs.virginia.edu/~dc9db\"><u>CS4640 Website</u></a>";
+            }
+
+        </script>
+
+        <!-- Bootstrap core JavaScript
+================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
+</html>

@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=1024, initial-scale=0.3">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="keywords" content="Daniel, Junyoung, Choi, UVA"/>
+        <meta name="description" content="Daniel Choi's Website">
+        <meta name="author" content="Daniel Choi">
+        <link rel="icon" href="./dist/img/icon.png">
+
+        <title>Just In Time</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="./dist/css/resume.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <nav class="blog-nav">
+                <a class="blog-nav-item" href="./index.html">Home</a>
+                <a class="blog-nav-item" href="./about.html">About</a>
+                <a class="blog-nav-item active" href="./resume.html">Resume</a>
+                <a class="blog-nav-item" href="./projects.html">Projects</a>
+                <a class="blog-nav-item" href="./posts/001.html">Posts</a>
+            </nav>
+            <hr class="dark-line">
+            <div class="container">
+                <div class="blog-header">
+                    <h1 class="blog-title">Resume</h1>
+                </div>
+                <br>
+                <div class="container">
+                    <div class="col-sm-4">
+                        <button id="resume" class="on">Resume</button><br>
+                        <button id="transcript" class="off">Transcript</button>
+                        <p></p>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Courses Taken <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" id="CS3102">CS3102 Theory of Computation</a></li>
+                                <li><a href="#" id="CS2150">CS2150 Program and Data Representation</a></li>
+                                <li><a href="#" id="CS2110">CS2110 Software Development Methods</a></li>
+                                <li><a href="#" id="CS2102">CS2102 Discrete Mathematics</a></li>
+                                <li><a href="#" id="ECE2330">ECE2330 Digital Logic Design</a></li>
+                            </ul>
+                        </div>
+                        <div class= "text1" id="coursename">[Course Name]<br>Grade:</div>
+                        <div class="classinfo" id="classinfo">Click course for description
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <a id="file" href="resume.pdf"><img id="document" src="./dist/img/resume.jpg" class="img-responsive" alt=""></a>
+                        <p>(click image to open file)</p>
+                    </div>
+                </div>
+            </div><!-- /.container -->
+            <br>
+            <hr class="dark-line">
+        </div><!-- /.container -->
+
+        <footer class="blog-footer">
+        
+        </footer>
+
+        <!--Script for Changing img/file based on the button-->
+        <script>
+            var file = document.getElementById('file');
+            var image = document.getElementById('document');
+            var resume = document.getElementById('resume');
+            var transcript = document.getElementById('transcript');
+            var classinfo = document.getElementById('classinfo');
+            var coursename = document.getElementById('coursename');
+            var cs3102 = document.getElementById('CS3102');
+            var cs2150 = document.getElementById('CS2150');
+            var cs2110 = document.getElementById('CS2110');
+            var cs2102 = document.getElementById('CS2102');
+            var ece2330 = document.getElementById('ECE2330');
+            resume.addEventListener( 'click', showResume );
+            transcript.addEventListener( 'click', showTranscript );
+            cs3102.addEventListener('click', displayCs3102);
+            cs2150.addEventListener('click', displayCs2150)
+            cs2110.addEventListener('click', displayCs2110);
+            cs2102.addEventListener('click', displayCs2102);
+            ece2330.addEventListener('click', displayEce2330);
+
+            function displayCs3102() {
+                classinfo.innerHTML = " An introductory course to computation theory including languages, grammars, finite state machines, pushdown automata, and Turing machines.";
+                coursename.innerHTML = "Theory of Computation<br>Grade: <b>A-</b>";
+            }
+
+            function displayCs2150() {
+                classinfo.innerHTML = " Introduces programs and data representation at the machine level. Data structuring techniques and the representation of data structures during program execution. Operations and control structures and their representation during program execution. Representations of numbers, arithmetic operations, arrays, records, recursion, hashing, stacks, queues, trees, graphs, and related concepts";
+                coursename.innerHTML = "Program and Data Representation<br>Grade: <b>A</b>";
+            }
+
+            function displayCs2110() {
+                classinfo.innerHTML = " A second course in computing with an emphasis on modern software development and principles central to computer science. Topics include software requirements, testing, object-oriented design, abstraction, encapsulation, recursion, and time-complexity.";
+                coursename.innerHTML = "Software Development Methods<br>Grade: <b>A+</b>";
+            }
+
+            function displayCs2102() {
+                classinfo.innerHTML = " Introduces discrete mathematics and proof techniques involving first order predicate logic and induction. Application areas include finite and infinite sets, elementary combinatorial problems, and graph theory. Development of tools and mechanisms for reasoning about discrete problems.";
+                coursename.innerHTML = "Discrete Mathematics<br>Grade: <b>A</b>";
+            }
+
+            function displayEce2330() {
+                classinfo.innerHTML = " Includes number systems and conversion; Boolean algebra and logic gates; minimization of switching functions; combinational network design; flip-flops; sequential network design; arithmetic networks. Introduces computer organization and assembly language.";
+                coursename.innerHTML = "Digital Logic Design<br>Grade: <b>A</b>";
+            }
+
+            function showResume() {
+                if (resume.className=="on") {
+                } else {
+                    transcript.className="off";
+                    resume.className="on";
+                    image.src="./dist/img/resume.jpg";
+                    file.setAttribute("href", "./resume.pdf")
+                }
+            }
+
+            function showTranscript() {
+                if (transcript.className=="on") {
+                } else {
+                    resume.className="off";
+                    transcript.className="on";
+                    image.src="./dist/img/transcript.jpg";
+                    file.setAttribute("href", "./transcript.pdf")
+                }
+            }
+
+        </script>
+        <!-- Bootstrap core JavaScript
+================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
+</html>
