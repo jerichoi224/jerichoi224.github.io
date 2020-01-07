@@ -2,7 +2,9 @@
 title: "Dead Life of Samantha Yarn :joystick:"
 layout: post
 date: 2017-12-05 00:00
-tag: game
+tag: 
+- game
+- unity
 image: /assets/images/projects/deadlife/thumbnail.png
 headerImage: true
 projects: true

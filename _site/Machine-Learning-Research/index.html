@@ -14,21 +14,21 @@
     <meta property="og:type" content="profile">
 
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Wilderness :evergreen_tree: | Daniel Choi</title>
+<title>ML Research Reproduction :page_facing_up: | Daniel Choi</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Wilderness :evergreen_tree:" />
+<meta property="og:title" content="ML Research Reproduction :page_facing_up:" />
 <meta name="author" content="danielchoi" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Game developed during the school semester in Student Game Developers Club" />
-<meta property="og:description" content="Game developed during the school semester in Student Game Developers Club" />
-<link rel="canonical" href="http://localhost:4000/Wilderness/" />
-<meta property="og:url" content="http://localhost:4000/Wilderness/" />
+<meta name="description" content="Reproduction of previous Machine Learning Research" />
+<meta property="og:description" content="Reproduction of previous Machine Learning Research" />
+<link rel="canonical" href="http://localhost:4000/Machine-Learning-Research/" />
+<meta property="og:url" content="http://localhost:4000/Machine-Learning-Research/" />
 <meta property="og:site_name" content="Daniel Choi" />
-<meta property="og:image" content="http://localhost:4000/assets/images/projects/wilderness/thumbnail.png" />
+<meta property="og:image" content="http://localhost:4000/assets/images/projects/ml_research/thumbnail.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-12-14T00:00:00+09:00" />
+<meta property="article:published_time" content="2019-12-07T00:00:00+09:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"danielchoi"},"url":"http://localhost:4000/Wilderness/","headline":"Wilderness :evergreen_tree:","dateModified":"2016-12-14T00:00:00+09:00","datePublished":"2016-12-14T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/Wilderness/"},"description":"Game developed during the school semester in Student Game Developers Club","image":"http://localhost:4000/assets/images/projects/wilderness/thumbnail.png","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"danielchoi"},"url":"http://localhost:4000/Machine-Learning-Research/","headline":"ML Research Reproduction :page_facing_up:","dateModified":"2019-12-07T00:00:00+09:00","datePublished":"2019-12-07T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/Machine-Learning-Research/"},"description":"Reproduction of previous Machine Learning Research","image":"http://localhost:4000/assets/images/projects/ml_research/thumbnail.png","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -41,7 +41,7 @@
 <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
 
 
-    <link rel="canonical" href="http://localhost:4000/Wilderness/">
+    <link rel="canonical" href="http://localhost:4000/Machine-Learning-Research/">
     <link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml" />
 
     <style>
@@ -1437,14 +1437,14 @@ pre {
 
 
 
-    <img class="title-image" src="/assets/images/projects/wilderness/thumbnail.png" alt="Wilderness :evergreen_tree:">
+    <img class="title-image" src="/assets/images/projects/ml_research/thumbnail.png" alt="ML Research Reproduction :page_facing_up:">
 
 
-<h1 class="title">Wilderness <img class="emoji" title=":evergreen_tree:" alt=":evergreen_tree:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f332.png" height="20" width="20">
+<h1 class="title">ML Research Reproduction <img class="emoji" title=":page_facing_up:" alt=":page_facing_up:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4c4.png" height="20" width="20">
 </h1>
 
 <span class="date">
-    <time datetime="14-12-2016">Wednesday. December 14, 2016</time>
+    <time datetime="07-12-2019">Saturday. December 07, 2019</time>
      - <span class="reading-time" title="Estimated read time">
     
 
@@ -1458,34 +1458,43 @@ pre {
 
     <div class="post-tags">
         
-            <a class="item" href="http://localhost:4000/tags/#game">game</a>
+            <a class="item" href="http://localhost:4000/tags/#machine-learning">Machine Learning</a>
+        
+            <a class="item" href="http://localhost:4000/tags/#research">Research</a>
         
     </div>
 
 
-<h2 id="concept">Concept</h2>
+<h2 id="summary">Summary</h2>
 
-<p>The game features two protagonists in two different storylines as they each make their way to the Wilderness, the site of a growing sinkhole that threatens to consume the planet. Players make progress by typing freeform commands to talk to NPCs, manipulate inventory, and traverse rooms.</p>
+<p>A reproduction of a cutting-edge machine learning paper was done through the Machine Learning Course during Fall of 2019. Our team worked on the reproduction of the research paper: <a href="http://proceedings.mlr.press/v80/daneshmand18a.html">Escaping Saddles with Stochastic Gradients</a></p>
 
-<p><img src="/assets/images/projects/wilderness/1.png" alt="Markdown Image"></p>
+<h2 id="research">Research</h2>
 
-<h2 id="story">Story</h2>
+<p>The research had the purpose of escaping a saddle point when training a machine learning model. There have been several methods of escaping a saddle point when training a model. Most previous methods, however, involve using some sort of noise when using gradient descent so the model doesn’t get stuck in a local minimal point.</p>
 
-<p>A sinkhole has opened up in the Wilderness and threatens to consume the planet. Lore, a stoic college dropout searching for her life’s purpose, and Kipp, a bold farmhand looking for adventure, begin journeys from different ends of the planet to the source of the cataclysm. In this minimalist text adventure, join these two as they discover their destinies are intertwined.</p>
+<p>The authors of the paper attempted to solve the issue of escaping a saddle point using stochastic gradient descent. Instead of using a random noise value after every gradient descent to escape a saddle point, which may end up with a vector in a wronge direction, they added a stochastic gradient step in order to make sure the additional vector is pointing to a minimum direction for one of the data points.</p>
+
+<p>Below is a graph they have used to demonstrate the new algorithm. ISO-PGD is the algorithm where an isotropic noise is added after each gradient descent step, which is the general approach made by previous researches. CNC-PGD is the algorithm the authors proposed where they add a stochastic gradient descent step to each gradient descent step under the CNC (Correlated Negative Curvature) assumption.</p>
+
+<p><img src="/assets/images/projects/ml_research/1.png" alt="Markdown Image"></p>
+<figcaption class="caption">Graph provided in the research paper</figcaption>
 
 <hr>
 
-<h2 id="background">Background</h2>
+<h2 id="reproduction">Reproduction</h2>
 
-<p>Wilderness is a game developed as a project from the Student Games Developer club in UVA during Fall of 2016. The game was developed in Python 3.5, and is a text-based adventure game playable in Windows.</p>
+<p>While the research paper covers much more details, proofs and lemmas, we focused on reproducing the performance comparison of the existing and newly proposed algorithms. While we didn’t have much details for a exact reproduction, we followed the paper in using MNIST datasets, and modified tensorflow optimizers to match the description. While there are some variations for every runs, we found that in many cases it does indeed follow the result described in the paper. A reproduced graph is shown below.</p>
 
-<p><img src="/assets/images/projects/wilderness/2.png" alt="Markdown Image"></p>
-<figcaption class="caption">Progress is made by typing in the player's actions</figcaption>
+<p><img src="/assets/images/projects/ml_research/2.png" alt="Markdown Image"></p>
+<figcaption class="caption">Graph reproduced</figcaption>
 
-<h2 id="role">Role</h2>
-<p>My Role in this game was to develop a parser that would take the script text files written by the writers of the group and parse the script into a node structures so the game could use it. Additionally, I participated in packaging the game into executables.</p>
+<h2 id="reproduction-code">Reproduction Code</h2>
 
-<h2 id="download-game"><a href="http://sgd.cs.virginia.edu/game-item.php?game=57">Download Game</a></h2>
+<p>You can view the source code for reproduction below</p>
+
+<p><a href="https://drive.google.com/file/d/1mso5-k7VRLqeODa1-Uc3YzsKbHaKNqHF/view?usp=sharing">Jupyter Notebook</a></p>
+
 
 
 
@@ -1499,30 +1508,11 @@ pre {
             
                 
             
-        
-            
                 
             
         
-    
-        
-        
             
                 
-                    
-                    <h4>Related Posts</h4>
-                    <ul>
-                    
-                    <li class="relatedPost">
-                        <a href="http://localhost:4000/Dead-Life-of-Samantha-Yarn/">Dead Life of Samantha Yarn <img class="emoji" title=":joystick:" alt=":joystick:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f579.png" height="20" width="20">
-                        
-                        </a>
-                    </li>
-                    
-                    
-                
-            
-        
             
                 
             
@@ -1533,10 +1523,11 @@ pre {
             
                 
             
+                
+            
         
-    
-        
-        
+            
+                
             
                 
             
@@ -1547,11 +1538,6 @@ pre {
             
                 
             
-        
-    
-        
-        
-            
                 
             
         
@@ -1560,12 +1546,6 @@ pre {
         
             
                 
-            
-        
-            
-                
-            
-        
             
                 
             
@@ -1576,14 +1556,55 @@ pre {
             
                 
             
+                
+            
         
+    
+        
+        
+            
+                
             
                 
             
         
     
+        
+        
+            
+                
+            
+                
+            
+        
+            
+                
+            
+                
+            
+        
+            
+                
+            
+                
+            
+        
     
-        </ul>
+        
+        
+            
+                
+            
+                
+            
+        
+            
+                
+            
+                
+            
+        
+    
     
 </div>
 
@@ -1606,7 +1627,7 @@ pre {
             <!-- Note: Only use three share links if your site width is set to large -->
             <!-- If site width is set to normal, you may choose any two share links -->
 <!--
-            <a class="twitter" href="https://twitter.com/intent/tweet?text=http://localhost:4000/Wilderness/ - Wilderness :evergreen_tree: by @">
+            <a class="twitter" href="https://twitter.com/intent/tweet?text=http://localhost:4000/Machine-Learning-Research/ - ML Research Reproduction :page_facing_up: by @">
                 <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg><span class="icon-twitter">Tweet</span>
             </a>
 
@@ -1614,15 +1635,15 @@ pre {
                 <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg><span class="icon-facebook-rect">Share</span>
             </a>
 -->
-            <!-- <a class="google-plus" href="https://plus.google.com/share?url=http://localhost:4000/Wilderness/" target="_blank">
+            <!-- <a class="google-plus" href="https://plus.google.com/share?url=http://localhost:4000/Machine-Learning-Research/" target="_blank">
                 <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg><span class="icon-google-plus">Share</span>
             </a> -->
 
-            <!-- <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:4000/Wilderness/&amp;title=Wilderness :evergreen_tree:&amp;summary=Game developed during the school semester in Student Game Developers Club&amp;source=http://localhost:4000" target="_blank">
+            <!-- <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:4000/Machine-Learning-Research/&amp;title=ML Research Reproduction :page_facing_up:&amp;summary=Reproduction of previous Machine Learning Research&amp;source=http://localhost:4000" target="_blank">
                 <svg class="icon icon-linkedin"><use xlink:href="#icon-linkedin"></use></svg><span class="icon-linkedin">Share</span>
             </a> -->
 
-            <!-- <a class="reddit" href="https://reddit.com/submit?url=http://localhost:4000/Wilderness/&amp;title=Wilderness :evergreen_tree:" target="_blank">
+            <!-- <a class="reddit" href="https://reddit.com/submit?url=http://localhost:4000/Machine-Learning-Research/&amp;title=ML Research Reproduction :page_facing_up:" target="_blank">
                 <svg class="icon icon-reddit"><use xlink:href="#icon-reddit"></use></svg><span class="icon-reddit">Share</span>
             </a> -->
         <!--

@@ -1,24 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-03T22:29:31+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Daniel Choi</title><subtitle>Personal Blog and Website</subtitle><entry><title type="html">Context-Relevant Term Search :mag_right:</title><link href="http://localhost:4000/Context-Relevent-Term-Search/" rel="alternate" type="text/html" title="Context-Relevant Term Search :mag_right:" /><published>2017-12-05T00:00:00+09:00</published><updated>2017-12-05T00:00:00+09:00</updated><id>http://localhost:4000/Context-Relevent-Term-Search</id><content type="html" xml:base="http://localhost:4000/Context-Relevent-Term-Search/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-07T21:55:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Daniel Choi</title><subtitle>Personal Blog and Website</subtitle><entry><title type="html">ML Research Reproduction :page_facing_up:</title><link href="http://localhost:4000/Machine-Learning-Research/" rel="alternate" type="text/html" title="ML Research Reproduction :page_facing_up:" /><published>2019-12-07T00:00:00+09:00</published><updated>2019-12-07T00:00:00+09:00</updated><id>http://localhost:4000/Machine-Learning-Research</id><content type="html" xml:base="http://localhost:4000/Machine-Learning-Research/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
-&lt;p&gt;This was a research project done during the course of CS4501, Information Retrieval in Fall of 2017 with Eric McCord Snook. The purpose of this research was to develop a system for retrieving context-relavant definitions of a term given the context.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/projects/context_search/1.png&quot; alt=&quot;Markdown Image&quot; /&gt;&lt;/p&gt;
-&lt;figcaption class=&quot;caption&quot;&gt;Example use case of the context-relevant term search&lt;/figcaption&gt;
-
-&lt;hr /&gt;
+&lt;p&gt;A reproduction of a cutting-edge machine learning paper was done through the Machine Learning Course during Fall of 2019. Our team worked on the reproduction of the research paper: &lt;a href=&quot;http://proceedings.mlr.press/v80/daneshmand18a.html&quot;&gt;Escaping Saddles with Stochastic Gradients&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;research&quot;&gt;Research&lt;/h2&gt;
 
-&lt;p&gt;The developed system was able to perform significnatly, in that the proper definition was listed within the first two in average. The Jelinek-Mercer smoothed language model was used as the main system, and others like Apache OpenNPL library’s Part of Speech tagging to increase the accuracy of the system. The detailed research paper can be found on the bottom of the page.&lt;/p&gt;
+&lt;p&gt;The research had the purpose of escaping a saddle point when training a machine learning model. There have been several methods of escaping a saddle point when training a model. Most previous methods, however, involve using some sort of noise when using gradient descent so the model doesn’t get stuck in a local minimal point.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/projects/context_search/2.png&quot; alt=&quot;Markdown Image&quot; /&gt;&lt;/p&gt;
-&lt;figcaption class=&quot;caption&quot;&gt;Graph showing performance of the system&lt;/figcaption&gt;
+&lt;p&gt;The authors of the paper attempted to solve the issue of escaping a saddle point using stochastic gradient descent. Instead of using a random noise value after every gradient descent to escape a saddle point, which may end up with a vector in a wronge direction, they added a stochastic gradient step in order to make sure the additional vector is pointing to a minimum direction for one of the data points.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/projects/context_search/3.png&quot; alt=&quot;Markdown Image&quot; /&gt;&lt;/p&gt;
-&lt;figcaption class=&quot;caption&quot;&gt;Table showing performance of the system&lt;/figcaption&gt;
+&lt;p&gt;Below is a graph they have used to demonstrate the new algorithm. ISO-PGD is the algorithm where an isotropic noise is added after each gradient descent step, which is the general approach made by previous researches. CNC-PGD is the algorithm the authors proposed where they add a stochastic gradient descent step to each gradient descent step under the CNC (Correlated Negative Curvature) assumption.&lt;/p&gt;
 
-&lt;h2 id=&quot;research-paper&quot;&gt;&lt;a href=&quot;/assets/docs/Context-Relevant Term Search.pdf&quot;&gt;Research Paper&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The Downloadable pdf contains more detail on the research&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="research" /><summary type="html">Summary</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/context_search/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/context_search/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Dead Life of Samantha Yarn :joystick:</title><link href="http://localhost:4000/Dead-Life-of-Samantha-Yarn/" rel="alternate" type="text/html" title="Dead Life of Samantha Yarn :joystick:" /><published>2017-12-05T00:00:00+09:00</published><updated>2017-12-05T00:00:00+09:00</updated><id>http://localhost:4000/Dead-Life-of-Samantha-Yarn</id><content type="html" xml:base="http://localhost:4000/Dead-Life-of-Samantha-Yarn/">&lt;h2 id=&quot;concept&quot;&gt;Concept&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/projects/ml_research/1.png&quot; alt=&quot;Markdown Image&quot; /&gt;&lt;/p&gt;
+&lt;figcaption class=&quot;caption&quot;&gt;Graph provided in the research paper&lt;/figcaption&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;reproduction&quot;&gt;Reproduction&lt;/h2&gt;
+
+&lt;p&gt;While the research paper covers much more details, proofs and lemmas, we focused on reproducing the performance comparison of the existing and newly proposed algorithms. While we didn’t have much details for a exact reproduction, we followed the paper in using MNIST datasets, and modified tensorflow optimizers to match the description. While there are some variations for every runs, we found that in many cases it does indeed follow the result described in the paper. A reproduced graph is shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/projects/ml_research/2.png&quot; alt=&quot;Markdown Image&quot; /&gt;&lt;/p&gt;
+&lt;figcaption class=&quot;caption&quot;&gt;Graph reproduced&lt;/figcaption&gt;
+
+&lt;h2 id=&quot;reproduction-code&quot;&gt;Reproduction Code&lt;/h2&gt;
+
+&lt;p&gt;You can view the source code for reproduction below&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://drive.google.com/file/d/1mso5-k7VRLqeODa1-Uc3YzsKbHaKNqHF/view?usp=sharing&quot;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="Machine Learning" /><category term="Research" /><summary type="html">Summary</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/ml_research/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/ml_research/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Dead Life of Samantha Yarn :joystick:</title><link href="http://localhost:4000/Dead-Life-of-Samantha-Yarn/" rel="alternate" type="text/html" title="Dead Life of Samantha Yarn :joystick:" /><published>2017-12-05T00:00:00+09:00</published><updated>2017-12-05T00:00:00+09:00</updated><id>http://localhost:4000/Dead-Life-of-Samantha-Yarn</id><content type="html" xml:base="http://localhost:4000/Dead-Life-of-Samantha-Yarn/">&lt;h2 id=&quot;concept&quot;&gt;Concept&lt;/h2&gt;
 
 &lt;p&gt;Dead Life of Samantha Yarn is a puzzle game inspired by other games such as Zelda, Pokemon and Earthbound. Its a short adventure puzzle gmae where the main character goes around the world solving puzzles.&lt;/p&gt;
 
@@ -47,7 +55,27 @@
 &lt;h2 id=&quot;download-game&quot;&gt;Download Game&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://mega.nz/#!gFRgVIqB!8ocF46NWqjFnwEuAOBO-vXJ_c0OyVom53ztjWl6WUUc&quot;&gt;Mac OS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://mega.nz/#!UAZ3XJJK!0ZQbJWMxnJSy6rbVciCUa_XdwDlxwnDPu3ObdGRKmpA&quot;&gt;Windows&lt;/a&gt;&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="game" /><summary type="html">Concept</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/deadlife/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/deadlife/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SSLSniff :unlock:</title><link href="http://localhost:4000/SSLSniff/" rel="alternate" type="text/html" title="SSLSniff :unlock:" /><published>2017-08-30T00:00:00+09:00</published><updated>2017-08-30T00:00:00+09:00</updated><id>http://localhost:4000/SSLSniff</id><content type="html" xml:base="http://localhost:4000/SSLSniff/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://mega.nz/#!UAZ3XJJK!0ZQbJWMxnJSy6rbVciCUa_XdwDlxwnDPu3ObdGRKmpA&quot;&gt;Windows&lt;/a&gt;&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="game" /><category term="unity" /><summary type="html">Concept</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/deadlife/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/deadlife/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Context-Relevant Term Search :mag_right:</title><link href="http://localhost:4000/Context-Relevent-Term-Search/" rel="alternate" type="text/html" title="Context-Relevant Term Search :mag_right:" /><published>2017-12-05T00:00:00+09:00</published><updated>2017-12-05T00:00:00+09:00</updated><id>http://localhost:4000/Context-Relevent-Term-Search</id><content type="html" xml:base="http://localhost:4000/Context-Relevent-Term-Search/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;This was a research project done during the course of CS4501, Information Retrieval in Fall of 2017 with Eric McCord Snook. The purpose of this research was to develop a system for retrieving context-relavant definitions of a term given the context.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/projects/context_search/1.png&quot; alt=&quot;Markdown Image&quot; /&gt;&lt;/p&gt;
+&lt;figcaption class=&quot;caption&quot;&gt;Example use case of the context-relevant term search&lt;/figcaption&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;research&quot;&gt;Research&lt;/h2&gt;
+
+&lt;p&gt;The developed system was able to perform significnatly, in that the proper definition was listed within the first two in average. The Jelinek-Mercer smoothed language model was used as the main system, and others like Apache OpenNPL library’s Part of Speech tagging to increase the accuracy of the system. The detailed research paper can be found on the bottom of the page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/projects/context_search/2.png&quot; alt=&quot;Markdown Image&quot; /&gt;&lt;/p&gt;
+&lt;figcaption class=&quot;caption&quot;&gt;Graph showing performance of the system&lt;/figcaption&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/projects/context_search/3.png&quot; alt=&quot;Markdown Image&quot; /&gt;&lt;/p&gt;
+&lt;figcaption class=&quot;caption&quot;&gt;Table showing performance of the system&lt;/figcaption&gt;
+
+&lt;h2 id=&quot;research-paper&quot;&gt;&lt;a href=&quot;/assets/docs/Context-Relevant Term Search.pdf&quot;&gt;Research Paper&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The Downloadable pdf contains more detail on the research&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="research" /><summary type="html">Summary</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/context_search/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/context_search/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SSLSniff :unlock:</title><link href="http://localhost:4000/SSLSniff/" rel="alternate" type="text/html" title="SSLSniff :unlock:" /><published>2017-08-30T00:00:00+09:00</published><updated>2017-08-30T00:00:00+09:00</updated><id>http://localhost:4000/SSLSniff</id><content type="html" xml:base="http://localhost:4000/SSLSniff/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;Worked on a short research with SSL Sniff, a tool that exploits SSL, to see if it is still usable and whether if it could be used in a Network Security Class to provide better understanding of how vulnerable SSL could be and demonstrate Man-in-the-Middle Attack.&lt;/p&gt;
 
