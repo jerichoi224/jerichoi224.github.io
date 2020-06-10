@@ -14,21 +14,21 @@
     <meta property="og:type" content="profile">
 
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Wilderness :evergreen_tree: | Daniel Choi</title>
+<title>Interval Timer :clock10: | Daniel Choi</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Wilderness :evergreen_tree:" />
+<meta property="og:title" content="Interval Timer :clock10:" />
 <meta name="author" content="danielchoi" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Game developed during the school semester in Student Game Developers Club" />
-<meta property="og:description" content="Game developed during the school semester in Student Game Developers Club" />
-<link rel="canonical" href="http://localhost:4000/Wilderness/" />
-<meta property="og:url" content="http://localhost:4000/Wilderness/" />
+<meta name="description" content="Timer for Interval Reminders" />
+<meta property="og:description" content="Timer for Interval Reminders" />
+<link rel="canonical" href="http://localhost:4000/Interval-Timer/" />
+<meta property="og:url" content="http://localhost:4000/Interval-Timer/" />
 <meta property="og:site_name" content="Daniel Choi" />
-<meta property="og:image" content="http://localhost:4000/assets/images/projects/wilderness/thumbnail.png" />
+<meta property="og:image" content="http://localhost:4000/assets/images/projects/interval_timer/thumbnail.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-12-14T00:00:00-05:00" />
+<meta property="article:published_time" content="2020-06-09T01:28:00-04:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"danielchoi"},"url":"http://localhost:4000/Wilderness/","headline":"Wilderness :evergreen_tree:","dateModified":"2016-12-14T00:00:00-05:00","datePublished":"2016-12-14T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/Wilderness/"},"description":"Game developed during the school semester in Student Game Developers Club","image":"http://localhost:4000/assets/images/projects/wilderness/thumbnail.png","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"danielchoi"},"url":"http://localhost:4000/Interval-Timer/","headline":"Interval Timer :clock10:","dateModified":"2020-06-09T01:28:00-04:00","datePublished":"2020-06-09T01:28:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/Interval-Timer/"},"description":"Timer for Interval Reminders","image":"http://localhost:4000/assets/images/projects/interval_timer/thumbnail.png","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -41,7 +41,7 @@
 <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
 
 
-    <link rel="canonical" href="http://localhost:4000/Wilderness/">
+    <link rel="canonical" href="http://localhost:4000/Interval-Timer/">
     <link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml" />
 
     <style>
@@ -1437,19 +1437,19 @@ pre {
 
 
 
-    <img class="title-image" src="/assets/images/projects/wilderness/thumbnail.png" alt="Wilderness :evergreen_tree:">
+    <img class="title-image" src="/assets/images/projects/interval_timer/thumbnail.png" alt="Interval Timer :clock10:">
 
 
-<h1 class="title">Wilderness <img class="emoji" title=":evergreen_tree:" alt=":evergreen_tree:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f332.png" height="20" width="20">
+<h1 class="title">Interval Timer <img class="emoji" title=":clock10:" alt=":clock10:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f559.png" height="20" width="20">
 </h1>
 
 <span class="date">
-    <time datetime="14-12-2016">Wednesday. December 14, 2016</time>
+    <time datetime="09-06-2020">Tuesday. June 09, 2020</time>
      - <span class="reading-time" title="Estimated read time">
     
 
     
-        1 min
+        6 mins
     
 </span>
 
@@ -1458,34 +1458,158 @@ pre {
 
     <div class="post-tags">
         
-            <a class="item" href="http://localhost:4000/tags/#game">game</a>
+            <a class="item" href="http://localhost:4000/tags/#electron">Electron</a>
+        
+            <a class="item" href="http://localhost:4000/tags/#web-dev">Web Dev</a>
         
     </div>
 
 
-<h2 id="concept">Concept</h2>
+<h2 id="summary">Summary</h2>
 
-<p>The game features two protagonists in two different storylines as they each make their way to the Wilderness, the site of a growing sinkhole that threatens to consume the planet. Players make progress by typing freeform commands to talk to NPCs, manipulate inventory, and traverse rooms.</p>
+<p>Personal Project to build an app while also learning how to develop using the Electron framework. The purpose of buildling the app was to build an app that reminds the user of time spent. Frequently, we spend time on our computer, looking into the screen for a long time without realizing how much time we spent. This can greatly tire our eyes, and I wanted a way to take breaks in the middle.</p>
 
-<p><img src="/assets/images/projects/wilderness/1.png" alt="Markdown Image"></p>
+<h2 id="features">Features</h2>
 
-<h2 id="story">Story</h2>
+<p>While building the application, I also wanted to try out as many different features of electron I could that would fit the apps functionality. The below are the features in electron I’ve made use of in impelmenting the application</p>
 
-<p>A sinkhole has opened up in the Wilderness and threatens to consume the planet. Lore, a stoic college dropout searching for her life’s purpose, and Kipp, a bold farmhand looking for adventure, begin journeys from different ends of the planet to the source of the cataclysm. In this minimalist text adventure, join these two as they discover their destinies are intertwined.</p>
+<h3 id="creating-a-background-application">Creating a Background Application</h3>
+
+<p>When building applications, its pretty common to create applications that users work on directly. In which case, we just create a window like this</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">mainWindow</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserWindow</span><span class="p">({</span>
+    <span class="na">width</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
+    <span class="na">height</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+    <span class="na">webPreferences</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">nodeIntegration</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">enableRemoteModule</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+
+  <span class="nx">mainWindow</span><span class="p">.</span><span class="nx">loadFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>For this application, however, I wanted it to be a background app that runs on the tray, which required the tray object, and modify the window slightly. For the window, to give the idea that its a background app, I basically set <code class="highlighter-rouge">show: false</code> so that the window initially doesn’t show, and run the <code class="highlighter-rouge">app.dock.hide()</code> so that in MacOS it doesn’t show in the dock.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nb">window</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserWindow</span><span class="p">({</span>
+    <span class="na">width</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+    <span class="na">height</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="na">show</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">frame</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">resizable</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">webPreferences</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">nodeIntegration</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">enableRemoteModule</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">}</span>
+  <span class="p">})</span>
+
+  <span class="nb">window</span><span class="p">.</span><span class="nx">setIcon</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/assets/icon.png</span><span class="dl">'</span><span class="p">));</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">loadFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">));</span>
+
+  <span class="nx">app</span><span class="p">.</span><span class="nx">dock</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Additional parts include setting the window property <code class="highlighter-rouge">setAlwaysOnTop</code> and <code class="highlighter-rouge">setVisibleOnAllWorkspaces</code> as true so that I am able to have the timer show over other applications that are fullscreened. Also, the window shouldn’t be fullscreenable or resizable (as set above)</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">window</span><span class="p">.</span><span class="nx">setAlwaysOnTop</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="dl">"</span><span class="s2">floating</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">setVisibleOnAllWorkspaces</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">setFullScreenable</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This allows for the app to pop up on top of other applications</p>
+
+<p><img src="/assets/images/projects/interval_timer/1.png" width="50%" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<figcaption class="caption">App showing above a fullscreen VS Code</figcaption>
 
 <hr>
 
-<h2 id="background">Background</h2>
+<h3 id="creating-a-tray-app">Creating a Tray App</h3>
+<p>Now, getting into the Tray app, one important factor was that I needed a way to close the app since the app doesn’t show on the dock. In order to do this, a tray icon and a tray menu is needed to show the quit option.</p>
 
-<p>Wilderness is a game developed as a project from the Student Games Developer club in UVA during Fall of 2016. The game was developed in Python 3.5, and is a text-based adventure game playable in Windows.</p>
+<p>First, to create a tray icon, the following code is used. Since the window isn’t shown when created, it is either shown or hidden whenever the tray icon is clicked.</p>
 
-<p><img src="/assets/images/projects/wilderness/2.png" alt="Markdown Image"></p>
-<figcaption class="caption">Progress is made by typing in the player's actions</figcaption>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">let</span> <span class="nx">icon</span> <span class="o">=</span> <span class="nx">nativeImage</span><span class="p">.</span><span class="nx">createFromPath</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/assets/tray-icon.png</span><span class="dl">'</span><span class="p">))</span>
+  <span class="nx">tray</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tray</span><span class="p">(</span><span class="nx">icon</span><span class="p">)</span>
 
-<h2 id="role">Role</h2>
-<p>My Role in this game was to develop a parser that would take the script text files written by the writers of the group and parse the script into a node structures so the game could use it. Additionally, I participated in packaging the game into executables.</p>
+  <span class="nx">tray</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">isVisible</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">hide</span><span class="p">()</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">showWindow</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+</code></pre></div></div>
 
-<h2 id="download-game"><a href="http://sgd.cs.virginia.edu/game-item.php?game=57">Download Game</a></h2>
+<p>The <code class="highlighter-rouge">showWindow()</code> code was used from <a href="https://steemit.com/education/@ryanbaer/getting-started-with-electron-a-basic-menubar-app-part-1">ryanbaer’s tutorial</a>. The code basically opens up the window in the position based on the tray’s position.</p>
+
+<p>The final part is creating a tray app was to setup the right click menu. For now, I want three options available in the applicaiton: The About window, settings window, and quit function. The right-click menu is created by using the code below.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">contextMenu</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+       <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">About</span><span class="dl">'</span><span class="p">,</span>
+       <span class="na">click</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Clicked on Help</span><span class="dl">"</span><span class="p">)</span>
+       <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Settings</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">click</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+       <span class="nx">createSettings</span><span class="p">()</span>
+      <span class="p">}</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+     <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Quit</span><span class="dl">'</span><span class="p">,</span>
+     <span class="na">click</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+       <span class="nx">app</span><span class="p">.</span><span class="nx">quit</span><span class="p">()</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+ <span class="p">]</span>
+ 
+  <span class="nx">tray</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">right-click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">tray</span><span class="p">.</span><span class="nx">popUpContextMenu</span><span class="p">(</span><span class="nx">Menu</span><span class="p">.</span><span class="nx">buildFromTemplate</span><span class="p">(</span><span class="nx">contextMenu</span><span class="p">))</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">createSettings</code> is basically a function that creates a new window, and can be seen in the <a href="https://github.com/jerichoi224/interval-timer">github repo</a></p>
+
+<p><img src="/assets/images/projects/interval_timer/2.png" width="50%" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<figcaption class="caption">Tray setting showing up</figcaption>
+<h3 id="electron-remote">Electron Remote</h3>
+
+<p>Another significant part of the app was using electron.remote. Since I have multiple processes occuring (main window and the settings window), I need to share the data between the two processes. In doing this, I use the Electron Remove Module. The electron Module Provides basically provides a global variable/dictionary that can be accessed accross processes.</p>
+
+<p>I create the timer variable, that I need to modify over processes along with the store.js which provides saving data through local file. The storing function using local files was implemented using <a href="https://medium.com/cameron-nokes/how-to-store-user-data-in-electron-3ba6bf66bc1e">Cameron’s tutorial</a>.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">global</span><span class="p">.</span><span class="nx">timer</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">start_time</span><span class="p">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">),</span>
+  <span class="na">started</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">workTime</span><span class="p">:</span> <span class="nx">store</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">workTime</span><span class="dl">"</span><span class="p">),</span>
+  <span class="na">breakTime</span><span class="p">:</span> <span class="nx">store</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">breakTime</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Once created in the <code class="highlighter-rouge">main.js</code> file, these values are modified as accessed in different processes like this:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// Getting the Global Variable.</span>
+  <span class="nx">workTime</span> <span class="o">=</span> <span class="nx">remote</span><span class="p">.</span><span class="nx">getGlobal</span><span class="p">(</span><span class="dl">'</span><span class="s1">timer</span><span class="dl">'</span><span class="p">).</span><span class="nx">workTime</span>
+  <span class="nx">breakTime</span> <span class="o">=</span> <span class="nx">remote</span><span class="p">.</span><span class="nx">getGlobal</span><span class="p">(</span><span class="dl">'</span><span class="s1">timer</span><span class="dl">'</span><span class="p">).</span><span class="nx">breakTime</span>
+
+  <span class="c1">// Setting the Global Variable from input</span>
+  <span class="nx">remote</span><span class="p">.</span><span class="nx">getGlobal</span><span class="p">(</span><span class="dl">'</span><span class="s1">timer</span><span class="dl">'</span><span class="p">).</span><span class="nx">workTime</span> <span class="o">=</span> <span class="nx">workTime</span><span class="p">.</span><span class="nx">value</span>
+  <span class="nx">remote</span><span class="p">.</span><span class="nx">getGlobal</span><span class="p">(</span><span class="dl">'</span><span class="s1">timer</span><span class="dl">'</span><span class="p">).</span><span class="nx">breakTime</span> <span class="o">=</span> <span class="nx">breakTime</span><span class="p">.</span><span class="nx">value</span>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="development-updates">Development Updates</h2>
+
+<p>The update log can be found <a href="https://github.com/jerichoi224/interval-timer/blob/master/update.md">Here</a></p>
+
+<h2 id="repository">Repository</h2>
+
+<p>You can view the source code for app here</p>
+
+<p><a href="https://github.com/jerichoi224/interval-timer">Github Repo</a></p>
+
 
 
 
@@ -1499,7 +1623,11 @@ pre {
             
                 
             
+                
+            
         
+            
+                
             
                 
             
@@ -1510,30 +1638,11 @@ pre {
             
                 
             
-        
-            
                 
             
         
-    
-        
-        
             
                 
-                    
-                    <h4>Related Posts</h4>
-                    <ul>
-                    
-                    <li class="relatedPost">
-                        <a href="http://localhost:4000/Dead-Life-of-Samantha-Yarn/">Dead Life of Samantha Yarn <img class="emoji" title=":joystick:" alt=":joystick:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f579.png" height="20" width="20">
-                        
-                        </a>
-                    </li>
-                    
-                    
-                
-            
-        
             
                 
             
@@ -1544,10 +1653,11 @@ pre {
             
                 
             
+                
+            
         
-    
-        
-        
+            
+                
             
                 
             
@@ -1558,11 +1668,6 @@ pre {
             
                 
             
-        
-    
-        
-        
-            
                 
             
         
@@ -1571,12 +1676,6 @@ pre {
         
             
                 
-            
-        
-            
-                
-            
-        
             
                 
             
@@ -1587,14 +1686,55 @@ pre {
             
                 
             
+                
+            
         
+    
+        
+        
+            
+                
             
                 
             
         
     
+        
+        
+            
+                
+            
+                
+            
+        
+            
+                
+            
+                
+            
+        
+            
+                
+            
+                
+            
+        
     
-        </ul>
+        
+        
+            
+                
+            
+                
+            
+        
+            
+                
+            
+                
+            
+        
+    
     
 </div>
 
@@ -1617,7 +1757,7 @@ pre {
             <!-- Note: Only use three share links if your site width is set to large -->
             <!-- If site width is set to normal, you may choose any two share links -->
 <!--
-            <a class="twitter" href="https://twitter.com/intent/tweet?text=http://localhost:4000/Wilderness/ - Wilderness :evergreen_tree: by @">
+            <a class="twitter" href="https://twitter.com/intent/tweet?text=http://localhost:4000/Interval-Timer/ - Interval Timer :clock10: by @">
                 <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg><span class="icon-twitter">Tweet</span>
             </a>
 
@@ -1625,15 +1765,15 @@ pre {
                 <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg><span class="icon-facebook-rect">Share</span>
             </a>
 -->
-            <!-- <a class="google-plus" href="https://plus.google.com/share?url=http://localhost:4000/Wilderness/" target="_blank">
+            <!-- <a class="google-plus" href="https://plus.google.com/share?url=http://localhost:4000/Interval-Timer/" target="_blank">
                 <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg><span class="icon-google-plus">Share</span>
             </a> -->
 
-            <!-- <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:4000/Wilderness/&amp;title=Wilderness :evergreen_tree:&amp;summary=Game developed during the school semester in Student Game Developers Club&amp;source=http://localhost:4000" target="_blank">
+            <!-- <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:4000/Interval-Timer/&amp;title=Interval Timer :clock10:&amp;summary=Timer for Interval Reminders&amp;source=http://localhost:4000" target="_blank">
                 <svg class="icon icon-linkedin"><use xlink:href="#icon-linkedin"></use></svg><span class="icon-linkedin">Share</span>
             </a> -->
 
-            <!-- <a class="reddit" href="https://reddit.com/submit?url=http://localhost:4000/Wilderness/&amp;title=Wilderness :evergreen_tree:" target="_blank">
+            <!-- <a class="reddit" href="https://reddit.com/submit?url=http://localhost:4000/Interval-Timer/&amp;title=Interval Timer :clock10:" target="_blank">
                 <svg class="icon icon-reddit"><use xlink:href="#icon-reddit"></use></svg><span class="icon-reddit">Share</span>
             </a> -->
         <!--
