@@ -1,4 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-10T12:08:25-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Daniel Choi</title><subtitle>Personal Blog and Website</subtitle><entry><title type="html">Interval Timer :clock10:</title><link href="http://localhost:4000/Interval-Timer/" rel="alternate" type="text/html" title="Interval Timer :clock10:" /><published>2020-06-09T01:28:00-04:00</published><updated>2020-06-09T01:28:00-04:00</updated><id>http://localhost:4000/Interval-Timer</id><content type="html" xml:base="http://localhost:4000/Interval-Timer/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-13T00:47:05-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Daniel Choi</title><subtitle>Personal Blog and Website</subtitle><entry><title type="html">Money Tracker :dollar:</title><link href="http://localhost:4000/MoneyTracker/" rel="alternate" type="text/html" title="Money Tracker :dollar:" /><published>2020-08-07T01:28:00-04:00</published><updated>2020-08-07T01:28:00-04:00</updated><id>http://localhost:4000/MoneyTracker</id><content type="html" xml:base="http://localhost:4000/MoneyTracker/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;The purpose of this app is to keep track of how much money I spent daily, and try to stop myself from spending money when I really shouldn’t be. The app basically sets a daily limit on how much money I want to use on average, and manually keeps track of the spendings I make. The app will subtract these spendings from the daily limit, and every day midnight, the remaining daily limit rolls over to the total savings. This way, I can see how much I’ve been spending, and whether I am able to make some larger spendings than usual.&lt;/p&gt;
+
+&lt;p&gt;This was a Personal Project to build an app while also learning how to develop using Flutter. Although this is an app that doesn’t really use any advanced techniques or external APIs or anything, it does implement alot of significant parts of mobile developments such as app life cycles, persistent data, multiple page navigations, splash screens and others.&lt;/p&gt;
+
+&lt;p&gt;The app source code along the app description can be found as open source in my [github].(https://github.com/jerichoi224/MoneyTracker) I’ll be going over the code and more of the approaches I took while developing the app.&lt;/p&gt;
+
+&lt;h3 id=&quot;app-life-cycle&quot;&gt;App Life Cycle&lt;/h3&gt;
+&lt;p&gt;One significant part of this app was checking midnight. Whenever a day changes, whatever is remaining from the daily limit has to rollover to the total savings. The big issue I found is that if a day changes while the app is online, or “on pause” I need to check the day change. I found this way of detecting the app’s “on resume” through stack overflow.&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;SystemChannels&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;lifecycle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setMessageHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AppLifecycleState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;resumed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		  &lt;span class=&quot;n&quot;&gt;checkNewDay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		  &lt;span class=&quot;n&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{});&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;By adding this code snippet on the &lt;strong&gt;onInit()&lt;/strong&gt; method of the main widget, then whenever the app resumes, the code runs. What I did find was, that if I add these Message Handlers to other widgets, whichever widget loads later will overwrite any other Message Handlers. I didn’t realize this at first, and ended up having alot of repetitive code in multiple files. So its important that this Message Handler is added to one file in the entire app project.&lt;/p&gt;
+
+&lt;h3 id=&quot;persistent-data&quot;&gt;Persistent Data&lt;/h3&gt;
+
+&lt;p&gt;Based on the code I found on the &lt;a href=&quot;https://flutter.dev/docs/cookbook/persistence/sqlite&quot;&gt;official documentation&lt;/a&gt;, along with some help from stack overflow, I built my own &lt;a href=&quot;https://github.com/jerichoi224/MoneyTracker/blob/master/lib/database_helpers.dart&quot;&gt;database helper&lt;/a&gt; with two separate tables: one for spendings, and one for subscriptions.&lt;/p&gt;
+
+&lt;h3 id=&quot;page-navigation&quot;&gt;Page Navigation&lt;/h3&gt;
+
+&lt;p&gt;For Page navigation, I used the &lt;a href=&quot;https://api.flutter.dev/flutter/widgets/PageView-class.html&quot;&gt;PageView&lt;/a&gt; Widget which I found to be an amazingly convenient widget. Its pretty amazing and pairing it with the bottom navigation bar made the UI intuitive and easy to learn. This combination can be found in the &lt;a href=&quot;https://github.com/jerichoi224/MoneyTracker/blob/master/lib/HomeWidget.dart&quot;&gt;Home Widget&lt;/a&gt; file, but here are some snippets.&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Creates a controller for the Page View widget&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pageController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;initialPage:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Chooses the widgets that correspond to the children/pages in the pageview widget. &lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Widget&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_children&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SpendMoneyWidget&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;DisplayWidget&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SpendingHistoryWidget&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+  
+ &lt;span class=&quot;c1&quot;&gt;// Set the Pageview as the body for the home widget&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;body:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+          &lt;span class=&quot;nl&quot;&gt;onPageChanged:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;FocusScope&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;unfocus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;changePage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;},&lt;/span&gt;
+          &lt;span class=&quot;nl&quot;&gt;controller:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pageController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nl&quot;&gt;children:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;children&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+	  
+	  
+&lt;span class=&quot;c1&quot;&gt;// This makes the PageView Change pages on bottom navigation bar tap&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onTabTapped&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;_currentIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;pageController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;animateToPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;duration:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;milliseconds:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;curve:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Curves&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ease&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;splash-screen&quot;&gt;Splash Screen&lt;/h3&gt;
+
+&lt;p&gt;For the one-time intro splash screen, I just have a simple &lt;a href=&quot;https://github.com/jerichoi224/MoneyTracker/blob/master/lib/SplashWidget.dart&quot;&gt;SplashWidget&lt;/a&gt; which the &lt;a href=&quot;https://github.com/jerichoi224/MoneyTracker/blob/master/lib/main.dart&quot;&gt;main&lt;/a&gt; dart file only shows the first time the app is loaded. Once the user sets all the initial values, the widget sets a flag that is never modified again, and thus the one-time splash screen never happens.&lt;/p&gt;
+
+&lt;p&gt;For the general splash screen, I simply have flag that waits for all the data to load, and while the data is loading, the homewidget shows a screen with the icon alone.&lt;/p&gt;
+
+&lt;h2 id=&quot;sibling-app&quot;&gt;Sibling App&lt;/h2&gt;
+&lt;p&gt;While developing Money Tracker, I also wanted to make an app that could be used as a ledger. While I initially thought of comibining the two in one app, I quickly realized that they way Money Tracker keeps track of money and saving does not work together with how a ledger works. So I just decided to take the code of Money Tracker and simply modify the code to make a the &lt;a href=&quot;https://github.com/jerichoi224/Simple-Ledger&quot;&gt;Simple Ledger&lt;/a&gt; app.&lt;/p&gt;
+
+&lt;h2 id=&quot;repository&quot;&gt;Repository&lt;/h2&gt;
+
+&lt;p&gt;You can view the source code for app here&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/jerichoi224/interval-timer&quot;&gt;Github Repo&lt;/a&gt;&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="Flutter" /><category term="Mobile Development" /><category term="Open Source" /><summary type="html">Summary The purpose of this app is to keep track of how much money I spent daily, and try to stop myself from spending money when I really shouldn’t be. The app basically sets a daily limit on how much money I want to use on average, and manually keeps track of the spendings I make. The app will subtract these spendings from the daily limit, and every day midnight, the remaining daily limit rolls over to the total savings. This way, I can see how much I’ve been spending, and whether I am able to make some larger spendings than usual.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/money_tracker/thumbnail.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/money_tracker/thumbnail.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Interval Timer :clock10:</title><link href="http://localhost:4000/Interval-Timer/" rel="alternate" type="text/html" title="Interval Timer :clock10:" /><published>2020-06-09T01:28:00-04:00</published><updated>2020-06-09T01:28:00-04:00</updated><id>http://localhost:4000/Interval-Timer</id><content type="html" xml:base="http://localhost:4000/Interval-Timer/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;Personal Project to build an app while also learning how to develop using the Electron framework. The purpose of buildling the app was to build an app that reminds the user of time spent. Frequently, we spend time on our computer, looking into the screen for a long time without realizing how much time we spent. This can greatly tire our eyes, and I wanted a way to take breaks in the middle.&lt;/p&gt;
 
