@@ -90,4 +90,4 @@ While developing Money Tracker, I also wanted to make an app that could be used 
 
 You can view the source code for app here
 
-[Github Repo](https://github.com/jerichoi224/interval-timer)
+[Github Repo](https://github.com/jerichoi224/MoneyTracker)
