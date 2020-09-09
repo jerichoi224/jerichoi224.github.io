@@ -18,7 +18,7 @@ Korean. I can also speak Japanese as well. </p>
 > “Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me; your rod and your staff, they comfort me.”
 > Psalms 23:4
 
-## [Education](/assets/docs/transcript.pdf)
+## [Education](/assets/docs/transcript.pdf) [[kr](https://www.notion.so/Daniel-Choi-ebe3ab9b16164d05aacf8fff36d66ca1)]
 <ul>
 	<li>Anticipated Masters in Computer Science (2020) </li>
 	<li>Bachelor of Arts in Computer Science (2019) </li>
