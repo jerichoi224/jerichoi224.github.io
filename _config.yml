@@ -16,7 +16,7 @@ real-picture: assets/images/profile.jpg
 resume: true
 resume-external: false
 resume-url: assets/docs/resume.pdf
-
+resume-kr-url: https://www.notion.so/Daniel-Choi-ebe3ab9b16164d05aacf8fff36d66ca1
 url: https://www.daniel-choi.com
 # your url: http://USERNAME.github.io
 
@@ -40,7 +40,7 @@ disqus:
 # google: mygoogle
 instagram: dchoi_pic
 # pinterest: mypinterest
-# linkedin: jerichoi224
+linkedin: jerichoi224
 youtube: channel/UC73YAfhn5dWcZoykHsy14RA
 # spotify: myspotify
 github: jerichoi224
@@ -53,6 +53,7 @@ github: jerichoi224
 # vimeo: myvimeo
 # lanyrd: mylanyrd
 # email: jerichoi224@gmail.com
+
 
 authors:
     danielchoi:
