@@ -23,6 +23,7 @@ Korean. I can also speak Japanese as well. </p>
 	<li>Anticipated Masters in Computer Science (2020) </li>
 	<li>Bachelor of Arts in Computer Science (2019) </li>
 </ul>
+### [Blog/Study Notes](http://publish.obsidian.md/daniel-choi/)
 
 <h2>Skills</h2>
 
