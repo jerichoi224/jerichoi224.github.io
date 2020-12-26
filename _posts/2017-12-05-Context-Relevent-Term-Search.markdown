@@ -2,7 +2,10 @@
 title: "Context-Relevant Term Search :mag_right:"
 layout: post
 date: 2017-12-05 00:00
-tag: research
+tag: 
+- research
+- Information Retrieval
+- NPL
 image: /assets/images/projects/context_search/thumbnail.png
 headerImage: true
 projects: true

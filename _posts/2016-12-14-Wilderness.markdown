@@ -3,7 +3,7 @@ title: "Wilderness :evergreen_tree:"
 layout: post
 date: 2016-12-14 00:00
 tag: game
-image: /assets/images/projects/wilderness/thumbnail.png
+image: 
 headerImage: true
 projects: true
 hidden: true # don't count this post in blog pagination

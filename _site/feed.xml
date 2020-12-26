@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-10T03:25:58-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Daniel Choi</title><subtitle>Personal Blog and Website</subtitle><entry><title type="html">Money Tracker :dollar:</title><link href="http://localhost:4000/MoneyTracker/" rel="alternate" type="text/html" title="Money Tracker :dollar:" /><published>2020-08-07T01:28:00-04:00</published><updated>2020-08-07T01:28:00-04:00</updated><id>http://localhost:4000/MoneyTracker</id><content type="html" xml:base="http://localhost:4000/MoneyTracker/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-26T10:58:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Daniel Choi</title><subtitle>Personal Blog and Website</subtitle><entry><title type="html">Paintings and Language :art:</title><link href="http://localhost:4000/paintings-and-language/" rel="alternate" type="text/html" title="Paintings and Language :art:" /><published>2020-12-10T00:00:00+09:00</published><updated>2020-12-10T00:00:00+09:00</updated><id>http://localhost:4000/paintings-and-language</id><content type="html" xml:base="http://localhost:4000/paintings-and-language/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;This was a project done in my Vision and Language Course (CS6501) during Fall of 2020. with Austin Cheng and Ben Barret. The purpose of this project was to build multiple models for image-label pair generation and comparing them.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/projects/painting_language/1.png&quot; alt=&quot;Markdown Image&quot; /&gt;&lt;/p&gt;
+&lt;figcaption class=&quot;caption&quot;&gt;Examples of image-label pair generation&lt;/figcaption&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;research&quot;&gt;Research&lt;/h2&gt;
+&lt;p&gt;While we attempted to have two different models, a sequential model containing a GAN paired with LSTM and a multimodal GAN that generates both the image and text simultaneously, the multimodal GAN did not perform sufficiently, likely due to the architecture.&lt;/p&gt;
+
+&lt;p&gt;For the Data, we used a Kaggle Dataset from wikiart and the The Metropolitan Museum of Art(MET) dataset, and used the Fréchet inception distance (FID) score to measure the performance of GAN. A DCGAN was used.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/projects/painting_language/2.png&quot; alt=&quot;Markdown Image&quot; /&gt;&lt;/p&gt;
+&lt;figcaption class=&quot;caption&quot;&gt;Images from the dataset&lt;/figcaption&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/projects/painting_language/3.png&quot; alt=&quot;Markdown Image&quot; /&gt;&lt;/p&gt;
+&lt;figcaption class=&quot;caption&quot;&gt;Images generated using GAN&lt;/figcaption&gt;
+
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+
+&lt;p&gt;The generation of images using GANs or text using RNNs/transformers has seen significant progress in recent years, leading to the creation of photorealistic media popularly known as DeepFakes. While several methods for exclusively generating images or exclusively generating text have been published, there has been little research on generating image-text pairs, such as captioned photos. In this project, we explore two methods for generating new imagetext pairs of paintings and their titles using a publicly provided Kaggle paintings dataset (sourced from WikiArt) and a new MET Paintings dataset. Painting titles are more abstract and therefore less semantically grounded than captioned photos, and we believe that capturing this behavior in a generative model would be interesting. We attempt two methods in creating a synthetic painting along with an appropriate title: sequential and parallel. The sequential method is treated as an image generation task using a GAN directly followed by an image captioning task using an RNN, while the parallel method uses a multimodal GAN to generate both the image and text simultaneously. We find that the simpler sequential model generates some reasonable titled paintings.&lt;/p&gt;
+
+&lt;h2 id=&quot;github-repository-paper&quot;&gt;&lt;a href=&quot;https://github.com/jerichoi224/Paintings-and-Language&quot;&gt;Github Repository (Paper)&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The repository contains the notebook files used in this project, as well as the research paper, along with the presentation video&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="Machine Learning" /><category term="Research" /><category term="Deep Learning" /><category term="Pytorch" /><summary type="html">Summary</summary></entry><entry><title type="html">Money Tracker :dollar:</title><link href="http://localhost:4000/MoneyTracker/" rel="alternate" type="text/html" title="Money Tracker :dollar:" /><published>2020-08-07T01:28:00+09:00</published><updated>2020-08-07T01:28:00+09:00</updated><id>http://localhost:4000/MoneyTracker</id><content type="html" xml:base="http://localhost:4000/MoneyTracker/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 &lt;p&gt;The purpose of this app is to keep track of how much money I spent daily, and try to stop myself from spending money when I really shouldn’t be. The app basically sets a daily limit on how much money I want to use on average, and manually keeps track of the spendings I make. The app will subtract these spendings from the daily limit, and every day midnight, the remaining daily limit rolls over to the total savings. This way, I can see how much I’ve been spending, and whether I am able to make some larger spendings than usual.&lt;/p&gt;
 
 &lt;p&gt;This was a Personal Project to build an app while also learning how to develop using Flutter. Although this is an app that doesn’t really use any advanced techniques or external APIs or anything, it does implement alot of significant parts of mobile developments such as app life cycles, persistent data, multiple page navigations, splash screens and others.&lt;/p&gt;
@@ -70,7 +95,7 @@
 
 &lt;p&gt;You can view the source code for app here&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/jerichoi224/MoneyTracker&quot;&gt;Github Repo&lt;/a&gt;&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="Flutter" /><category term="Mobile Development" /><category term="Open Source" /><summary type="html">Summary The purpose of this app is to keep track of how much money I spent daily, and try to stop myself from spending money when I really shouldn’t be. The app basically sets a daily limit on how much money I want to use on average, and manually keeps track of the spendings I make. The app will subtract these spendings from the daily limit, and every day midnight, the remaining daily limit rolls over to the total savings. This way, I can see how much I’ve been spending, and whether I am able to make some larger spendings than usual.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/money_tracker/thumbnail.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/money_tracker/thumbnail.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Interval Timer :clock10:</title><link href="http://localhost:4000/Interval-Timer/" rel="alternate" type="text/html" title="Interval Timer :clock10:" /><published>2020-06-09T01:28:00-04:00</published><updated>2020-06-09T01:28:00-04:00</updated><id>http://localhost:4000/Interval-Timer</id><content type="html" xml:base="http://localhost:4000/Interval-Timer/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jerichoi224/MoneyTracker&quot;&gt;Github Repo&lt;/a&gt;&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="Flutter" /><category term="Mobile Development" /><category term="Open Source" /><summary type="html">Summary The purpose of this app is to keep track of how much money I spent daily, and try to stop myself from spending money when I really shouldn’t be. The app basically sets a daily limit on how much money I want to use on average, and manually keeps track of the spendings I make. The app will subtract these spendings from the daily limit, and every day midnight, the remaining daily limit rolls over to the total savings. This way, I can see how much I’ve been spending, and whether I am able to make some larger spendings than usual.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/money_tracker/thumbnail.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/money_tracker/thumbnail.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Interval Timer :clock10:</title><link href="http://localhost:4000/Interval-Timer/" rel="alternate" type="text/html" title="Interval Timer :clock10:" /><published>2020-06-09T01:28:00+09:00</published><updated>2020-06-09T01:28:00+09:00</updated><id>http://localhost:4000/Interval-Timer</id><content type="html" xml:base="http://localhost:4000/Interval-Timer/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;Personal Project to build an app while also learning how to develop using the Electron framework. The purpose of buildling the app was to build an app that reminds the user of time spent. Frequently, we spend time on our computer, looking into the screen for a long time without realizing how much time we spent. This can greatly tire our eyes, and I wanted a way to take breaks in the middle.&lt;/p&gt;
 
@@ -213,7 +238,7 @@
 
 &lt;p&gt;You can view the source code for app here&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/jerichoi224/interval-timer&quot;&gt;Github Repo&lt;/a&gt;&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="Electron" /><category term="Web Dev" /><summary type="html">Summary</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/interval_timer/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/interval_timer/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ML Research Reproduction :page_facing_up:</title><link href="http://localhost:4000/Machine-Learning-Research/" rel="alternate" type="text/html" title="ML Research Reproduction :page_facing_up:" /><published>2019-12-07T00:00:00-05:00</published><updated>2019-12-07T00:00:00-05:00</updated><id>http://localhost:4000/Machine-Learning-Research</id><content type="html" xml:base="http://localhost:4000/Machine-Learning-Research/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jerichoi224/interval-timer&quot;&gt;Github Repo&lt;/a&gt;&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="Electron" /><category term="Web Dev" /><summary type="html">Summary</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/interval_timer/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/interval_timer/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ML Research Reproduction :page_facing_up:</title><link href="http://localhost:4000/Machine-Learning-Research/" rel="alternate" type="text/html" title="ML Research Reproduction :page_facing_up:" /><published>2019-12-07T00:00:00+09:00</published><updated>2019-12-07T00:00:00+09:00</updated><id>http://localhost:4000/Machine-Learning-Research</id><content type="html" xml:base="http://localhost:4000/Machine-Learning-Research/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;A reproduction of a cutting-edge machine learning paper was done through the Machine Learning Course during Fall of 2019. Our team worked on the reproduction of the research paper: &lt;a href=&quot;http://proceedings.mlr.press/v80/daneshmand18a.html&quot;&gt;Escaping Saddles with Stochastic Gradients&lt;/a&gt;&lt;/p&gt;
 
@@ -241,7 +266,7 @@
 
 &lt;p&gt;You can view the source code for reproduction below&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://drive.google.com/file/d/1mso5-k7VRLqeODa1-Uc3YzsKbHaKNqHF/view?usp=sharing&quot;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="Machine Learning" /><category term="Research" /><summary type="html">Summary</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/ml_research/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/ml_research/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Dead Life of Samantha Yarn :joystick:</title><link href="http://localhost:4000/Dead-Life-of-Samantha-Yarn/" rel="alternate" type="text/html" title="Dead Life of Samantha Yarn :joystick:" /><published>2017-12-05T00:00:00-05:00</published><updated>2017-12-05T00:00:00-05:00</updated><id>http://localhost:4000/Dead-Life-of-Samantha-Yarn</id><content type="html" xml:base="http://localhost:4000/Dead-Life-of-Samantha-Yarn/">&lt;h2 id=&quot;concept&quot;&gt;Concept&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://drive.google.com/file/d/1mso5-k7VRLqeODa1-Uc3YzsKbHaKNqHF/view?usp=sharing&quot;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="Machine Learning" /><category term="Research" /><category term="Tensorflow" /><summary type="html">Summary</summary></entry><entry><title type="html">Dead Life of Samantha Yarn :joystick:</title><link href="http://localhost:4000/Dead-Life-of-Samantha-Yarn/" rel="alternate" type="text/html" title="Dead Life of Samantha Yarn :joystick:" /><published>2017-12-05T00:00:00+09:00</published><updated>2017-12-05T00:00:00+09:00</updated><id>http://localhost:4000/Dead-Life-of-Samantha-Yarn</id><content type="html" xml:base="http://localhost:4000/Dead-Life-of-Samantha-Yarn/">&lt;h2 id=&quot;concept&quot;&gt;Concept&lt;/h2&gt;
 
 &lt;p&gt;Dead Life of Samantha Yarn is a puzzle game inspired by other games such as Zelda, Pokemon and Earthbound. Its a short adventure puzzle gmae where the main character goes around the world solving puzzles.&lt;/p&gt;
 
@@ -270,7 +295,7 @@
 &lt;h2 id=&quot;download-game&quot;&gt;Download Game&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://mega.nz/#!gFRgVIqB!8ocF46NWqjFnwEuAOBO-vXJ_c0OyVom53ztjWl6WUUc&quot;&gt;Mac OS&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://mega.nz/#!UAZ3XJJK!0ZQbJWMxnJSy6rbVciCUa_XdwDlxwnDPu3ObdGRKmpA&quot;&gt;Windows&lt;/a&gt;&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="game" /><category term="unity" /><summary type="html">Concept</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/deadlife/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/deadlife/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Context-Relevant Term Search :mag_right:</title><link href="http://localhost:4000/Context-Relevent-Term-Search/" rel="alternate" type="text/html" title="Context-Relevant Term Search :mag_right:" /><published>2017-12-05T00:00:00-05:00</published><updated>2017-12-05T00:00:00-05:00</updated><id>http://localhost:4000/Context-Relevent-Term-Search</id><content type="html" xml:base="http://localhost:4000/Context-Relevent-Term-Search/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://mega.nz/#!UAZ3XJJK!0ZQbJWMxnJSy6rbVciCUa_XdwDlxwnDPu3ObdGRKmpA&quot;&gt;Windows&lt;/a&gt;&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="game" /><category term="unity" /><summary type="html">Concept</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/deadlife/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/deadlife/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Context-Relevant Term Search :mag_right:</title><link href="http://localhost:4000/Context-Relevent-Term-Search/" rel="alternate" type="text/html" title="Context-Relevant Term Search :mag_right:" /><published>2017-12-05T00:00:00+09:00</published><updated>2017-12-05T00:00:00+09:00</updated><id>http://localhost:4000/Context-Relevent-Term-Search</id><content type="html" xml:base="http://localhost:4000/Context-Relevent-Term-Search/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;This was a research project done during the course of CS4501, Information Retrieval in Fall of 2017 with Eric McCord Snook. The purpose of this research was to develop a system for retrieving context-relavant definitions of a term given the context.&lt;/p&gt;
 
@@ -290,7 +315,7 @@
 &lt;figcaption class=&quot;caption&quot;&gt;Table showing performance of the system&lt;/figcaption&gt;
 
 &lt;h2 id=&quot;research-paper&quot;&gt;&lt;a href=&quot;/assets/docs/Context-Relevant Term Search.pdf&quot;&gt;Research Paper&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The Downloadable pdf contains more detail on the research&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="research" /><summary type="html">Summary</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/context_search/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/context_search/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SSLSniff :unlock:</title><link href="http://localhost:4000/SSLSniff/" rel="alternate" type="text/html" title="SSLSniff :unlock:" /><published>2017-08-30T00:00:00-04:00</published><updated>2017-08-30T00:00:00-04:00</updated><id>http://localhost:4000/SSLSniff</id><content type="html" xml:base="http://localhost:4000/SSLSniff/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;The Downloadable pdf contains more detail on the research&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="research" /><category term="Information Retrieval" /><category term="NPL" /><summary type="html">Summary</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/context_search/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/context_search/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SSLSniff :unlock:</title><link href="http://localhost:4000/SSLSniff/" rel="alternate" type="text/html" title="SSLSniff :unlock:" /><published>2017-08-30T00:00:00+09:00</published><updated>2017-08-30T00:00:00+09:00</updated><id>http://localhost:4000/SSLSniff</id><content type="html" xml:base="http://localhost:4000/SSLSniff/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;Worked on a short research with SSL Sniff, a tool that exploits SSL, to see if it is still usable and whether if it could be used in a Network Security Class to provide better understanding of how vulnerable SSL could be and demonstrate Man-in-the-Middle Attack.&lt;/p&gt;
 
@@ -318,7 +343,7 @@
 &lt;figcaption class=&quot;caption&quot;&gt;Fake Certificate created for mobile.twitter.com&lt;/figcaption&gt;
 
 &lt;h2 id=&quot;documentation&quot;&gt;&lt;a href=&quot;/assets/docs/SSLSniff_Documentation.pdf&quot;&gt;Documentation&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The Documentation shows the step by step process of what we were able to get running&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="research" /><summary type="html">Summary</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/sslsniff/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/sslsniff/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Wilderness :evergreen_tree:</title><link href="http://localhost:4000/Wilderness/" rel="alternate" type="text/html" title="Wilderness :evergreen_tree:" /><published>2016-12-14T00:00:00-05:00</published><updated>2016-12-14T00:00:00-05:00</updated><id>http://localhost:4000/Wilderness</id><content type="html" xml:base="http://localhost:4000/Wilderness/">&lt;h2 id=&quot;concept&quot;&gt;Concept&lt;/h2&gt;
+&lt;p&gt;The Documentation shows the step by step process of what we were able to get running&lt;/p&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="research" /><summary type="html">Summary</summary></entry><entry><title type="html">Wilderness :evergreen_tree:</title><link href="http://localhost:4000/Wilderness/" rel="alternate" type="text/html" title="Wilderness :evergreen_tree:" /><published>2016-12-14T00:00:00+09:00</published><updated>2016-12-14T00:00:00+09:00</updated><id>http://localhost:4000/Wilderness</id><content type="html" xml:base="http://localhost:4000/Wilderness/">&lt;h2 id=&quot;concept&quot;&gt;Concept&lt;/h2&gt;
 
 &lt;p&gt;The game features two protagonists in two different storylines as they each make their way to the Wilderness, the site of a growing sinkhole that threatens to consume the planet. Players make progress by typing freeform commands to talk to NPCs, manipulate inventory, and traverse rooms.&lt;/p&gt;
 
@@ -340,7 +365,7 @@
 &lt;h2 id=&quot;role&quot;&gt;Role&lt;/h2&gt;
 &lt;p&gt;My Role in this game was to develop a parser that would take the script text files written by the writers of the group and parse the script into a node structures so the game could use it. Additionally, I participated in packaging the game into executables.&lt;/p&gt;
 
-&lt;h2 id=&quot;download-game&quot;&gt;&lt;a href=&quot;http://sgd.cs.virginia.edu/game-item.php?game=57&quot;&gt;Download Game&lt;/a&gt;&lt;/h2&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="game" /><summary type="html">Concept</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/wilderness/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/wilderness/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">CVE WebCrawler :spider_web:</title><link href="http://localhost:4000/CVE-WebCrawler/" rel="alternate" type="text/html" title="CVE WebCrawler :spider_web:" /><published>2016-06-06T00:00:00-04:00</published><updated>2016-06-06T00:00:00-04:00</updated><id>http://localhost:4000/CVE-WebCrawler</id><content type="html" xml:base="http://localhost:4000/CVE-WebCrawler/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;h2 id=&quot;download-game&quot;&gt;&lt;a href=&quot;http://sgd.cs.virginia.edu/game-item.php?game=57&quot;&gt;Download Game&lt;/a&gt;&lt;/h2&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="game" /><summary type="html">Concept</summary></entry><entry><title type="html">CVE WebCrawler :spider_web:</title><link href="http://localhost:4000/CVE-WebCrawler/" rel="alternate" type="text/html" title="CVE WebCrawler :spider_web:" /><published>2016-06-06T00:00:00+09:00</published><updated>2016-06-06T00:00:00+09:00</updated><id>http://localhost:4000/CVE-WebCrawler</id><content type="html" xml:base="http://localhost:4000/CVE-WebCrawler/">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 &lt;p&gt;The CVE WebCrawler is a project I worked on during my 2016 summer internship at Fasoo in Seoul, Korea. This Webcrawler takes the xml files provided from the Common Vulnerabilities and Exposures (&lt;a href=&quot;https://cve.mitre.org/&quot;&gt;CVE&lt;/a&gt;) website, and outputs a database file that contained the urls that contain vulnerability related source codes categorized by vulnerability types.&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -358,7 +383,7 @@
 &lt;p&gt;The project result was successful in that we were able to develop a crawler as we had intended with an extremely low false positive rate (0 when last tested) The program then categorized the URLs with code snippets by the type of vulnerability and saved the output in a sqlite file.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/projects/fasoo/2.png&quot; alt=&quot;Markdown Image&quot; /&gt;&lt;/p&gt;
-&lt;figcaption class=&quot;caption&quot;&gt;Output saved in sqlite&lt;/figcaption&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="intern" /><summary type="html">Summary The CVE WebCrawler is a project I worked on during my 2016 summer internship at Fasoo in Seoul, Korea. This Webcrawler takes the xml files provided from the Common Vulnerabilities and Exposures (CVE) website, and outputs a database file that contained the urls that contain vulnerability related source codes categorized by vulnerability types.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/fasoo/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/fasoo/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Markdown Extra Components</title><link href="http://localhost:4000/markdown-extra-components/" rel="alternate" type="text/html" title="Markdown Extra Components" /><published>2016-02-24T22:48:00-05:00</published><updated>2016-02-24T22:48:00-05:00</updated><id>http://localhost:4000/markdown-extra-components</id><content type="html" xml:base="http://localhost:4000/markdown-extra-components/">&lt;h2 id=&quot;summary&quot;&gt;Summary:&lt;/h2&gt;
+&lt;figcaption class=&quot;caption&quot;&gt;Output saved in sqlite&lt;/figcaption&gt;</content><author><name>danielchoi</name></author><category term="project" /><category term="intern" /><summary type="html">Summary The CVE WebCrawler is a project I worked on during my 2016 summer internship at Fasoo in Seoul, Korea. This Webcrawler takes the xml files provided from the Common Vulnerabilities and Exposures (CVE) website, and outputs a database file that contained the urls that contain vulnerability related source codes categorized by vulnerability types.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/fasoo/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/fasoo/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Markdown Extra Components</title><link href="http://localhost:4000/markdown-extra-components/" rel="alternate" type="text/html" title="Markdown Extra Components" /><published>2016-02-24T22:48:00+09:00</published><updated>2016-02-24T22:48:00+09:00</updated><id>http://localhost:4000/markdown-extra-components</id><content type="html" xml:base="http://localhost:4000/markdown-extra-components/">&lt;h2 id=&quot;summary&quot;&gt;Summary:&lt;/h2&gt;
 
 &lt;p&gt;You can pick as item to see how to apply in markdown.&lt;/p&gt;
 
@@ -525,167 +550,4 @@
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;iframe&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;560&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;310&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://www.youtube.com/embed/r7XhWUDj-Ts&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;frameborder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;allowfullscreen&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;iframe width=&quot;560&quot; height=&quot;310&quot; src=&quot;https://www.youtube.com/embed/r7XhWUDj-Ts&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content><author><name>jamesfoster</name></author><category term="markdown" /><category term="components" /><category term="extra" /><summary type="html">Summary:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/markdown.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/markdown.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Markdown Common Elements</title><link href="http://localhost:4000/markdown-common-elements/" rel="alternate" type="text/html" title="Markdown Common Elements" /><published>2016-02-24T22:44:00-05:00</published><updated>2016-02-24T22:44:00-05:00</updated><id>http://localhost:4000/markdown-common-elements</id><content type="html" xml:base="http://localhost:4000/markdown-common-elements/">&lt;h2 id=&quot;basic-formatting&quot;&gt;Basic formatting&lt;/h2&gt;
-
-&lt;p&gt;This note &lt;strong&gt;demonstrates&lt;/strong&gt; some of what &lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot;&gt;Markdown&lt;/a&gt; is &lt;em&gt;capable of doing&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;And that’s how to do it.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;This note **demonstrates** some of what [Markdown][some/link] is *capable of doing*.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;headings&quot;&gt;Headings&lt;/h2&gt;
-
-&lt;p&gt;There are six levels of headings. They correspond with the six levels of HTML headings. You’ve probably noticed them already in the page. Each level down uses one more hash character. But we are using just 4 of them.&lt;/p&gt;
-
-&lt;h1 id=&quot;headings-can-be-small&quot;&gt;Headings can be small&lt;/h1&gt;
-
-&lt;h2 id=&quot;headings-can-be-small-1&quot;&gt;Headings can be small&lt;/h2&gt;
-
-&lt;h3 id=&quot;headings-can-be-small-2&quot;&gt;Headings can be small&lt;/h3&gt;
-
-&lt;h4 id=&quot;headings-can-be-small-3&quot;&gt;Headings can be small&lt;/h4&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-raw&quot; data-lang=&quot;raw&quot;&gt;# Heading
-## Heading
-### Heading
-#### Heading&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;lists&quot;&gt;Lists&lt;/h2&gt;
-
-&lt;h3 id=&quot;ordered-list&quot;&gt;Ordered list&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Item 1&lt;/li&gt;
-  &lt;li&gt;A second item&lt;/li&gt;
-  &lt;li&gt;Number 3&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-raw&quot; data-lang=&quot;raw&quot;&gt;1. Item 1
-2. A second item
-3. Number 3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;unordered-list&quot;&gt;Unordered list&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;An item&lt;/li&gt;
-  &lt;li&gt;Another item&lt;/li&gt;
-  &lt;li&gt;Yet another item&lt;/li&gt;
-  &lt;li&gt;And there’s more…&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-raw&quot; data-lang=&quot;raw&quot;&gt;* An item
-* Another item
-* Yet another item
-* And there's more...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;paragraph-modifiers&quot;&gt;Paragraph modifiers&lt;/h2&gt;
-
-&lt;h3 id=&quot;quote&quot;&gt;Quote&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Here is a quote. What this is should be self explanatory. Quotes are automatically indented when they are used.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-raw&quot; data-lang=&quot;raw&quot;&gt;&amp;gt; Here is a quote. What this is should be self explanatory.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;urls&quot;&gt;URLs&lt;/h2&gt;
-
-&lt;p&gt;URLs can be made in a handful of ways:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A named link to &lt;a href=&quot;http://www.markitdown.net/&quot;&gt;Mark It Down&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Another named link to &lt;a href=&quot;http://markitdown.net/&quot;&gt;Mark It Down&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Sometimes you just want a URL like &lt;a href=&quot;http://markitdown.net/&quot;&gt;http://markitdown.net/&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-raw&quot; data-lang=&quot;raw&quot;&gt;* A named link to [MarkItDown][3].
-* Another named link to [MarkItDown](http://markitdown.net/)
-* Sometimes you just want a URL like &amp;lt;http://markitdown.net/&amp;gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;horizontal-rule&quot;&gt;Horizontal rule&lt;/h2&gt;
-
-&lt;p&gt;A horizontal rule is a line that goes across the middle of the page.
-It’s sometimes handy for breaking things up.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-raw&quot; data-lang=&quot;raw&quot;&gt;---&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;images&quot;&gt;Images&lt;/h2&gt;
-
-&lt;p&gt;Markdown can also contain images. I’ll need to add something here sometime.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-raw&quot; data-lang=&quot;raw&quot;&gt;![Markdowm Image][/image/url]&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://kune.fr/wp-content/uploads/2013/10/ghost-blog.jpg&quot; alt=&quot;Markdowm Image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Figure Caption&lt;/em&gt;?&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-raw&quot; data-lang=&quot;raw&quot;&gt;![Markdowm Image][/image/url]
-&amp;lt;figcaption class=&quot;caption&quot;&amp;gt;Photo by John Doe&amp;lt;/figcaption&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://kune.fr/wp-content/uploads/2013/10/ghost-blog.jpg&quot; alt=&quot;Markdowm Image&quot; /&gt;&lt;/p&gt;
-&lt;figcaption class=&quot;caption&quot;&gt;Photo by John Doe&lt;/figcaption&gt;
-
-&lt;p&gt;&lt;em&gt;Bigger Images&lt;/em&gt;?&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-raw&quot; data-lang=&quot;raw&quot;&gt;![Markdowm Image][/image/url]{: class=&quot;bigger-image&quot; }&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://kune.fr/wp-content/uploads/2013/10/ghost-blog.jpg&quot; alt=&quot;Markdowm Image&quot; class=&quot;bigger-image&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
-
-&lt;p&gt;A HTML Example:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Document&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Just a test&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;A CSS Example:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nt&quot;&gt;pre&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;.8em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;white-space&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;tt&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;font-family&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Monaco&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Consolas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Inconsolata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;monospace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sans-serif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;.05&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;A JS Example:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Sticky Header&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scroll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;900&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hasClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;show-menu&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#hamburguer__open&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fadeOut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hasClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;show-menu&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#hamburguer__open&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fadeIn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;fast&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>danielchoi</name></author><category term="markdown" /><category term="elements" /><summary type="html">Basic formatting</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/markdown.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/markdown.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;iframe width=&quot;560&quot; height=&quot;310&quot; src=&quot;https://www.youtube.com/embed/r7XhWUDj-Ts&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content><author><name>jamesfoster</name></author><category term="markdown" /><category term="components" /><category term="extra" /><summary type="html">Summary:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/markdown.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/markdown.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

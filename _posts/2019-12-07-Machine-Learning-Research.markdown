@@ -5,7 +5,8 @@ date: 2019-12-07 00:00
 tag: 
 - Machine Learning
 - Research
-image: /assets/images/projects/ml_research/thumbnail.png
+- Tensorflow
+image: 
 headerImage: true
 projects: true
 hidden: true # don't count this post in blog pagination
