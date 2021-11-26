@@ -13,9 +13,9 @@
     <meta property="og:image" content="http://localhost:4000/assets/images/profile-panda.jpg">
     <meta property="og:type" content="profile">
 
-    <!-- Begin Jekyll SEO tag v2.6.1 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Interval Timer :clock10: | Daniel Choi</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Interval Timer :clock10:" />
 <meta name="author" content="danielchoi" />
 <meta property="og:locale" content="en_US" />
@@ -27,8 +27,11 @@
 <meta property="og:image" content="http://localhost:4000/assets/images/projects/interval_timer/thumbnail.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-06-09T01:28:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/projects/interval_timer/thumbnail.png" />
+<meta property="twitter:title" content="Interval Timer :clock10:" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/Interval-Timer/"},"url":"http://localhost:4000/Interval-Timer/","image":"http://localhost:4000/assets/images/projects/interval_timer/thumbnail.png","author":{"@type":"Person","name":"danielchoi"},"description":"Timer for Interval Reminders","dateModified":"2020-06-09T01:28:00+09:00","datePublished":"2020-06-09T01:28:00+09:00","headline":"Interval Timer :clock10:","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"dateModified":"2020-06-09T01:28:00+09:00","datePublished":"2020-06-09T01:28:00+09:00","url":"http://localhost:4000/Interval-Timer/","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/Interval-Timer/"},"image":"http://localhost:4000/assets/images/projects/interval_timer/thumbnail.png","author":{"@type":"Person","name":"danielchoi"},"description":"Timer for Interval Reminders","@type":"BlogPosting","headline":"Interval Timer :clock10:","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -1490,7 +1493,7 @@ pre {
   <span class="nx">mainWindow</span><span class="p">.</span><span class="nx">loadFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">));</span>
 </code></pre></div></div>
 
-<p>For this application, however, I wanted it to be a background app that runs on the tray, which required the tray object, and modify the window slightly. For the window, to give the idea that its a background app, I basically set <code class="highlighter-rouge">show: false</code> so that the window initially doesn’t show, and run the <code class="highlighter-rouge">app.dock.hide()</code> so that in MacOS it doesn’t show in the dock.</p>
+<p>For this application, however, I wanted it to be a background app that runs on the tray, which required the tray object, and modify the window slightly. For the window, to give the idea that its a background app, I basically set <code class="language-plaintext highlighter-rouge">show: false</code> so that the window initially doesn’t show, and run the <code class="language-plaintext highlighter-rouge">app.dock.hide()</code> so that in MacOS it doesn’t show in the dock.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nb">window</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserWindow</span><span class="p">({</span>
     <span class="na">width</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
@@ -1510,7 +1513,7 @@ pre {
   <span class="nx">app</span><span class="p">.</span><span class="nx">dock</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p>Additional parts include setting the window property <code class="highlighter-rouge">setAlwaysOnTop</code> and <code class="highlighter-rouge">setVisibleOnAllWorkspaces</code> as true so that I am able to have the timer show over other applications that are fullscreened. Also, the window shouldn’t be fullscreenable or resizable (as set above)</p>
+<p>Additional parts include setting the window property <code class="language-plaintext highlighter-rouge">setAlwaysOnTop</code> and <code class="language-plaintext highlighter-rouge">setVisibleOnAllWorkspaces</code> as true so that I am able to have the timer show over other applications that are fullscreened. Also, the window shouldn’t be fullscreenable or resizable (as set above)</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">window</span><span class="p">.</span><span class="nx">setAlwaysOnTop</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="dl">"</span><span class="s2">floating</span><span class="dl">"</span><span class="p">);</span>
   <span class="nb">window</span><span class="p">.</span><span class="nx">setVisibleOnAllWorkspaces</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
@@ -1541,7 +1544,7 @@ pre {
   <span class="p">})</span>
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">showWindow()</code> code was used from <a href="https://steemit.com/education/@ryanbaer/getting-started-with-electron-a-basic-menubar-app-part-1">ryanbaer’s tutorial</a>. The code basically opens up the window in the position based on the tray’s position.</p>
+<p>The <code class="language-plaintext highlighter-rouge">showWindow()</code> code was used from <a href="https://steemit.com/education/@ryanbaer/getting-started-with-electron-a-basic-menubar-app-part-1">ryanbaer’s tutorial</a>. The code basically opens up the window in the position based on the tray’s position.</p>
 
 <p>The final part is creating a tray app was to setup the right click menu. For now, I want three options available in the applicaiton: The About window, settings window, and quit function. The right-click menu is created by using the code below.</p>
 
@@ -1571,7 +1574,7 @@ pre {
   <span class="p">});</span>
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">createSettings</code> is basically a function that creates a new window, and can be seen in the <a href="https://github.com/jerichoi224/interval-timer">github repo</a></p>
+<p>The <code class="language-plaintext highlighter-rouge">createSettings</code> is basically a function that creates a new window, and can be seen in the <a href="https://github.com/jerichoi224/interval-timer">github repo</a></p>
 
 <p><img src="/assets/images/projects/interval_timer/2.png" width="50%" style="display: block; margin-left: auto; margin-right: auto;"></p>
 <figcaption class="caption">Tray setting showing up</figcaption>
@@ -1588,7 +1591,7 @@ pre {
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Once created in the <code class="highlighter-rouge">main.js</code> file, these values are modified as accessed in different processes like this:</p>
+<p>Once created in the <code class="language-plaintext highlighter-rouge">main.js</code> file, these values are modified as accessed in different processes like this:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// Getting the Global Variable.</span>
   <span class="nx">workTime</span> <span class="o">=</span> <span class="nx">remote</span><span class="p">.</span><span class="nx">getGlobal</span><span class="p">(</span><span class="dl">'</span><span class="s1">timer</span><span class="dl">'</span><span class="p">).</span><span class="nx">workTime</span>
