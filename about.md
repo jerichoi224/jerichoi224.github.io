@@ -13,7 +13,7 @@ United States, mostly living in Northern Virginia, and near Seoul. I lived
 almost half of my life in each country so I'm fluent in both English and 
 Korean. I can also speak Japanese as well. </p>
 
-<p>You can reach me at my email at dc9db@virginia.edu</p>
+<p>You can reach me at my email at dc9db@virginia.edu, and you can see more of my work at my <a href="https://github.com/jerichoi224"> github page</a></p>
 
 > “Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me; your rod and your staff, they comfort me.”
 > Psalms 23:4
@@ -22,19 +22,4 @@ Korean. I can also speak Japanese as well. </p>
 <ul>
 	<li>Anticipated Masters in Computer Science (2020) </li>
 	<li>Bachelor of Arts in Computer Science (2019) </li>
-</ul>
-### [Blog/Study Notes](http://publish.obsidian.md/daniel-choi/)
-
-<h2>Skills</h2>
-
-<ul class="skill-list">
-	<li>Java</li>
-	<li>C++</li>
-	<li>Unity</li>
-	<li>Android - Java</li>
-	<li>x86_64</li>
-	<li>Ruby on Rails</li>
-	<li>Python - Numpy, ROS</li>
-	<li>Machine Learning - Pytorch, TensorFlow</li>
-	<li>AWS - IAM, S3, Athena</li>
 </ul>
