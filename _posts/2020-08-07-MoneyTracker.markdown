@@ -21,7 +21,7 @@ The purpose of this app is to keep track of how much money I spent daily, and tr
 
 This was a Personal Project to build an app while also learning how to develop using Flutter. Although this is an app that doesn't really use any advanced techniques or external APIs or anything, it does implement alot of significant parts of mobile developments such as app life cycles, persistent data, multiple page navigations, splash screens and others.
 
-The app source code along the app description can be found as open source in my [github].(https://github.com/jerichoi224/MoneyTracker) I'll be going over the code and more of the approaches I took while developing the app.
+The app source code along the app description can be found as open source in my [github](https://github.com/jerichoi224/MoneyTracker) I'll be going over the code and more of the approaches I took while developing the app.
 
 ### App Life Cycle
 One significant part of this app was checking midnight. Whenever a day changes, whatever is remaining from the daily limit has to rollover to the total savings. The big issue I found is that if a day changes while the app is online, or "on pause" I need to check the day change. I found this way of detecting the app's "on resume" through stack overflow.

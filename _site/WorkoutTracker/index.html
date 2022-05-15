@@ -14,22 +14,24 @@
     <meta property="og:type" content="profile">
 
     <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>ML Research Reproduction :page_facing_up: | Daniel Choi</title>
+<title>Workout Tracker 🏋️ | Daniel Choi</title>
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="ML Research Reproduction :page_facing_up:" />
+<meta property="og:title" content="Workout Tracker 🏋️" />
 <meta name="author" content="danielchoi" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Reproduction of previous Machine Learning Research" />
-<meta property="og:description" content="Reproduction of previous Machine Learning Research" />
-<link rel="canonical" href="http://localhost:4000/Machine-Learning-Research/" />
-<meta property="og:url" content="http://localhost:4000/Machine-Learning-Research/" />
+<meta name="description" content="Simple application for tracking workouts" />
+<meta property="og:description" content="Simple application for tracking workouts" />
+<link rel="canonical" href="http://localhost:4000/WorkoutTracker/" />
+<meta property="og:url" content="http://localhost:4000/WorkoutTracker/" />
 <meta property="og:site_name" content="Daniel Choi" />
+<meta property="og:image" content="http://localhost:4000/assets/images/projects/workout_tracker/thumbnail.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-12-07T00:00:00+09:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="ML Research Reproduction :page_facing_up:" />
+<meta property="article:published_time" content="2022-02-28T01:28:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/images/projects/workout_tracker/thumbnail.png" />
+<meta property="twitter:title" content="Workout Tracker 🏋️" />
 <script type="application/ld+json">
-{"headline":"ML Research Reproduction :page_facing_up:","dateModified":"2019-12-07T00:00:00+09:00","datePublished":"2019-12-07T00:00:00+09:00","url":"http://localhost:4000/Machine-Learning-Research/","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/Machine-Learning-Research/"},"author":{"@type":"Person","name":"danielchoi"},"description":"Reproduction of previous Machine Learning Research","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"Workout Tracker 🏋️","dateModified":"2022-02-28T01:28:00+09:00","datePublished":"2022-02-28T01:28:00+09:00","url":"http://localhost:4000/WorkoutTracker/","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/WorkoutTracker/"},"author":{"@type":"Person","name":"danielchoi"},"image":"http://localhost:4000/assets/images/projects/workout_tracker/thumbnail.png","description":"Simple application for tracking workouts","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -42,7 +44,7 @@
 <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
 
 
-    <link rel="canonical" href="http://localhost:4000/Machine-Learning-Research/">
+    <link rel="canonical" href="http://localhost:4000/WorkoutTracker/">
     <link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000/feed.xml" />
 
     <style>
@@ -1439,17 +1441,18 @@ pre {
 
 
 
+    <img class="title-image" src="/assets/images/projects/workout_tracker/thumbnail.png" alt="Workout Tracker 🏋️">
 
-<h1 class="title">ML Research Reproduction <img class="emoji" title=":page_facing_up:" alt=":page_facing_up:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4c4.png" height="20" width="20">
-</h1>
+
+<h1 class="title">Workout Tracker 🏋️</h1>
 
 <span class="date">
-    <time datetime="07-12-2019">Saturday. December 07, 2019</time>
+    <time datetime="28-02-2022">Monday. February 28, 2022</time>
      - <span class="reading-time" title="Estimated read time">
     
 
     
-        1 min
+        5 mins
     
 </span>
 
@@ -1458,44 +1461,130 @@ pre {
 
     <div class="post-tags">
         
-            <a class="item" href="http://localhost:4000/tags/#machine-learning">Machine Learning</a>
+            <a class="item" href="http://localhost:4000/tags/#flutter">Flutter</a>
         
-            <a class="item" href="http://localhost:4000/tags/#research">Research</a>
-        
-            <a class="item" href="http://localhost:4000/tags/#tensorflow">Tensorflow</a>
+            <a class="item" href="http://localhost:4000/tags/#mobile-development">Mobile Development</a>
         
     </div>
 
 
 <h2 id="summary">Summary</h2>
+<p>The purpose of this app is to keep track of mainly workouts I do at the gym. I would always forget previous weights I did with each machine, and I thought it would be nice to have an app to keep track of the weights I did and also show how I’ve been doing in terms of increase in the weights I use for workouts. While there were many apps on the store that did what I want, I found most of them not to have the ideal UX I was hoping, along with price ranges that I thought wasn’t worth what I needed.</p>
 
-<p>A reproduction of a cutting-edge machine learning paper was done through the Machine Learning Course during Fall of 2019. Our team worked on the reproduction of the research paper: <a href="http://proceedings.mlr.press/v80/daneshmand18a.html">Escaping Saddles with Stochastic Gradients</a></p>
+<p>This was a my second app made using Flutter, and I think I’ve improved greatly compared to my previous app. This app supports multiple langauges and uses a no-sql database called objectbox. I feel like those two were the huge learning points I had in developing this app, so here’s a short summary of how I did it.</p>
 
-<h2 id="research">Research</h2>
+<h3 id="database-objectbox">Database (objectbox)</h3>
 
-<p>The research had the purpose of escaping a saddle point when training a machine learning model. There have been several methods of escaping a saddle point when training a model. Most previous methods, however, involve using some sort of noise when using gradient descent so the model doesn’t get stuck in a local minimal point.</p>
+<p>Like I mentioned above, the database I used for this project was <a href="https://objectbox.io/flutter-database/">objectbox</a>. The main reason I decided to use this instead of sqflite was due to the complicated data structure. Below is an image showing how I designed the data structures for this app.</p>
 
-<p>The authors of the paper attempted to solve the issue of escaping a saddle point using stochastic gradient descent. Instead of using a random noise value after every gradient descent to escape a saddle point, which may end up with a vector in a wronge direction, they added a stochastic gradient step in order to make sure the additional vector is pointing to a minimum direction for one of the data points.</p>
+<p><img src="/assets/images/projects/workout_tracker/workout_tracker_class.png" alt="Markdown Image"></p>
+<figcaption class="caption">Class Diagram for the project</figcaption>
 
-<p>Below is a graph they have used to demonstrate the new algorithm. ISO-PGD is the algorithm where an isotropic noise is added after each gradient descent step, which is the general approach made by previous researches. CNC-PGD is the algorithm the authors proposed where they add a stochastic gradient descent step to each gradient descent step under the CNC (Correlated Negative Curvature) assumption.</p>
+<p>I have multiple objects and lists inside of another class, and while this could be designed with sql database as well, I wasn’t comfortable enough with SQL, that I would probably end up with a rather inefficient database design. Since Objectbox defines and works with data as classes rather than tables, I thought it would be a much better choice for me. Below is a sample code for the SessionItem class defined in the image above.</p>
 
-<p><img src="/assets/images/projects/ml_research/1.png" alt="Markdown Image"></p>
-<figcaption class="caption">Graph provided in the research paper</figcaption>
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="s">'package:objectbox/objectbox.dart'</span><span class="o">;</span>
+<span class="kn">import</span> <span class="s">'package:workout_tracker/dbModels/set_item_model.dart'</span><span class="o">;</span>
 
-<hr>
+<span class="nd">@Entity</span><span class="o">()</span>
+<span class="kd">class</span> <span class="nc">SessionItem</span> <span class="o">{</span>
+  <span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="kt">String</span> <span class="n">metric</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">workoutId</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="kd">final</span> <span class="n">sets</span> <span class="o">=</span> <span class="n">ToMany</span><span class="o">&lt;</span><span class="n">SetItem</span><span class="o">&gt;();</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-<h2 id="reproduction">Reproduction</h2>
+<h3 id="multilingual-support">Multilingual Support</h3>
 
-<p>While the research paper covers much more details, proofs and lemmas, we focused on reproducing the performance comparison of the existing and newly proposed algorithms. While we didn’t have much details for a exact reproduction, we followed the paper in using MNIST datasets, and modified tensorflow optimizers to match the description. While there are some variations for every runs, we found that in many cases it does indeed follow the result described in the paper. A reproduced graph is shown below.</p>
+<p>While I only supported different currencies in my previous app, multilingual support for all the strings in the app was added using flutter’s native <a href="https://docs.flutter.dev/development/accessibility-and-localization/internationalization">internationalization process</a>. While there seems to be <a href="https://pub.dev/packages/easy_localization">plugins</a> to make this process even easier, I think flutter’s way wasn’t that bad either. There were some annoyances in that Android Studio wouldn’t be able to find the objects used for translation once the dependencies of the projects were reloaded, it wasn’t too bad.</p>
 
-<p><img src="/assets/images/projects/ml_research/2.png" alt="Markdown Image"></p>
-<figcaption class="caption">Graph reproduced</figcaption>
+<p>Below is an example of how I used flutter’s localization method to translate the navigation bar.</p>
 
-<h2 id="reproduction-code">Reproduction Code</h2>
+<p>l10n/app_en.arb</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"dashboard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dashboard"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"workout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Workout"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"routine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Routine"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"calendar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Calendar"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Settings"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
-<p>You can view the source code for reproduction below</p>
+<p>l10n/app_kr.arb</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"dashboard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"대시보드"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"workout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"운동"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"routine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"루틴"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"calendar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"기록"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"설정"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
-<p><a href="https://drive.google.com/file/d/1mso5-k7VRLqeODa1-Uc3YzsKbHaKNqHF/view?usp=sharing">Jupyter Notebook</a></p>
+<p>.arb files for each language is required, so that depending on the locale set for the app, the app will use the strings from each file. Below shows how you can set the locale of the app.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="o">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">MaterialApp</span><span class="o">(</span>
+        <span class="nl">debugShowCheckedModeBanner:</span> <span class="kc">false</span><span class="o">,</span>
+        <span class="nl">title:</span> <span class="s">'Workout Tracker'</span><span class="o">,</span>
+        <span class="nl">theme:</span> <span class="n">ThemeData</span><span class="o">(</span>
+          <span class="nl">brightness:</span> <span class="n">Brightness</span><span class="o">.</span><span class="na">light</span><span class="o">,</span>
+          <span class="nl">primarySwatch:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">amber</span><span class="o">,</span>
+        <span class="o">),</span>
+        <span class="nl">localizationsDelegates:</span> <span class="o">[</span><span class="n">AppLocalizations</span><span class="o">.</span><span class="na">delegate</span><span class="o">,</span> <span class="n">MaterialLocalizationKrDelegate</span><span class="o">(),</span> <span class="n">CupertinoLocalizationKrDelegate</span><span class="o">()],</span>
+        <span class="nl">supportedLocales:</span> <span class="n">AppLocalizations</span><span class="o">.</span><span class="na">supportedLocales</span><span class="o">,</span>
+        <span class="nl">locale:</span> <span class="n">_locale</span><span class="o">,</span>
+        <span class="nl">home:</span> <span class="n">MainApp</span><span class="o">(),</span>
+        <span class="nl">routes:</span> <span class="o">&lt;</span><span class="kt">String</span><span class="o">,</span> <span class="n">WidgetBuilder</span><span class="o">&gt;{</span>
+          <span class="s">'/home'</span><span class="o">:</span> <span class="o">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="n">HomeWidget</span><span class="o">(</span><span class="nl">parentCtx:</span> <span class="n">context</span><span class="o">,</span> <span class="nl">objectbox:</span> <span class="n">objectbox</span><span class="o">),</span>
+          <span class="s">'/splash'</span><span class="o">:</span> <span class="o">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="n">InstructionWidget</span><span class="o">(</span><span class="nl">parentCtx:</span> <span class="n">context</span><span class="o">,</span> <span class="nl">objectbox:</span> <span class="n">objectbox</span><span class="o">),</span>
+        <span class="o">}</span>
+    <span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Once the locale is set, the strings can be set like below.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">bottomNavigationBar:</span> <span class="n">BottomNavigationBar</span><span class="o">(</span>
+            <span class="nl">selectedItemColor:</span> <span class="n">Theme</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">widget</span><span class="o">.</span><span class="na">parentCtx</span><span class="o">).</span><span class="na">colorScheme</span><span class="o">.</span><span class="na">secondary</span><span class="o">,</span>
+            <span class="nl">type:</span> <span class="n">BottomNavigationBarType</span><span class="o">.</span><span class="na">fixed</span><span class="o">,</span>
+            <span class="nl">onTap:</span> <span class="n">onTabTapped</span><span class="o">,</span> <span class="c1">// new</span>
+            <span class="nl">currentIndex:</span> <span class="n">HomeWidget</span><span class="o">.</span><span class="na">_currentIndex</span><span class="o">,</span> <span class="c1">// new</span>
+            <span class="nl">items:</span> <span class="o">[</span>
+              <span class="n">BottomNavigationBarItem</span><span class="o">(</span>
+                <span class="nl">icon:</span> <span class="k">new</span> <span class="n">Icon</span><span class="o">(</span><span class="n">Icons</span><span class="o">.</span><span class="na">fitness_center</span><span class="o">),</span>
+                <span class="nl">label:</span> <span class="n">AppLocalizations</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">context</span><span class="o">)!.</span><span class="na">workout</span><span class="o">,</span>
+              <span class="o">),</span>
+              <span class="n">BottomNavigationBarItem</span><span class="o">(</span>
+                <span class="nl">icon:</span> <span class="k">new</span> <span class="n">Icon</span><span class="o">(</span><span class="n">Icons</span><span class="o">.</span><span class="na">repeat</span><span class="o">),</span>
+                <span class="nl">label:</span> <span class="n">AppLocalizations</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">context</span><span class="o">)!.</span><span class="na">routine</span><span class="o">,</span>
+              <span class="o">),</span>
+              <span class="n">BottomNavigationBarItem</span><span class="o">(</span>
+                <span class="nl">icon:</span> <span class="k">new</span> <span class="n">Icon</span><span class="o">(</span><span class="n">Icons</span><span class="o">.</span><span class="na">insert_chart_outlined</span><span class="o">),</span>
+                <span class="nl">label:</span> <span class="n">AppLocalizations</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">context</span><span class="o">)!.</span><span class="na">dashboard</span><span class="o">,</span>
+              <span class="o">),</span>
+              <span class="n">BottomNavigationBarItem</span><span class="o">(</span>
+                <span class="nl">icon:</span> <span class="k">new</span> <span class="n">Icon</span><span class="o">(</span><span class="n">Icons</span><span class="o">.</span><span class="na">calendar_today</span><span class="o">),</span>
+                <span class="nl">label:</span> <span class="n">AppLocalizations</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">context</span><span class="o">)!.</span><span class="na">calendar</span><span class="o">,</span>
+              <span class="o">),</span>
+              <span class="n">BottomNavigationBarItem</span><span class="o">(</span>
+                <span class="nl">icon:</span> <span class="k">new</span> <span class="n">Icon</span><span class="o">(</span><span class="n">Icons</span><span class="o">.</span><span class="na">settings</span><span class="o">),</span>
+                <span class="nl">label:</span> <span class="n">AppLocalizations</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">context</span><span class="o">)!.</span><span class="na">settings</span><span class="o">,</span>
+              <span class="o">),</span>
+            <span class="o">],</span>
+          <span class="o">),</span>
+</code></pre></div></div>
+
+<h3 id="final-thoughts">Final Thoughts</h3>
+
+<p>Overall, I think this was a nice project to learn many of the functionalities in Flutter. While I am done with it for now, and there probably won’t be much users since I have no plans to advertise this, I might keep updating if I can think of any improvements. I’ve been mainly building apps that don’t require servers due to financial issues, but I hope in the future I can start building apps with a better infrastrucure.</p>
+
+<h2 id="play-store">Play Store</h2>
+<p>Check it out if you’re interested.</p>
+
+<p><a href="https://play.google.com/store/apps/details?id=com.kahluabear.workout_tracker">Play Store</a></p>
 
 
 
@@ -1512,11 +1601,34 @@ pre {
             
                 
             
+        
+            
+                
+            
+                
+            
+        
+    
+        
+        
+            
+                
+            
                 
             
         
             
                 
+            
+                
+            
+        
+            
+                
+            
+                
+            
+        
             
                 
             
@@ -1533,7 +1645,7 @@ pre {
                     <ul>
                     
                     <li class="relatedPost">
-                        <a href="http://localhost:4000/paintings-and-language/">Paintings and Language <img class="emoji" title=":art:" alt=":art:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3a8.png" height="20" width="20">
+                        <a href="http://localhost:4000/MoneyTracker/">Money Tracker <img class="emoji" title=":dollar:" alt=":dollar:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4b5.png" height="20" width="20">
                         
                         </a>
                     </li>
@@ -1543,27 +1655,13 @@ pre {
             
                 
             
-                
-            
         
             
                 
             
                 
             
-                
-            
         
-            
-                
-            
-                
-            
-                
-            
-        
-            
-                
             
                 
             
@@ -1578,19 +1676,7 @@ pre {
             
                 
             
-                
-            
         
-            
-                
-            
-                
-            
-                
-            
-        
-            
-                
             
                 
             
@@ -1605,38 +1691,13 @@ pre {
             
                 
             
-                
-            
         
             
                 
             
                 
             
-                
-            
         
-    
-        
-        
-            
-                
-            
-                
-            
-                
-            
-        
-            
-                
-            
-                
-            
-                
-            
-        
-            
-                
             
                 
             
@@ -1651,11 +1712,7 @@ pre {
             
                 
             
-                
-            
         
-            
-                
             
                 
             
@@ -1670,19 +1727,13 @@ pre {
             
                 
             
-                
-            
         
             
                 
             
                 
             
-                
-            
         
-            
-                
             
                 
             
@@ -1697,25 +1748,10 @@ pre {
             
                 
             
-                
-            
         
     
         
         
-            
-                
-            
-                
-            
-                
-            
-        
-    
-        
-        
-            
-                
             
                 
             
@@ -1730,6 +1766,13 @@ pre {
             
                 
             
+        
+    
+        
+        
+            
+                
+            
                 
             
         
@@ -1738,11 +1781,7 @@ pre {
             
                 
             
-                
-            
         
-            
-                
             
                 
             
@@ -1757,11 +1796,7 @@ pre {
             
                 
             
-                
-            
         
-            
-                
             
                 
             
@@ -1793,7 +1828,7 @@ pre {
             <!-- Note: Only use three share links if your site width is set to large -->
             <!-- If site width is set to normal, you may choose any two share links -->
 <!--
-            <a class="twitter" href="https://twitter.com/intent/tweet?text=http://localhost:4000/Machine-Learning-Research/ - ML Research Reproduction :page_facing_up: by @">
+            <a class="twitter" href="https://twitter.com/intent/tweet?text=http://localhost:4000/WorkoutTracker/ - Workout Tracker 🏋️ by @">
                 <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg><span class="icon-twitter">Tweet</span>
             </a>
 
@@ -1801,15 +1836,15 @@ pre {
                 <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg><span class="icon-facebook-rect">Share</span>
             </a>
 -->
-            <!-- <a class="google-plus" href="https://plus.google.com/share?url=http://localhost:4000/Machine-Learning-Research/" target="_blank">
+            <!-- <a class="google-plus" href="https://plus.google.com/share?url=http://localhost:4000/WorkoutTracker/" target="_blank">
                 <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg><span class="icon-google-plus">Share</span>
             </a> -->
 
-            <!-- <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:4000/Machine-Learning-Research/&amp;title=ML Research Reproduction :page_facing_up:&amp;summary=Reproduction of previous Machine Learning Research&amp;source=http://localhost:4000" target="_blank">
+            <!-- <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:4000/WorkoutTracker/&amp;title=Workout Tracker 🏋️&amp;summary=Simple application for tracking workouts&amp;source=http://localhost:4000" target="_blank">
                 <svg class="icon icon-linkedin"><use xlink:href="#icon-linkedin"></use></svg><span class="icon-linkedin">Share</span>
             </a> -->
 
-            <!-- <a class="reddit" href="https://reddit.com/submit?url=http://localhost:4000/Machine-Learning-Research/&amp;title=ML Research Reproduction :page_facing_up:" target="_blank">
+            <!-- <a class="reddit" href="https://reddit.com/submit?url=http://localhost:4000/WorkoutTracker/&amp;title=Workout Tracker 🏋️" target="_blank">
                 <svg class="icon icon-reddit"><use xlink:href="#icon-reddit"></use></svg><span class="icon-reddit">Share</span>
             </a> -->
         <!--
