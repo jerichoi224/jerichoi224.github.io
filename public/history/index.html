@@ -4,95 +4,139 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Archive &middot; Daniel Choi</title>
+<title>Archive · Daniel Choi</title>
 <style>
+  /* Static file in public/, so it can't import the built stylesheet (the
+     filename is content-hashed). Tokens mirror src/styles/global.css — keep
+     them in step if the palette there changes. */
   :root {
-    color-scheme: light dark;
-    --bg:#f4f2ee; --card:#fffdf8; --ink:#2b2724; --muted:#7d746b;
-    --rule:#ddd6cb; --accent:#8a6d3b;
+    color-scheme: light;
+    --bg: #f2f4f6;
+    --ink: #111;
+    --muted: #767676;
+    --soft: #666;
+    --rule: #ddd;
+    --underline: #bbb;
+    --rail-col: 86px;
   }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg:#171513; --card:#211e1b; --ink:#ece7e0; --muted:#9c938a;
-            --rule:#39332d; --accent:#c9a86a; }
-  }
-  * { box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: var(--bg); }
   body {
-    margin:0; min-height:100vh; padding:3rem 1.25rem; background:var(--bg); color:var(--ink);
-    font:16px/1.65 ui-serif, Georgia, "Times New Roman", serif;
-    display:flex; justify-content:center;
+    color: var(--ink);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width:40rem; width:100%; }
-  .stamp {
-    display:inline-block; margin-bottom:1.25rem; padding:.3rem .6rem;
-    border:1.5px solid var(--accent); border-radius:2px; color:var(--accent);
-    font:600 .68rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-    letter-spacing:.16em; text-transform:uppercase; transform:rotate(-1.5deg);
+  a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--underline);
   }
-  h1 { margin:0 0 .6rem; font-size:1.75rem; font-weight:600; letter-spacing:-.015em; }
-  .lede { margin:0 0 2.5rem; color:var(--muted); }
-  ol { list-style:none; margin:0; padding:0; }
-  li { margin-bottom:1rem; }
-  a.ver {
-    display:block; background:var(--card); border:1px solid var(--rule); border-radius:3px;
-    padding:1.25rem 1.4rem; text-decoration:none; color:inherit;
-    transition:border-color .15s ease, transform .15s ease;
+  a:hover { text-decoration-color: var(--ink); }
+
+  .shell { min-height: 100vh; padding: 96px 28px 120px; }
+  .inner {
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
   }
-  a.ver:hover { border-color:var(--accent); transform:translateY(-1px); }
-  .row { display:flex; align-items:baseline; gap:.7rem; flex-wrap:wrap; }
-  .tag {
-    font:600 .75rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-    letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+
+  header { display: flex; flex-direction: column; gap: 14px; }
+  .label { font-size: 15px; color: var(--muted); }
+  h1 { font-size: 22px; font-weight: 500; line-height: 1.35; text-wrap: pretty; }
+  .lede { color: var(--soft); text-wrap: pretty; max-width: 34rem; }
+
+  /* same row shape as the posts list: date gutter, then title + description */
+  .list { display: flex; flex-direction: column; gap: 22px; }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+    text-decoration: none;
   }
-  .yrs { font:.75rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; color:var(--muted); }
-  .name { margin:.5rem 0 .3rem; font-size:1.05rem; font-weight:600; }
-  .desc { margin:0; font-size:.9rem; color:var(--muted); }
+  .row:hover { opacity: 0.55; }
+  .row .years {
+    flex: 0 0 var(--rail-col);
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .row .meta {
+    flex: 1 1 240px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .row .desc { color: var(--soft); text-wrap: pretty; }
+
   footer {
-    margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--rule);
-    font:.8rem/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; color:var(--muted);
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-size: 15px;
   }
-  footer a { color:var(--ink); text-decoration:none; border-bottom:1.5px solid var(--accent); }
-  footer a:hover { color:var(--accent); }
+
+  @media (max-width: 520px) {
+    .shell { padding: 64px 22px 96px; }
+    .inner { gap: 56px; }
+  }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <span class="stamp">Archive</span>
-    <h1>Previous versions of this site</h1>
-    <p class="lede">
-      Every version this site has been since 2016, kept as it was. Links work,
-      images are back where they belong, but nothing here gets updated any more.
-    </p>
+  <div class="shell">
+    <div class="inner">
+      <header>
+        <div class="label">Archive</div>
+        <h1>Previous versions of this site</h1>
+        <p class="lede">
+          Every version this site has been since 2016, kept as it was. Links work and
+          images are back where they belong, but nothing here gets updated any more.
+        </p>
+      </header>
 
-    <ol>
-      <li>
-        <a class="ver" href="/history/v3/">
-          <div class="row"><span class="tag">v3</span><span class="yrs">2020 &ndash; 2024</span></div>
-          <p class="name">The Jekyll one</p>
-          <p class="desc">Minimal blog-and-projects layout. Eleven project write-ups, from the
-            Fasoo internship crawler through to the Flutter workout tracker.</p>
+      <main class="list">
+        <a class="row" href="/history/v3/">
+          <div class="years">2020&mdash;24</div>
+          <div class="meta">
+            <div>The Jekyll one</div>
+            <div class="desc">
+              Minimal blog-and-projects layout. Ten project write-ups, from the Fasoo
+              internship crawler through to the Flutter workout tracker.
+            </div>
+          </div>
         </a>
-      </li>
-      <li>
-        <a class="ver" href="/history/v2/">
-          <div class="row"><span class="tag">v2</span><span class="yrs">2017 &ndash; 2020</span></div>
-          <p class="name">The one with the project galleries</p>
-          <p class="desc">Foundation-based, image-heavy, built around per-project pages
-            and slideshows. There is a puzzle hidden in it somewhere.</p>
-        </a>
-      </li>
-      <li>
-        <a class="ver" href="/history/v1/">
-          <div class="row"><span class="tag">v1</span><span class="yrs">2016 &ndash; 2017</span></div>
-          <p class="name">The first one</p>
-          <p class="desc">Bootstrap, a full-bleed cover photo, and a handful of posts.
-            Written while figuring out what a personal site was even for.</p>
-        </a>
-      </li>
-    </ol>
 
-    <footer>
-      <a href="/">&larr; Back to the current site</a>
-    </footer>
+        <a class="row" href="/history/v2/">
+          <div class="years">2017&mdash;20</div>
+          <div class="meta">
+            <div>The one with the project galleries</div>
+            <div class="desc">
+              Foundation-based, image-heavy, built around per-project pages and
+              slideshows. There is a puzzle hidden in it somewhere.
+            </div>
+          </div>
+        </a>
+
+        <a class="row" href="/history/v1/">
+          <div class="years">2016&mdash;17</div>
+          <div class="meta">
+            <div>The first one</div>
+            <div class="desc">
+              Bootstrap, a full-bleed cover photo, and a handful of posts. Written while
+              figuring out what a personal site was even for.
+            </div>
+          </div>
+        </a>
+      </main>
+
+      <footer>
+        <a href="/">&larr; Back to the current site</a>
+      </footer>
+    </div>
   </div>
 </body>
 </html>
