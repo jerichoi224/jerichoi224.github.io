@@ -37,6 +37,7 @@ export const profile = {
       role: 'Software Engineer',
       org: 'Imagoworks · Seoul',
       logo: '/logos/imagoworks.svg',
+      logoScale: 1.15, // longer wordmark than the others, so 65px * 1.15 -> 75px
       current: true,
       detail: {
         summary:

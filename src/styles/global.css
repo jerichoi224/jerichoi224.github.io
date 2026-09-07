@@ -215,7 +215,10 @@ a:hover {
    sits 12.5px from the row top, and on the role text's first-line centre.
    Nudge an individual mark with logoScale in profile.ts. */
 .row .logo-slot {
-  flex: 0 0 68px;
+  /* Must be at least as wide as the widest mark. A flex item's default
+     min-width:auto means an image wider than the basis grows the slot anyway,
+     which pushed that one row's text out of alignment. */
+  flex: 0 0 76px;
   align-self: flex-start;
   height: 1.6em;
   display: flex;
