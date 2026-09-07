@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content'
+import Base from '../../layouts/Base.astro'
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+)
+
+const short = (d: Date) =>
+  d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' })
+---
+
+<Base title="Posts" description="Writing and project notes by Daniel Choi.">
+  <main class="post-list">
+    {
+      posts.map((post) => (
+        <a class="post-item" href={`/posts/${post.id}/`}>
+          <div class="date">{short(post.data.date)}</div>
+          <div class="meta">
+            <div>{post.data.title}</div>
+            {post.data.description && <div class="excerpt">{post.data.description}</div>}
+          </div>
+        </a>
+      ))
+    }
+  </main>
+</Base>

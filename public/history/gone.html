@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Not in the box · Daniel Choi</title>
+<style>
+  /* Static file in public/, so it can't import the built stylesheet (the
+     filename is content-hashed). Tokens mirror src/styles/global.css — keep
+     them in step if the palette there changes. */
+  :root {
+    color-scheme: light;
+    --bg: #f2f4f6;
+    --ink: #111;
+    --muted: #767676;
+    --soft: #666;
+    --rule: #ddd;
+    --underline: #bbb;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: var(--bg); }
+  body {
+    color: var(--ink);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--underline);
+  }
+  a:hover { text-decoration-color: var(--ink); }
+
+  .shell { min-height: 100vh; padding: 96px 28px 120px; }
+  .inner {
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+  }
+
+  header { display: flex; flex-direction: column; gap: 14px; }
+  .label { font-size: 15px; color: var(--muted); }
+  h1 { font-size: 22px; font-weight: 500; line-height: 1.35; text-wrap: pretty; }
+
+  main { display: flex; flex-direction: column; gap: 18px; }
+  p { text-wrap: pretty; }
+  p.soft { color: var(--soft); }
+
+  footer {
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 15px;
+  }
+  footer .hint { color: var(--muted); }
+
+  @media (max-width: 520px) {
+    .shell { padding: 64px 22px 96px; }
+    .inner { gap: 56px; }
+  }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <div class="inner">
+      <header>
+        <div class="label">Not in the box</div>
+        <h1>This one didn&rsquo;t make the move.</h1>
+      </header>
+
+      <main>
+        <p>
+          You&rsquo;ve found a link from an older version of this site. It pointed at a
+          r&eacute;sum&eacute; or transcript that lived here years ago &mdash; and those
+          files didn&rsquo;t get packed when the site was archived.
+        </p>
+        <p class="soft">
+          Which is probably for the best. A r&eacute;sum&eacute; from that era would be
+          badly out of date by now anyway.
+        </p>
+      </main>
+
+      <footer>
+        <a href="/">&rarr; Go to the current site</a>
+        <span class="hint">or press back to keep wandering the archive</span>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

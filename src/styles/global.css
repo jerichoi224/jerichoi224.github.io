@@ -1,0 +1,524 @@
+/* Tokens taken directly from the Claude Design source. The design is
+   deliberately light-only and monochrome; color-scheme pins it so the browser
+   doesn't tint form controls or scrollbars in dark mode. */
+:root {
+  color-scheme: light;
+
+  /* Page ground. Deliberately a cool neutral, not the warm ivory (#faf9f5 etc.)
+     that every minimal site uses — soft enough to take the glare off pure white
+     without reading as cream. Swap this one value to retune the whole page. */
+  --bg: #f2f4f6;
+  --panel: #fff;
+
+  --ink: #111;
+  --muted: #767676;
+  --soft: #666;
+  --rule: #ddd;
+  --underline: #bbb;
+
+  --shell-max: 620px;
+  --rail-col: 86px; /* the date gutter, shared by work / education / post rows */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--bg);
+}
+
+body {
+  color: var(--ink);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--underline);
+}
+a:hover {
+  text-decoration-color: var(--ink);
+}
+
+/* ── shell ─────────────────────────────────────────────────────────────── */
+.shell {
+  min-height: 100vh;
+  padding: 96px 28px 120px;
+}
+.inner {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+
+/* ── header ────────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.nav a {
+  font-size: 15px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.nav a:hover {
+  color: var(--ink);
+}
+.nav a[aria-current='page'] {
+  color: var(--ink);
+}
+
+.identity {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+.identity img.portrait {
+  width: 104px;
+  height: 104px;
+  flex: 0 0 104px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+.identity .who {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 1px;
+}
+.identity .name {
+  font-size: 16px;
+  font-weight: 500;
+}
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+.social a {
+  display: flex;
+  opacity: 0.75;
+  text-decoration: none;
+}
+.social a:hover {
+  opacity: 1;
+}
+
+/* ── main ──────────────────────────────────────────────────────────────── */
+.main-about {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.bio p {
+  text-wrap: pretty;
+}
+.bio p.aside {
+  color: var(--soft);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.section.tight {
+  gap: 18px;
+}
+.section-label {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* ── work timeline ─────────────────────────────────────────────────────── */
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  text-align: left;
+}
+.row .years {
+  flex: 0 0 var(--rail-col);
+  color: var(--muted);
+  font-size: 15px;
+  padding: 2px 0 24px;
+}
+.row .rail {
+  flex: 0 0 9px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.row .rail {
+  align-self: stretch;
+}
+.row .rail i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--rule);
+}
+.row .dot {
+  position: absolute;
+  top: 8px;
+  width: 9px;
+  height: 9px;
+  background: var(--rule);
+}
+.row.current .dot {
+  background: var(--ink);
+}
+.row .what {
+  flex: 1 1 240px;
+  min-width: 0;
+  padding: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.row .role {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+/* marks a role that has more behind it; without this the one clickable row in
+   the timeline is indistinguishable from the inert ones */
+.row .more {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1;
+}
+button.row:hover .more {
+  color: var(--ink);
+}
+.row .org {
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* a row is only interactive when there is detail behind it */
+button.row {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  width: 100%;
+}
+button.row:hover {
+  opacity: 0.55;
+}
+
+/* ── education ─────────────────────────────────────────────────────────── */
+.edu-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.edu-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+.edu-row .years {
+  flex: 0 0 var(--rail-col);
+  color: var(--muted);
+  font-size: 15px;
+}
+.edu-row .what {
+  flex: 1 1 240px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.edu-row .school {
+  color: var(--muted);
+}
+
+/* ── posts list ────────────────────────────────────────────────────────── */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.post-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  text-decoration: none;
+}
+.post-item:hover {
+  opacity: 0.55;
+}
+.post-item .date {
+  flex: 0 0 var(--rail-col);
+  color: var(--muted);
+  font-size: 15px;
+}
+.post-item .meta {
+  flex: 1 1 240px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.post-item .excerpt {
+  color: var(--soft);
+  text-wrap: pretty;
+}
+
+/* ── single post ───────────────────────────────────────────────────────── */
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.post-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.post-head .date {
+  color: var(--muted);
+  font-size: 15px;
+}
+.post-head h1 {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.prose > * {
+  min-width: 0;
+}
+.prose p,
+.prose li {
+  text-wrap: pretty;
+}
+.prose h2,
+.prose h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 12px 0 0;
+}
+.prose ul,
+.prose ol {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.prose blockquote {
+  border-left: 1px solid var(--rule);
+  padding-left: 16px;
+  color: var(--soft);
+}
+.prose img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.prose pre {
+  overflow-x: auto;
+  padding: 16px;
+  background: #e9edf0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+}
+.prose :not(pre) > code {
+  background: #e7ebee;
+  padding: 1px 4px;
+}
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+.prose table {
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+}
+.prose th,
+.prose td {
+  border: 1px solid var(--rule);
+  padding: 6px 10px;
+  text-align: left;
+}
+
+/* ── footer ────────────────────────────────────────────────────────────── */
+.footer {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+@media (max-width: 520px) {
+  .shell {
+    padding: 64px 22px 96px;
+  }
+  .inner {
+    gap: 56px;
+  }
+}
+
+/* Each work row is its own Astro island, so :last-child can't reach across the
+   island wrappers — the last row is tagged explicitly instead. */
+.row.last .rail i {
+  bottom: auto;
+  height: 17px;
+}
+
+/* ── work detail overlay ───────────────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.28);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 72px 24px;
+  overflow: auto;
+  z-index: 50;
+}
+.panel {
+  background: var(--panel);
+  width: 100%;
+  max-width: 560px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  text-align: left;
+}
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+}
+.panel-id {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.panel-role {
+  font-size: 16px;
+  font-weight: 500;
+}
+.panel-close {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  /* padding gives the icon a usable tap target; the negative margin pulls it
+     back flush with the panel's top-right corner */
+  padding: 4px;
+  margin: -4px -4px 0 0;
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+}
+.panel-close:hover {
+  color: var(--ink);
+}
+.panel-close:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+.panel-summary {
+  text-wrap: pretty;
+}
+/* Bare links under a role read as raw output; give them a labelled section
+   with a rule, matching the Work / Education headings on the About page. */
+.panel-related {
+  border-top: 1px solid var(--rule);
+  padding-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.panel-related-label {
+  font-size: 15px;
+  color: var(--muted);
+}
+.panel-related-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.panel-related-list a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  text-decoration: none;
+}
+.panel-related-list a > span:first-child {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--underline);
+}
+.panel-related-list a:hover > span:first-child {
+  text-decoration-color: var(--ink);
+}
+.panel-related-list a::after {
+  content: '\2192';
+  color: var(--muted);
+  font-size: 0.95em;
+}
+.panel-related-list a:hover::after {
+  color: var(--ink);
+}
+.panel-related-list .note {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+@media (max-width: 520px) {
+  .overlay {
+    padding: 24px 16px;
+  }
+  .panel {
+    padding: 28px 22px;
+  }
+}

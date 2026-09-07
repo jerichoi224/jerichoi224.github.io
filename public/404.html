@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found · Daniel Choi</title>
+<style>
+  /* Static file in public/, so it can't import the built stylesheet (the
+     filename is content-hashed). Tokens mirror src/styles/global.css — keep
+     them in step if the palette there changes. */
+  :root {
+    color-scheme: light;
+    --bg: #f2f4f6;
+    --ink: #111;
+    --muted: #767676;
+    --soft: #666;
+    --rule: #ddd;
+    --underline: #bbb;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: var(--bg); }
+  body {
+    color: var(--ink);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--underline);
+  }
+  a:hover { text-decoration-color: var(--ink); }
+
+  .shell { min-height: 100vh; padding: 96px 28px 120px; }
+  .inner {
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+  }
+  header { display: flex; flex-direction: column; gap: 14px; }
+  .label { font-size: 15px; color: var(--muted); }
+  h1 { font-size: 22px; font-weight: 500; line-height: 1.35; text-wrap: pretty; }
+  p { color: var(--soft); text-wrap: pretty; }
+  footer {
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-size: 15px;
+  }
+
+  @media (max-width: 520px) {
+    .shell { padding: 64px 22px 96px; }
+    .inner { gap: 56px; }
+  }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <div class="inner">
+      <header>
+        <div class="label">404</div>
+        <h1>Nothing here.</h1>
+      </header>
+
+      <p>That page doesn&rsquo;t exist &mdash; or it did, a few site versions ago.</p>
+
+      <footer>
+        <a href="/">&rarr; Go to the current site</a>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

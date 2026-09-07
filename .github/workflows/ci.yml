@@ -1,0 +1,34 @@
+name: CI
+
+# Builds pull requests and side branches without deploying, so a broken commit
+# shows up red before it reaches master. deploy.yml handles master itself.
+on:
+  pull_request:
+  push:
+    branches-ignore: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Fails on a bad content-collection schema (a mistyped post date, a
+      # missing title) as well as on any real build error.
+      - run: npm run build

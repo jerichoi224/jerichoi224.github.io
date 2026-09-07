@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro'
+import WorkRow from '../components/WorkRow'
+import { profile } from '../data/profile'
+---
+
+<Base>
+  <main class="main-about">
+    <div class="bio">
+      {profile.bio.map((p) => <p>{p}</p>)}
+      {profile.bioAside && <p class="aside">{profile.bioAside}</p>}
+    </div>
+
+    <section class="section">
+      <div class="section-label">Work</div>
+      <div class="rows">
+        {
+          profile.career.map((job, i) => (
+            <WorkRow
+              client:visible
+              job={job}
+              last={i === profile.career.length - 1}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="section-label">Education</div>
+      <div class="edu-rows">
+        {
+          profile.education.map((row) => (
+            <div class="edu-row">
+              <div class="years">{row.years}</div>
+              <div class="what">
+                <div>{row.degree}</div>
+                <div class="school">{row.school}</div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</Base>
