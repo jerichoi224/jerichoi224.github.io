@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Archive &middot; Daniel Choi</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg:#f4f2ee; --card:#fffdf8; --ink:#2b2724; --muted:#7d746b;
+    --rule:#ddd6cb; --accent:#8a6d3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#171513; --card:#211e1b; --ink:#ece7e0; --muted:#9c938a;
+            --rule:#39332d; --accent:#c9a86a; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; min-height:100vh; padding:3rem 1.25rem; background:var(--bg); color:var(--ink);
+    font:16px/1.65 ui-serif, Georgia, "Times New Roman", serif;
+    display:flex; justify-content:center;
+  }
+  .wrap { max-width:40rem; width:100%; }
+  .stamp {
+    display:inline-block; margin-bottom:1.25rem; padding:.3rem .6rem;
+    border:1.5px solid var(--accent); border-radius:2px; color:var(--accent);
+    font:600 .68rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing:.16em; text-transform:uppercase; transform:rotate(-1.5deg);
+  }
+  h1 { margin:0 0 .6rem; font-size:1.75rem; font-weight:600; letter-spacing:-.015em; }
+  .lede { margin:0 0 2.5rem; color:var(--muted); }
+  ol { list-style:none; margin:0; padding:0; }
+  li { margin-bottom:1rem; }
+  a.ver {
+    display:block; background:var(--card); border:1px solid var(--rule); border-radius:3px;
+    padding:1.25rem 1.4rem; text-decoration:none; color:inherit;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  a.ver:hover { border-color:var(--accent); transform:translateY(-1px); }
+  .row { display:flex; align-items:baseline; gap:.7rem; flex-wrap:wrap; }
+  .tag {
+    font:600 .75rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+  }
+  .yrs { font:.75rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; color:var(--muted); }
+  .name { margin:.5rem 0 .3rem; font-size:1.05rem; font-weight:600; }
+  .desc { margin:0; font-size:.9rem; color:var(--muted); }
+  footer {
+    margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--rule);
+    font:.8rem/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; color:var(--muted);
+  }
+  footer a { color:var(--ink); text-decoration:none; border-bottom:1.5px solid var(--accent); }
+  footer a:hover { color:var(--accent); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="stamp">Archive</span>
+    <h1>Previous versions of this site</h1>
+    <p class="lede">
+      Every version this site has been since 2016, kept as it was. Links work,
+      images are back where they belong, but nothing here gets updated any more.
+    </p>
+
+    <ol>
+      <li>
+        <a class="ver" href="/history/v3/">
+          <div class="row"><span class="tag">v3</span><span class="yrs">2020 &ndash; 2024</span></div>
+          <p class="name">The Jekyll one</p>
+          <p class="desc">Minimal blog-and-projects layout. Eleven project write-ups, from the
+            Fasoo internship crawler through to the Flutter workout tracker.</p>
+        </a>
+      </li>
+      <li>
+        <a class="ver" href="/history/v2/">
+          <div class="row"><span class="tag">v2</span><span class="yrs">2017 &ndash; 2020</span></div>
+          <p class="name">The one with the project galleries</p>
+          <p class="desc">Foundation-based, image-heavy, built around per-project pages
+            and slideshows. There is a puzzle hidden in it somewhere.</p>
+        </a>
+      </li>
+      <li>
+        <a class="ver" href="/history/v1/">
+          <div class="row"><span class="tag">v1</span><span class="yrs">2016 &ndash; 2017</span></div>
+          <p class="name">The first one</p>
+          <p class="desc">Bootstrap, a full-bleed cover photo, and a handful of posts.
+            Written while figuring out what a personal site was even for.</p>
+        </a>
+      </li>
+    </ol>
+
+    <footer>
+      <a href="/">&larr; Back to the current site</a>
+    </footer>
+  </div>
+</body>
+</html>
