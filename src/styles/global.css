@@ -206,6 +206,40 @@ a:hover {
   flex-direction: column;
   gap: 3px;
 }
+/* Company mark, between the rail and the text: years | rail | logo | role.
+   Sized by WIDTH, not height, so every wordmark occupies the same horizontal
+   space regardless of its aspect ratio -- Fasoo's is the reference at 65px.
+   Heights therefore differ (Imagoworks is squat, Amazon is tall because its
+   lockup includes the swoosh), so the slot is one line-box high and centres
+   its contents: that puts every logo's optical centre on the rail dot, which
+   sits 12.5px from the row top, and on the role text's first-line centre.
+   Nudge an individual mark with logoScale in profile.ts. */
+.row .logo-slot {
+  /* Must be at least as wide as the widest mark. A flex item's default
+     min-width:auto means an image wider than the basis grows the slot anyway,
+     which pushed that one row's text out of alignment. */
+  flex: 0 0 76px;
+  align-self: flex-start;
+  height: 1.6em;
+  display: flex;
+  align-items: center;
+}
+.row .logo {
+  width: calc(65px * var(--s, 1));
+  height: auto;
+  max-height: 1.6em;
+  object-fit: contain;
+  object-position: left center;
+}
+.panel-logo {
+  width: calc(96px * var(--s, 1));
+  height: auto;
+  max-height: 30px;
+  object-fit: contain;
+  object-position: left center;
+  margin-bottom: 10px;
+}
+
 .row .role {
   display: inline-flex;
   align-items: baseline;

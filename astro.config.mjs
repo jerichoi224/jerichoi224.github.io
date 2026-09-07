@@ -10,11 +10,5 @@ export default defineConfig({
   // and keeps /history/v1..v3 (plain files in public/) resolving the same way.
   trailingSlash: 'ignore',
 
-  // The About page owns its own route so the homepage can be replaced later
-  // without touching it. Static builds emit this as a meta-refresh page —
-  // GitHub Pages can't issue a real 301.
-  redirects: {
-    '/': '/about/',
-  },
   build: { format: 'directory' },
 })
