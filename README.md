@@ -9,6 +9,7 @@ npm install
 npm run dev      # local dev server
 npm run build    # production build -> dist/
 npm run preview  # serve the built output
+npm run verify   # build + check every local link resolves
 ```
 
 ## Writing a post
@@ -25,8 +26,12 @@ draft: false          # true hides it from the site and the feed
 ---
 ```
 
-Then commit and push. **Full guide: [docs/writing-posts.md](docs/writing-posts.md)**
-— front matter reference, images, drafts, routes, editor setup, deploy.
+Then commit and push.
+
+- **[docs/writing-posts.md](docs/writing-posts.md)** — front matter reference,
+  images, drafts, routes, editor setup
+- **[docs/maintenance.md](docs/maintenance.md)** — dependency updates, deploy
+  debugging, DNS and HTTPS, and the traps worth not re-introducing
 
 ## Layout
 

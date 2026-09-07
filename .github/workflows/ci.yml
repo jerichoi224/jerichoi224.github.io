@@ -32,3 +32,7 @@ jobs:
       # Fails on a bad content-collection schema (a mistyped post date, a
       # missing title) as well as on any real build error.
       - run: npm run build
+
+      # The /history archive is hand-written HTML with fragile relative paths;
+      # this catches a broken one before it ships.
+      - run: npm run check:links
