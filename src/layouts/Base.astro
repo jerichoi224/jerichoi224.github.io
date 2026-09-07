@@ -1,0 +1,93 @@
+---
+import '../styles/global.css'
+import { profile, nav } from '../data/profile'
+
+interface Props {
+  title?: string
+  description?: string
+  /** the design hides the portrait block on a single post, to give it focus */
+  showIdentity?: boolean
+}
+
+const {
+  title,
+  description = 'Daniel Choi — developer in Seoul.',
+  showIdentity = true,
+} = Astro.props
+
+const pageTitle = title ? `${title} · ${profile.name}` : profile.name
+const here = Astro.url.pathname.replace(/\/+$/, '') || '/'
+const isCurrent = (href: string) => {
+  const h = href.replace(/\/+$/, '') || '/'
+  return h === '/' ? here === '/' : here === h || here.startsWith(h + '/')
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="alternate" type="application/rss+xml" title={profile.name} href="/rss.xml" />
+  </head>
+
+  <body>
+    <div class="shell">
+      <div class="inner">
+        <header class="header">
+          <nav class="nav">
+            {
+              nav.map((t) => (
+                <a href={t.href} aria-current={isCurrent(t.href) ? 'page' : undefined}>
+                  {t.label}
+                </a>
+              ))
+            }
+          </nav>
+
+          {
+            showIdentity && (
+              <div class="identity">
+                <img
+                  class="portrait"
+                  src={profile.portrait}
+                  alt={profile.name}
+                  width="104"
+                  height="104"
+                />
+                <div class="who">
+                  <div class="name">{profile.name}</div>
+                  <div class="social">
+                    {profile.links.map((l) => (
+                      <a href={l.href} title={l.label} target="_blank" rel="noreferrer noopener">
+                        <img src={l.icon} alt={l.label} width="17" height="17" />
+                      </a>
+                    ))}
+                    <a href={`mailto:${profile.email}`} title="Email">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.8">
+                        <rect x="2" y="5" width="20" height="14" rx="1"></rect>
+                        <path d="M2.5 6l9.5 7 9.5-7"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )
+          }
+        </header>
+
+        <slot />
+
+        <footer class="footer">© {new Date().getFullYear()}</footer>
+      </div>
+    </div>
+  </body>
+</html>
