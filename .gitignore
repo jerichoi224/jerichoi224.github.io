@@ -1,5 +1,9 @@
-node_modules
-dist
-.astro
+# Anchored to the repo root on purpose: an unanchored `dist` also matches
+# public/history/v1/dist, which is part of the archived 2016 site, not build
+# output. That silently dropped 27 files (its whole CSS/JS/font theme).
+/dist
+/node_modules
+/.astro
+
 .DS_Store
 *.local
