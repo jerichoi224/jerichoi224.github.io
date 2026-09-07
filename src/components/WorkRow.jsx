@@ -28,6 +28,9 @@ export default function WorkRow({ job, last = false }) {
         <i />
         <div className="dot" />
       </div>
+      {job.logo && (
+        <img className="logo" src={job.logo} alt="" width="28" height="28" aria-hidden="true" />
+      )}
       <div className="what">
         <div className="role">
           <span>{job.role}</span>
@@ -71,6 +74,9 @@ export default function WorkRow({ job, last = false }) {
           <div className="panel" onClick={(e) => e.stopPropagation()}>
             <div className="panel-head">
               <div className="panel-id">
+                {job.logo && (
+                  <img className="panel-logo" src={job.logo} alt="" width="34" height="34" aria-hidden="true" />
+                )}
                 <div className="panel-role">{job.role}</div>
                 <div className="org">{job.org}</div>
                 {job.years && <div className="org">{job.years}</div>}

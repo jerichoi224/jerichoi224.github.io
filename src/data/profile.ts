@@ -36,6 +36,7 @@ export const profile = {
       years: '2023—',
       role: 'Software Engineer',
       org: 'Imagoworks · Seoul',
+      logo: '/logos/imagoworks.svg',
       current: true,
       detail: {
         summary:
@@ -46,6 +47,7 @@ export const profile = {
       years: '2021—23',
       role: 'Software Engineer',
       org: 'Fasoo · Seoul',
+      logo: '/logos/fasoo.svg',
       detail: {
         summary:
           "Developed and maintained the Windows libraries behind Fasoo's enterprise DRM product, working close to the Windows API — including shell development — in C++ and C#.",
@@ -55,6 +57,7 @@ export const profile = {
       years: '2016—20',
       role: 'Teaching Assistant',
       org: 'University of Virginia',
+      logo: '/logos/uva.svg',
       detail: {
         summary:
           'Teaching assistant for Digital Logic Design and Computer Architecture — sequential network design, instruction set architecture, and the hardware implementation of memory systems and virtual memory.',
@@ -64,6 +67,7 @@ export const profile = {
       years: '2019',
       role: 'Software Engineer Intern',
       org: 'Amazon · EMR team · Seattle',
+      logo: '/logos/amazon.svg',
       detail: {
         summary:
           'Replaced a manual trouble-ticket workflow with an automated service that stitched together several internal Amazon APIs, taking the routine handling off the engineers responsible for the queue.',
@@ -73,6 +77,7 @@ export const profile = {
       years: '2018',
       role: 'Software Engineer Intern',
       org: 'Amazon · IAM team · Seattle',
+      logo: '/logos/amazon.svg',
       detail: {
         summary:
           'Built an automated IAM policy scanning tool on top of Amazon Athena and S3, surfaced through a Ruby on Rails app — turning roughly a week of manual review into a few minutes.',
@@ -82,6 +87,7 @@ export const profile = {
       years: '2016',
       role: 'Software Engineer Intern',
       org: 'Fasoo · Seoul',
+      logo: '/logos/fasoo.svg',
       detail: {
         summary:
           'Worked with the team building Sparrow, a static program analysis tool. Static analysis needs a corpus of genuinely vulnerable code to test against, so I wrote a crawler that walked the CVE list and collected matching source snippets, categorised by vulnerability type.',

@@ -206,6 +206,22 @@ a:hover {
   flex-direction: column;
   gap: 3px;
 }
+/* Company mark. Sits between the rail and the text so the timeline reads
+   years | rail | logo | role. Square, contained, so non-square source files
+   are letterboxed rather than stretched. */
+.row .logo {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-top: 1px;
+}
+.panel-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
 .row .role {
   display: inline-flex;
   align-items: baseline;
