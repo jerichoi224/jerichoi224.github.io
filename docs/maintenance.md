@@ -154,6 +154,12 @@ they'll visibly diverge. Each carries a comment saying so.
 - **`curl -L` won't follow the `/` redirect.** `public/index.html` uses
   `location.replace` plus meta-refresh; neither is an HTTP redirect. Test it in
   a browser.
+- **Anchor `.gitignore` entries with a leading slash.** An unanchored `dist`
+  matches a directory of that name at *any* depth, and it silently swallowed
+  `public/history/v1/dist` — the 2016 site's own theme, 27 files. It passed
+  locally because the files were still on disk untracked; only a clean clone
+  exposed it. If a build passes locally and fails in CI, clone the branch to a
+  temp directory and run `npm ci && npm run verify` there.
 - **Don't accept GitHub's Jekyll workflow suggestion.** Setting Pages source to
   Actions offers starter templates because it looks for a workflow on the
   default branch. Ours is `deploy.yml`; ignore the prompt.
