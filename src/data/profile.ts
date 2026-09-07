@@ -47,7 +47,7 @@ export const profile = {
       years: '2021—23',
       role: 'Software Engineer',
       org: 'Fasoo · Seoul',
-      logo: '/logos/fasoo.svg',
+      logo: '/logos/fasoo.png',
       detail: {
         summary:
           "Developed and maintained the Windows libraries behind Fasoo's enterprise DRM product, working close to the Windows API — including shell development — in C++ and C#.",
@@ -87,7 +87,7 @@ export const profile = {
       years: '2016',
       role: 'Software Engineer Intern',
       org: 'Fasoo · Seoul',
-      logo: '/logos/fasoo.svg',
+      logo: '/logos/fasoo.png',
       detail: {
         summary:
           'Worked with the team building Sparrow, a static program analysis tool. Static analysis needs a corpus of genuinely vulnerable code to test against, so I wrote a crawler that walked the CVE list and collected matching source snippets, categorised by vulnerability type.',

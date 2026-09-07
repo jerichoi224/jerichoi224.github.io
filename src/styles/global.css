@@ -206,21 +206,26 @@ a:hover {
   flex-direction: column;
   gap: 3px;
 }
-/* Company mark. Sits between the rail and the text so the timeline reads
-   years | rail | logo | role. Square, contained, so non-square source files
-   are letterboxed rather than stretched. */
+/* Company mark, between the rail and the text: years | rail | logo | role.
+   Real logos are a mix of square icon marks (Amazon, Fasoo) and wide
+   wordmarks (Imagoworks, UVA), so this is a fixed-size box with the art
+   contained and pinned left -- every row's text then starts at the same x
+   whatever shape the logo is. */
 .row .logo {
-  flex: 0 0 28px;
-  width: 28px;
-  height: 28px;
+  flex: 0 0 96px;
+  width: 96px;
+  height: 16px;
   object-fit: contain;
-  margin-top: 1px;
+  object-position: left center;
+  margin-top: 4px;
 }
 .panel-logo {
-  width: 34px;
-  height: 34px;
+  height: 22px;
+  max-width: 140px;
+  width: auto;
   object-fit: contain;
-  margin-bottom: 6px;
+  object-position: left center;
+  margin-bottom: 10px;
 }
 .row .role {
   display: inline-flex;
