@@ -207,26 +207,36 @@ a:hover {
   gap: 3px;
 }
 /* Company mark, between the rail and the text: years | rail | logo | role.
-   Real logos are a mix of square icon marks (Amazon, Fasoo) and wide
-   wordmarks (Imagoworks, UVA), so this is a fixed-size box with the art
-   contained and pinned left -- every row's text then starts at the same x
-   whatever shape the logo is. */
+   Sized by WIDTH, not height, so every wordmark occupies the same horizontal
+   space regardless of its aspect ratio -- Fasoo's is the reference at 65px.
+   Heights therefore differ (Imagoworks is squat, Amazon is tall because its
+   lockup includes the swoosh), so the slot is one line-box high and centres
+   its contents: that puts every logo's optical centre on the rail dot, which
+   sits 12.5px from the row top, and on the role text's first-line centre.
+   Nudge an individual mark with logoScale in profile.ts. */
+.row .logo-slot {
+  flex: 0 0 68px;
+  align-self: flex-start;
+  height: 1.6em;
+  display: flex;
+  align-items: center;
+}
 .row .logo {
-  flex: 0 0 96px;
-  width: 96px;
-  height: 16px;
+  width: calc(65px * var(--s, 1));
+  height: auto;
+  max-height: 1.6em;
   object-fit: contain;
   object-position: left center;
-  margin-top: 4px;
 }
 .panel-logo {
-  height: 22px;
-  max-width: 140px;
-  width: auto;
+  width: calc(96px * var(--s, 1));
+  height: auto;
+  max-height: 30px;
   object-fit: contain;
   object-position: left center;
   margin-bottom: 10px;
 }
+
 .row .role {
   display: inline-flex;
   align-items: baseline;
