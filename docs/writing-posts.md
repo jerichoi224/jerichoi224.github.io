@@ -156,6 +156,14 @@ Then add a row to `src/data/apps.ts` so it appears on `/apps/`:
 wide) and crop it tight — the whole page shrunk down reads as noise, whereas
 the one thing the app *is* reads instantly.
 
+To capture one reliably, don't try to find the interesting element by colour
+in a full-page screenshot. Serve a throwaway copy of the page with a `<style>`
+block that hides everything except that element and zeroes the body padding,
+plus a script that puts the app into a representative state (for the puzzle,
+clicking Solve — an empty board shows nothing of what it does). Then screenshot
+at 2x and trim the flat background. The board is the only thing in frame, so
+the crop is exact.
+
 If an app has its own build step, build it elsewhere and copy the *output*
 into `public/apps/<slug>/` — don't wire a second build into this repo.
 
