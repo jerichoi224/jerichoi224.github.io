@@ -160,6 +160,13 @@ they'll visibly diverge. Each carries a comment saying so.
   locally because the files were still on disk untracked; only a clean clone
   exposed it. If a build passes locally and fails in CI, clone the branch to a
   temp directory and run `npm ci && npm run verify` there.
+- **Headless Chrome clamps `--window-size` to about 500px wide.** Ask for 360
+  and you get a 500px viewport rendered into a 360px image — so the page looks
+  clipped and mobile media queries don't fire, neither of which is a real bug.
+  To test a genuinely narrow layout, load the page in an `<iframe width="360">`
+  from a harness page: the iframe gets its own viewport, media queries apply,
+  and being same-origin you can read `scrollWidth` vs `clientWidth` from it to
+  measure overflow properly.
 - **Don't accept GitHub's Jekyll workflow suggestion.** Setting Pages source to
   Actions offers starter templates because it looks for a workflow on the
   default branch. Ours is `deploy.yml`; ignore the prompt.
