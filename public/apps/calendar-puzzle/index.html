@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendar House Puzzle Solver</title>
+<meta name="description" content="Solver for the wooden pentomino calendar puzzle: pick a month, date and weekday, and see how to place the twelve house pieces.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EDE6DA; --ink:#2B2118; --muted:#6B5B49; --faint:#8A7860;
+    --cream:#FBF3E4; --wood:#DCC49A; --panel:#DE7A45; --accent:#C6392F;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);
+    font-family:'Public Sans','Avenir Next','Segoe UI',sans-serif;padding:20px 12px 40px}
+  .wrap{max-width:520px;margin:0 auto}
+  h1{font-family:'Fraunces',serif;font-size:26px;margin:0 0 2px;letter-spacing:-0.01em}
+  .sub{margin:0 0 16px;font-size:13.5px;color:var(--muted)}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;align-items:center}
+  select,button.chip{background:var(--cream);border:1.5px solid #C9A87C;border-radius:8px;
+    padding:7px 10px;font-size:15px;font-family:inherit;color:var(--ink)}
+  button{cursor:pointer}
+  label.flip{display:flex;gap:6px;align-items:center;font-size:13.5px;margin-bottom:6px;color:var(--muted)}
+  .actions{display:flex;gap:10px;align-items:center;margin:12px 0 14px}
+  #solveBtn{background:var(--accent);color:var(--cream);border:none;border-radius:10px;
+    padding:11px 22px;font-size:16px;font-weight:700;font-family:inherit;box-shadow:0 2px 0 #8E241D}
+  #solveBtn.stop{background:var(--muted);box-shadow:none}
+  #status{font-size:13px;color:var(--muted)}
+  .frame{background:var(--wood);padding:14px;border-radius:18px;
+    box-shadow:0 6px 18px rgba(43,33,24,.25),inset 0 1px 0 rgba(255,255,255,.5)}
+  #board{background:var(--panel);border-radius:8px;padding:6px;display:grid;
+    grid-template-columns:repeat(7,1fr);box-shadow:inset 0 2px 8px rgba(0,0,0,.25)}
+  .cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-family:inherit;padding:0;position:relative;background:transparent;
+    color:rgba(255,246,232,.85);border:2px solid transparent;border-radius:2px;
+    transition:background .15s}
+  .cell.small{font-size:12px}.cell:not(.small){font-size:15px}
+  .cell.exposed{color:#FFF6E8;text-shadow:0 0 10px rgba(255,240,200,.9);
+    outline:2.5px solid #FFE7A0;outline-offset:-3px}
+  .cell.piece{color:transparent;border-radius:0;outline:none;text-shadow:none}
+  .cell.piece.showlab.lightpc{color:rgba(58,42,22,.8)}
+  .cell.piece.showlab.darkpc{color:rgba(255,246,232,.92);text-shadow:0 1px 2px rgba(0,0,0,.45)}
+  button:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .lg{display:inline-flex;align-items:center;gap:7px;background:var(--cream);
+    border:1px solid #D8C6AC;border-radius:8px;padding:5px 9px;font-size:12.5px}
+  .lg.unused{opacity:.4}
+  .mini{display:grid;gap:1px}
+  .mini span{width:7px;height:7px;border-radius:1.5px}
+  .note{font-size:12px;color:var(--faint);margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Calendar house puzzle</h1>
+  <p class="sub">Pick today's month, date and weekday — the solver arranges the 12 house pieces so only those three squares stay visible. Tap any square to uncover extras (weather, 日–土).</p>
+
+  <div class="controls">
+    <select id="monthSel"></select>
+    <select id="dateSel"></select>
+    <select id="wdSel"></select>
+    <button class="chip" id="todayBtn">Today</button>
+  </div>
+  <label class="flip"><input type="checkbox" id="flipChk" checked> Allow flipping pieces over</label>
+  <label class="flip"><input type="checkbox" id="labelChk" checked> See labels through placed pieces</label>
+
+  <div class="actions">
+    <button id="solveBtn">Solve</button>
+    <span id="status" aria-live="polite"></span>
+  </div>
+
+  <div class="frame"><div id="board"></div></div>
+
+  <div class="legend" id="legend"></div>
+  <p class="note">A faded chip means that piece isn't needed for this date (the 1×1 block rests in the frame's bottom notch when three squares show). Turn off flipping if your wooden pieces are painted on one side only.</p>
+</div>
+
+<script>
+"use strict";
+/* ---------- Board (7 cols x 9 rows) ---------- */
+const ROWS=9, COLS=7, N=63;
+const LABELS=[
+ "Jan","Feb","Mar","Apr","Sun","Mon","Tue",
+ "May","Jun","Jul","Aug","Wed","Thu","Fri",
+ "Sep","Oct","Nov","Dec","26","27","Sat",
+ "1","2","3","☀","☂","☁","❄",
+ "4","5","6","7","8","9","10",
+ "11","12","13","14","15","16","17",
+ "18","19","20","21","22","日","月",
+ "23","24","25","26","27","火","水",
+ "28","29","30","31","木","金","土"];
+const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MONTH_CELL={Jan:0,Feb:1,Mar:2,Apr:3,May:7,Jun:8,Jul:9,Aug:10,Sep:14,Oct:15,Nov:16,Dec:17};
+const WEEKDAYS=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const WD_CELL={Sun:4,Mon:5,Tue:6,Wed:11,Thu:12,Fri:13,Sat:20};
+function dateCell(d){
+  if(d<=3)return 20+d; if(d<=10)return 28+(d-4); if(d<=17)return 35+(d-11);
+  if(d<=22)return 42+(d-18); if(d<=27)return 49+(d-23); return 56+(d-28);
+}
+
+/* ---------- Pieces: 12 pentominoes + 1 single ---------- */
+const PIECES=[
+ {name:"P",color:"#EFC131",cells:[[0,0],[0,1],[1,0],[1,1],[2,0]]},
+ {name:"N",color:"#EFC131",cells:[[0,0],[1,0],[1,1],[2,1],[3,1]]},
+ {name:"X",color:"#EFC131",cells:[[0,1],[1,0],[1,1],[1,2],[2,1]]},
+ {name:"V",color:"#C6392F",cells:[[0,0],[1,0],[2,0],[2,1],[2,2]]},
+ {name:"W",color:"#C6392F",cells:[[0,0],[1,0],[1,1],[2,1],[2,2]]},
+ {name:"F",color:"#33322F",cells:[[0,1],[0,2],[1,0],[1,1],[2,1]]},
+ {name:"T",color:"#A3C6D6",cells:[[0,0],[0,1],[0,2],[1,1],[2,1]]},
+ {name:"Z",color:"#A3C6D6",cells:[[0,0],[0,1],[1,1],[2,1],[2,2]]},
+ {name:"L",color:"#33322F",cells:[[0,0],[1,0],[2,0],[3,0],[3,1]]},
+ {name:"Y",color:"#C6392F",cells:[[0,1],[1,0],[1,1],[2,1],[3,1]]},
+ {name:"I",color:"#E3A868",cells:[[0,0],[0,1],[0,2],[0,3],[0,4]]},
+ {name:"U",color:"#E3A868",cells:[[0,0],[0,2],[1,0],[1,1],[1,2]]},
+ {name:"·",color:"#E3A868",cells:[[0,0]],unit:true}];
+const UNIT_IDX=PIECES.findIndex(p=>p.unit);
+const LIGHT=new Set(["#EFC131","#A3C6D6","#E3A868"]);
+
+function normalize(cells){
+  const minR=Math.min(...cells.map(c=>c[0])), minC=Math.min(...cells.map(c=>c[1]));
+  return cells.map(([r,c])=>[r-minR,c-minC]).sort((a,b)=>a[0]-b[0]||a[1]-b[1]);
+}
+function orientations(cells,allowFlip){
+  const seen=new Map(), flips=allowFlip?[false,true]:[false];
+  for(const f of flips){
+    let cur=f?cells.map(([r,c])=>[r,-c]):cells.map(c=>[...c]);
+    for(let k=0;k<4;k++){
+      const norm=normalize(cur), key=norm.map(c=>c.join(",")).join(";");
+      if(!seen.has(key)){const [ar,ac]=norm[0];seen.set(key,norm.map(([r,c])=>[r-ar,c-ac]));}
+      cur=cur.map(([r,c])=>[c,-r]);
+    }
+  }
+  return [...seen.values()];
+}
+
+/* ---------- Solver ---------- */
+function regionsOk(board,used){
+  const seen=new Uint8Array(N);
+  let unitBudget=used[UNIT_IDX]?0:1;
+  for(let i=0;i<N;i++){
+    if(board[i]!==-1||seen[i])continue;
+    let size=0;const stack=[i];seen[i]=1;
+    while(stack.length){
+      const v=stack.pop();size++;
+      const r=(v/COLS)|0,c=v%COLS;
+      if(r>0&&board[v-COLS]===-1&&!seen[v-COLS]){seen[v-COLS]=1;stack.push(v-COLS);}
+      if(r<ROWS-1&&board[v+COLS]===-1&&!seen[v+COLS]){seen[v+COLS]=1;stack.push(v+COLS);}
+      if(c>0&&board[v-1]===-1&&!seen[v-1]){seen[v-1]=1;stack.push(v-1);}
+      if(c<COLS-1&&board[v+1]===-1&&!seen[v+1]){seen[v+1]=1;stack.push(v+1);}
+    }
+    const m=size%5;
+    if(m===0)continue;
+    if(m===1&&unitBudget>0){unitBudget--;continue;}
+    return false;
+  }
+  return true;
+}
+function makeSolver(exposedSet,allowFlip){
+  const orients=PIECES.map(p=>orientations(p.cells,allowFlip));
+  const board=new Int8Array(N).fill(-1);
+  exposedSet.forEach(i=>{board[i]=-2;});
+  const used=new Array(PIECES.length).fill(false);
+  const stack=[];
+  let nodes=0,done=false,solution=null,started=false;
+  function firstEmpty(){for(let i=0;i<N;i++)if(board[i]===-1)return i;return -1;}
+  function choicesAt(cell){
+    const r=(cell/COLS)|0,c=cell%COLS,out=[];
+    for(let pi=0;pi<PIECES.length;pi++){
+      if(used[pi])continue;
+      for(const off of orients[pi]){
+        let ok=true;const cs=[];
+        for(const [dr,dc] of off){
+          const rr=r+dr,cc=c+dc;
+          if(rr>=ROWS||cc<0||cc>=COLS){ok=false;break;}
+          const idx=rr*COLS+cc;
+          if(board[idx]!==-1){ok=false;break;}
+          cs.push(idx);
+        }
+        if(ok)out.push({pi,cs});
+      }
+    }
+    return out;
+  }
+  function place(ch){used[ch.pi]=true;for(const i of ch.cs)board[i]=ch.pi;}
+  function unplace(ch){used[ch.pi]=false;for(const i of ch.cs)board[i]=-1;}
+  return{
+    step(budget){
+      if(done)return true;
+      if(!started){
+        started=true;
+        const fe=firstEmpty();
+        if(fe===-1){solution=Int8Array.from(board);done=true;return true;}
+        stack.push({cell:fe,choices:choicesAt(fe),k:0,chosen:null});
+      }
+      while(budget-->0){
+        if(!stack.length){done=true;return true;}
+        const f=stack[stack.length-1];
+        if(f.chosen){unplace(f.chosen);f.chosen=null;}
+        if(f.k>=f.choices.length){stack.pop();continue;}
+        const ch=f.choices[f.k++];
+        place(ch);nodes++;
+        if(!regionsOk(board,used)){unplace(ch);continue;}
+        f.chosen=ch;
+        const fe=firstEmpty();
+        if(fe===-1){solution=Int8Array.from(board);done=true;return true;}
+        stack.push({cell:fe,choices:choicesAt(fe),k:0,chosen:null});
+      }
+      return false;
+    },
+    get nodes(){return nodes;},
+    get solution(){return solution;}
+  };
+}
+
+/* ---------- UI state ---------- */
+const $=id=>document.getElementById(id);
+let month,date,weekday,extra=new Set(),solution=null,status="idle",nodes=0,runId=0;
+
+const monthSel=$("monthSel"),dateSel=$("dateSel"),wdSel=$("wdSel");
+MONTHS.forEach(m=>monthSel.add(new Option(m,m)));
+for(let d=1;d<=31;d++)dateSel.add(new Option(d,d));
+WEEKDAYS.forEach(w=>wdSel.add(new Option(w,w)));
+
+const boardEl=$("board"),cellEls=[];
+LABELS.forEach((lab,i)=>{
+  const b=document.createElement("button");
+  b.className="cell"+(lab.length>2?" small":"");
+  b.textContent=lab;
+  b.addEventListener("click",()=>toggleCell(i));
+  boardEl.appendChild(b);cellEls.push(b);
+});
+
+const legendEl=$("legend"),legendChips=[];
+PIECES.forEach(p=>{
+  const maxR=Math.max(...p.cells.map(c=>c[0])),maxC=Math.max(...p.cells.map(c=>c[1]));
+  const chip=document.createElement("span");chip.className="lg";
+  const mini=document.createElement("span");mini.className="mini";
+  mini.style.gridTemplateColumns=`repeat(${maxC+1},7px)`;
+  mini.style.gridTemplateRows=`repeat(${maxR+1},7px)`;
+  for(let r=0;r<=maxR;r++)for(let c=0;c<=maxC;c++){
+    const s=document.createElement("span");
+    if(p.cells.some(([a,b2])=>a===r&&b2===c)){
+      s.style.background=p.color;s.style.border="1px solid rgba(0,0,0,.15)";
+    }
+    mini.appendChild(s);
+  }
+  chip.appendChild(mini);
+  chip.appendChild(document.createTextNode(p.unit?"1×1":p.name));
+  legendEl.appendChild(chip);legendChips.push(chip);
+});
+
+function autoCells(){return [MONTH_CELL[month],dateCell(date),WD_CELL[weekday]];}
+function exposedSet(){const s=new Set(autoCells());extra.forEach(i=>s.add(i));return s;}
+function feasible(){
+  const covered=N-exposedSet().size;
+  return covered<=61&&(covered%5===0?covered/5<=12:(covered%5===1&&(covered-1)/5<=12));
+}
+function toggleCell(i){
+  if(autoCells().includes(i))return;
+  extra.has(i)?extra.delete(i):extra.add(i);
+  invalidate();
+}
+function invalidate(){runId++;solution=null;status="idle";nodes=0;render();}
+function setToday(){
+  const d=new Date();
+  month=MONTHS[d.getMonth()];date=d.getDate();weekday=WEEKDAYS[d.getDay()];
+  monthSel.value=month;dateSel.value=date;wdSel.value=weekday;
+  extra=new Set();invalidate();
+}
+
+/* ---------- Render ---------- */
+function render(){
+  const exp=exposedSet();
+  const edge="2px solid rgba(30,22,14,0.85)",none="2px solid transparent";
+  cellEls.forEach((el,i)=>{
+    const pi=solution&&solution[i]>=0?solution[i]:-1;
+    el.classList.toggle("exposed",exp.has(i)&&pi<0);
+    el.classList.toggle("piece",pi>=0);
+    const showLab=$("labelChk").checked;
+    el.classList.toggle("showlab",pi>=0&&showLab);
+    el.classList.toggle("lightpc",pi>=0&&LIGHT.has(PIECES[pi].color));
+    el.classList.toggle("darkpc",pi>=0&&!LIGHT.has(PIECES[pi].color));
+    el.style.background=pi>=0?PIECES[pi].color:"transparent";
+    if(pi>=0){
+      const r=(i/COLS)|0,c=i%COLS,d=j=>solution[j]!==solution[i];
+      el.style.borderTop=(r===0||d(i-COLS))?edge:none;
+      el.style.borderBottom=(r===ROWS-1||d(i+COLS))?edge:none;
+      el.style.borderLeft=(c===0||d(i-1))?edge:none;
+      el.style.borderRight=(c===COLS-1||d(i+1))?edge:none;
+    }else{
+      el.style.border="2px solid transparent";
+    }
+  });
+  legendChips.forEach((chip,i)=>chip.classList.toggle("unused",!!(solution&&!solution.includes(i))));
+  const st=$("status"),btn=$("solveBtn");
+  btn.textContent=status==="solving"?"Stop":"Solve";
+  btn.classList.toggle("stop",status==="solving");
+  const e=exp.size,covered=N-e;
+  if(status==="solving")st.textContent=`Searching… ${nodes.toLocaleString()} placements tried`;
+  else if(status==="solved")st.textContent=`Solved — ${nodes.toLocaleString()} placements tried`;
+  else if(status==="none")st.textContent=feasible()
+    ?"No arrangement found for this selection."
+    :`${e} uncovered squares can't match the pieces — uncover ${covered%5===4?"one more":"a different number of"} square(s).`;
+  else st.textContent=feasible()?"":`Note: with ${e} squares uncovered the piece areas can't fit exactly.`;
+}
+
+/* ---------- Solve loop ---------- */
+function solve(){
+  if(status==="solving"){runId++;status="idle";render();return;}
+  const myRun=++runId;
+  solution=null;nodes=0;
+  if(!feasible()){status="none";render();return;}
+  status="solving";render();
+  const solver=makeSolver(exposedSet(),$("flipChk").checked);
+  const tick=()=>{
+    if(runId!==myRun)return;
+    const finished=solver.step(25000);
+    nodes=solver.nodes;
+    if(finished){
+      if(solver.solution){solution=solver.solution;status="solved";}
+      else status="none";
+      render();
+    }else{render();setTimeout(tick,0);}
+  };
+  setTimeout(tick,0);
+}
+
+monthSel.addEventListener("change",e=>{month=e.target.value;invalidate();});
+dateSel.addEventListener("change",e=>{date=+e.target.value;invalidate();});
+wdSel.addEventListener("change",e=>{weekday=e.target.value;invalidate();});
+$("flipChk").addEventListener("change",invalidate);
+$("labelChk").addEventListener("change",render);
+$("todayBtn").addEventListener("click",setToday);
+$("solveBtn").addEventListener("click",solve);
+setToday();
+</script>
+<!-- added on integration: a way back to the site -->
+<a href="/apps/" style="position:fixed;left:14px;bottom:12px;font:13px/1 ui-sans-serif,system-ui,sans-serif;color:#6b6b6b;text-decoration:none;background:rgba(255,255,255,.85);padding:6px 10px;border-radius:999px;box-shadow:0 1px 3px rgba(0,0,0,.12)">&larr; apps</a>
+</body>
+</html>

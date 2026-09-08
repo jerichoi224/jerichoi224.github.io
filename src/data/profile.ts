@@ -106,4 +106,5 @@ export const profile = {
 export const nav = [
   { label: 'About', href: '/about/' },
   { label: 'Posts', href: '/posts/' },
+  { label: 'Apps', href: '/apps/' },
 ]

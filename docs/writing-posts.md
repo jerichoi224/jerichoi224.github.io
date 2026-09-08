@@ -125,6 +125,37 @@ Rows without one render as plain text.
 
 ---
 
+## Adding a small app or standalone page
+
+Posts are for writing. Self-contained pages — a solver, a toy, a one-off
+visualisation — go in `public/apps/<slug>/` as plain files:
+
+```
+public/apps/calendar-puzzle/index.html   →   /apps/calendar-puzzle/
+```
+
+Anything under `public/` is copied to the site root verbatim and never touched
+by the build, so an app can use whatever it likes — its own fonts, its own
+palette, inline scripts, a framework, nothing at all. No schema, no front
+matter, no bundling. This is the same mechanism that carries `/history`.
+
+Then add a row to `src/data/apps.ts` so it appears on `/apps/`:
+
+```ts
+{
+  name: 'Calendar house puzzle',
+  href: '/apps/calendar-puzzle/',
+  year: '2026',
+  description: 'One line, shown under the name.',
+}
+```
+
+If an app has its own build step, build it elsewhere and copy the *output*
+into `public/apps/<slug>/` — don't wire a second build into this repo.
+
+Worth adding a link back to `/apps/` inside the app itself, or visitors who
+land on it directly have no way into the rest of the site.
+
 ## Routes
 
 | URL | Source |
@@ -133,6 +164,8 @@ Rows without one render as plain text.
 | `/about/` | `src/pages/about.astro` |
 | `/posts/` | `src/pages/posts/index.astro` |
 | `/posts/<slug>/` | `src/pages/posts/[...slug].astro`, one page per markdown file |
+| `/apps/` | `src/pages/apps/index.astro`, listing `src/data/apps.ts` |
+| `/apps/<slug>/` | static files in `public/apps/<slug>/` — not built |
 | `/rss.xml` | `src/pages/rss.xml.js` |
 | `/history/…` | static files in `public/history/` — not built, see README |
 
