@@ -332,6 +332,49 @@ button.row:hover {
   text-wrap: pretty;
 }
 
+/* ── apps list ─────────────────────────────────────────────────────────── */
+/* Same date-gutter shape as the posts list, plus a screenshot on the side.
+   Wider row gap because the thumbnail makes each entry taller. */
+.app-list {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+.app-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  align-items: flex-start;
+  text-decoration: none;
+}
+.app-item:hover {
+  opacity: 0.55;
+}
+.app-item .date {
+  flex: 0 0 var(--rail-col);
+  color: var(--muted);
+  font-size: 15px;
+}
+.app-item .meta {
+  flex: 1 1 220px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.app-item .excerpt {
+  color: var(--soft);
+  text-wrap: pretty;
+}
+.app-item .thumb {
+  flex: 0 0 108px;
+  width: 108px;
+  height: auto;
+  display: block;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+}
+
 /* ── single post ───────────────────────────────────────────────────────── */
 .post {
   display: flex;

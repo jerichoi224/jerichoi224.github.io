@@ -147,8 +147,14 @@ Then add a row to `src/data/apps.ts` so it appears on `/apps/`:
   href: '/apps/calendar-puzzle/',
   year: '2026',
   description: 'One line, shown under the name.',
+  thumbnail: '/images/apps/calendar-puzzle.png',   // optional
 }
 ```
+
+`thumbnail` is a screenshot shown beside the entry. Save it under
+`public/images/apps/` at roughly 2x its rendered width (108px, so ~240px
+wide) and crop it tight — the whole page shrunk down reads as noise, whereas
+the one thing the app *is* reads instantly.
 
 If an app has its own build step, build it elsewhere and copy the *output*
 into `public/apps/<slug>/` — don't wire a second build into this repo.
