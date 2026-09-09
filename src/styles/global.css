@@ -333,30 +333,30 @@ button.row:hover {
 }
 
 /* ── apps list ─────────────────────────────────────────────────────────── */
-/* Same date-gutter shape as the posts list, plus a screenshot on the side.
-   Wider row gap because the thumbnail makes each entry taller. */
+/* Grid rather than flex: with flex the thumbnail wrapped onto its own line and
+   sat under the year, which read as a mistake. Here it is placed explicitly —
+   third column on desktop, and on a narrow screen it pairs with the text on a
+   second row while the year spans above them. */
 .app-list {
   display: flex;
   flex-direction: column;
   gap: 34px;
 }
 .app-item {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 20px;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: var(--rail-col) 1fr auto;
+  gap: 4px 20px;
+  align-items: start;
   text-decoration: none;
 }
 .app-item:hover {
   opacity: 0.55;
 }
 .app-item .date {
-  flex: 0 0 var(--rail-col);
   color: var(--muted);
   font-size: 15px;
 }
 .app-item .meta {
-  flex: 1 1 220px;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -367,12 +367,22 @@ button.row:hover {
   text-wrap: pretty;
 }
 .app-item .thumb {
-  flex: 0 0 108px;
   width: 108px;
   height: auto;
   display: block;
   border: 1px solid var(--rule);
   border-radius: 2px;
+}
+
+@media (max-width: 560px) {
+  .app-list { gap: 26px; }
+  .app-item {
+    grid-template-columns: auto 1fr;
+    gap: 6px 14px;
+  }
+  .app-item .date { grid-column: 1 / -1; }
+  .app-item .thumb { grid-row: 2; grid-column: 1; width: 84px; }
+  .app-item .meta  { grid-row: 2; grid-column: 2; }
 }
 
 /* ── single post ───────────────────────────────────────────────────────── */
