@@ -26,10 +26,14 @@
   .sub{margin:0 0 16px;max-width:56ch;font-size:15px;color:var(--soft);text-wrap:pretty}
   .sub em{font-style:normal;color:var(--ink)}
   .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;align-items:center}
-  select,button.chip{background:var(--panel);border:1px solid var(--rule);border-radius:3px;
-    padding:7px 10px;font-size:15px;font-family:inherit;color:var(--ink)}
-  select:hover,button.chip:hover{border-color:var(--muted)}
-  select:disabled,button.chip:disabled{opacity:.45;cursor:default;border-color:var(--rule)}
+  /* groups wrap as units, so a phone gets [mode + date] then [Today + Clear]
+     instead of leaving one button alone on a line of its own */
+  .group{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  select,input[type=date],button.chip{background:var(--panel);border:1px solid var(--rule);
+    border-radius:3px;padding:7px 10px;font-size:15px;font-family:inherit;color:var(--ink)}
+  select:hover,input[type=date]:hover,button.chip:hover{border-color:var(--muted)}
+  select:disabled,input[type=date]:disabled,button.chip:disabled{opacity:.45;cursor:default;
+    border-color:var(--rule)}
   button{cursor:pointer}
   label.flip{display:flex;gap:7px;align-items:center;font-size:15px;color:var(--soft)}
   .actions{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:0 0 8px}
@@ -76,7 +80,7 @@
     h1{font-size:19px;margin-bottom:4px}
     .sub{font-size:13.5px;margin-bottom:12px}
     .controls{gap:6px;margin-bottom:8px}
-    select,button.chip{padding:6px 8px;font-size:14px}
+    select,input[type=date],button.chip{padding:6px 8px;font-size:14px}
     #solveBtn{padding:9px 16px}
     .actions{gap:8px 14px}
     label.flip{font-size:14px}
@@ -108,15 +112,17 @@
   <p class="sub">Arranges the house pieces so only your chosen squares stay visible. Switch to <em>Pick squares</em> to choose them by hand.</p>
 
   <div class="controls">
-    <select id="modeSel" aria-label="Selection mode">
-      <option value="date">By date</option>
-      <option value="free">Pick squares</option>
-    </select>
-    <select id="monthSel"></select>
-    <select id="dateSel"></select>
-    <select id="wdSel"></select>
-    <button class="chip" id="todayBtn">Today</button>
-    <button class="chip" id="clearBtn">Clear</button>
+    <div class="group">
+      <select id="modeSel" aria-label="Selection mode">
+        <option value="date">By date</option>
+        <option value="free">Pick squares</option>
+      </select>
+      <input type="date" id="dateInp" aria-label="Date">
+    </div>
+    <div class="group">
+      <button class="chip" id="todayBtn">Today</button>
+      <button class="chip" id="clearBtn">Clear</button>
+    </div>
   </div>
   <div class="actions">
     <button id="solveBtn">Solve</button>
@@ -298,10 +304,18 @@ const $=id=>document.getElementById(id);
 let mode="date";
 let month,date,weekday,extra=new Set(),solution=null,status="idle",nodes=0,runId=0;
 
-const monthSel=$("monthSel"),dateSel=$("dateSel"),wdSel=$("wdSel");
-MONTHS.forEach(m=>monthSel.add(new Option(m,m)));
-for(let d=1;d<=31;d++)dateSel.add(new Option(d,d));
-WEEKDAYS.forEach(w=>wdSel.add(new Option(w,w)));
+/* One date input replaces the month, date and weekday selects: fewer controls,
+   and phones get their native picker. The weekday follows from the date, which
+   is what the physical puzzle wants anyway. Impossible combinations — Feb 30,
+   or a date paired with the wrong weekday — are still reachable through
+   "Pick squares", which can expose any squares at all. */
+const dateInp=$("dateInp");
+function applyDate(d){
+  month=MONTHS[d.getMonth()];
+  date=d.getDate();
+  weekday=WEEKDAYS[d.getDay()];
+  dateInp.value=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+}
 
 const boardEl=$("board"),notchEl=$("notchRow"),cellEls=[];
 LABELS.forEach((lab,i)=>{
@@ -354,9 +368,7 @@ function toggleCell(i){
 }
 function invalidate(){runId++;solution=null;status="idle";nodes=0;render();}
 function setToday(){
-  const d=new Date();
-  month=MONTHS[d.getMonth()];date=d.getDate();weekday=WEEKDAYS[d.getDay()];
-  monthSel.value=month;dateSel.value=date;wdSel.value=weekday;
+  applyDate(new Date());
   extra=new Set();invalidate();
 }
 
@@ -386,7 +398,7 @@ function render(){
   });
   legendChips.forEach((chip,i)=>chip.classList.toggle("unused",!!(solution&&!solution.includes(i))));
   const byDate=mode==="date";
-  [monthSel,dateSel,wdSel,$("todayBtn")].forEach(el=>{el.disabled=!byDate;});
+  [dateInp,$("todayBtn")].forEach(el=>{el.disabled=!byDate;});
   $("clearBtn").disabled=extra.size===0;
   const st=$("status"),btn=$("solveBtn");
   btn.textContent=status==="solving"?"Stop":"Solve";
@@ -430,9 +442,13 @@ function solve(){
   setTimeout(tick,0);
 }
 
-monthSel.addEventListener("change",e=>{month=e.target.value;invalidate();});
-dateSel.addEventListener("change",e=>{date=+e.target.value;invalidate();});
-wdSel.addEventListener("change",e=>{weekday=e.target.value;invalidate();});
+dateInp.addEventListener("change",e=>{
+  const v=e.target.value;
+  if(!v)return;
+  const [y,m,d]=v.split("-").map(Number);
+  applyDate(new Date(y,m-1,d));
+  invalidate();
+});
 $("flipChk").addEventListener("change",invalidate);
 $("labelChk").addEventListener("change",render);
 $("modeSel").addEventListener("change",e=>{

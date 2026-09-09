@@ -50,10 +50,15 @@
 
   /* controls */
   .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;align-items:center}
-  select,input[type=text],button.chip{background:var(--panel);border:1px solid var(--rule);
-    border-radius:3px;padding:7px 10px;font-size:15px;font-family:inherit;color:var(--ink)}
-  select:hover,button.chip:hover{border-color:var(--muted)}
-  select:disabled,button.chip:disabled{opacity:.45;cursor:default;border-color:var(--rule)}
+  /* put related controls in a .group: groups wrap as units, so a phone breaks
+     between them instead of orphaning one control on a line of its own */
+  .group{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  select,input[type=date],input[type=text],button.chip{background:var(--panel);
+    border:1px solid var(--rule);border-radius:3px;padding:7px 10px;font-size:15px;
+    font-family:inherit;color:var(--ink)}
+  select:hover,input:hover,button.chip:hover{border-color:var(--muted)}
+  select:disabled,input:disabled,button.chip:disabled{opacity:.45;cursor:default;
+    border-color:var(--rule)}
   button{cursor:pointer}
   button.primary{background:var(--ink);color:#fff;border:none;border-radius:3px;
     padding:10px 20px;font-size:15px;font-weight:500;font-family:inherit}
@@ -77,7 +82,7 @@
     h1{font-size:19px;margin-bottom:4px}
     .sub{font-size:13.5px;margin-bottom:12px}
     .controls{gap:6px;margin-bottom:8px}
-    select,button.chip{padding:6px 8px;font-size:14px}
+    select,input,button.chip{padding:6px 8px;font-size:14px}
     button.primary{padding:9px 16px}
     .actions{gap:8px 14px}
     label.check{font-size:14px}
@@ -101,7 +106,13 @@
   <p class="sub">One or two lines on what this does and how to drive it.</p>
 
   <div class="controls">
-    <!-- selects, chips -->
+    <div class="group">
+      <!-- inputs. Prefer one <input type="date"> over month/day/weekday
+           selects: fewer controls, and phones get their native picker. -->
+    </div>
+    <div class="group">
+      <!-- <button class="chip">Today</button> <button class="chip">Clear</button> -->
+    </div>
   </div>
   <div class="actions">
     <button class="primary" id="goBtn">Go</button>
