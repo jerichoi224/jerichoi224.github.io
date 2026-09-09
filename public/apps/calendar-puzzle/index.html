@@ -14,8 +14,14 @@
   *{box-sizing:border-box}
   body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);
     font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;padding:32px 28px 36px}
+    -webkit-font-smoothing:antialiased;padding:22px 28px 32px}
   .wrap{max-width:620px;margin:0 auto}
+  /* matches the site nav: muted until hover */
+  .crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:14px;
+    font-size:15px}
+  .crumbs a{color:var(--muted);text-decoration:none}
+  .crumbs a:hover{color:var(--ink)}
+  .crumbs span{color:var(--rule)}
   h1{font-size:22px;font-weight:500;line-height:1.35;margin:0 0 6px;letter-spacing:-.01em}
   .sub{margin:0 0 16px;max-width:56ch;font-size:15px;color:var(--soft);text-wrap:pretty}
   .sub em{font-style:normal;color:var(--ink)}
@@ -34,7 +40,7 @@
   #status{font-size:14px;color:var(--muted);min-height:1.4em;margin-bottom:12px}
   .play{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
   .frame{background:var(--panel);padding:10px;border-radius:4px;border:1px solid var(--rule);
-    flex:0 1 350px;min-width:0;max-width:100%}
+    flex:0 1 338px;min-width:0;max-width:100%}
   #board{background:var(--field);border-radius:2px 2px 0 0;padding:5px 5px 0;display:grid;
     grid-template-columns:repeat(7,minmax(0,1fr))}
   .cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;
@@ -65,7 +71,8 @@
   .mini span{width:7px;height:7px;border-radius:1px}
   .note{font-size:12.5px;line-height:1.5;color:var(--muted);margin:0;text-wrap:pretty}
   @media (max-width:640px){
-    body{padding:20px 16px 32px}
+    body{padding:16px 16px 28px}
+    .crumbs{margin-bottom:10px;font-size:14px}
     h1{font-size:19px;margin-bottom:4px}
     .sub{font-size:13.5px;margin-bottom:12px}
     .controls{gap:6px;margin-bottom:8px}
@@ -88,14 +95,15 @@
   }
 </style>
 <style>
-  /* added on integration: route back into the site, using this page's own tokens */
-  .site-back{position:fixed;left:16px;bottom:14px;z-index:50;font:500 13px/1 'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--muted);text-decoration:none;background:var(--panel);border:1px solid var(--rule);padding:7px 12px;border-radius:999px;transition:color .15s ease,border-color .15s ease}
-  .site-back:hover{color:var(--ink);border-color:var(--muted)}
-  .site-back:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <nav class="crumbs">
+    <a href="/">Daniel Choi</a>
+    <span aria-hidden="true">/</span>
+    <a href="/apps/">Apps</a>
+  </nav>
   <h1>Calendar house puzzle</h1>
   <p class="sub">Arranges the house pieces so only your chosen squares stay visible. Switch to <em>Pick squares</em> to choose them by hand.</p>
 
@@ -439,6 +447,5 @@ $("todayBtn").addEventListener("click",setToday);
 $("solveBtn").addEventListener("click",solve);
 setToday();
 </script>
-<a class="site-back" href="/apps/">&larr; apps</a>
 </body>
 </html>

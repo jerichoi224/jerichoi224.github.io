@@ -167,8 +167,17 @@ the crop is exact.
 If an app has its own build step, build it elsewhere and copy the *output*
 into `public/apps/<slug>/` — don't wire a second build into this repo.
 
-Worth adding a link back to `/apps/` inside the app itself, or visitors who
-land on it directly have no way into the rest of the site.
+Worth adding a breadcrumb inside the app itself, or visitors who land on it
+directly have no way into the rest of the site:
+
+```html
+<nav class="crumbs">
+  <a href="/">Daniel Choi</a> <span>/</span> <a href="/apps/">Apps</a>
+</nav>
+```
+
+Put it in the page flow rather than fixed to a corner — a floating pill
+overlaps the content on a phone.
 
 ## Routes
 
