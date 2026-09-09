@@ -18,6 +18,7 @@
   .wrap{max-width:620px;margin:0 auto}
   h1{font-size:22px;font-weight:500;line-height:1.35;margin:0 0 6px;letter-spacing:-.01em}
   .sub{margin:0 0 26px;font-size:15px;color:var(--soft);text-wrap:pretty}
+  .sub em{font-style:normal;color:var(--ink)}
   .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
   select,button.chip{background:var(--panel);border:1px solid var(--rule);border-radius:3px;
     padding:7px 10px;font-size:15px;font-family:inherit;color:var(--ink)}
@@ -48,6 +49,11 @@
   .cell.piece.showlab.darkpc{color:rgba(255,255,255,.94);text-shadow:0 1px 2px rgba(0,0,0,.35)}
   button:focus-visible,select:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
   /* beside the board rather than under it, so the page stays short */
+  /* the notch sits outside the 7-column grid, aligned to its centre column,
+     so row 10 isn't a mostly-empty band across the board */
+  #notchRow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
+    padding:0 5px 5px}
+  .cell.notch{grid-column:4;background:var(--field);border-radius:0 0 3px 3px}
   .legend{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;
     flex:1 1 150px;min-width:150px}
   .lg{display:inline-flex;align-items:center;gap:7px;background:var(--panel);
@@ -75,9 +81,13 @@
 <body>
 <div class="wrap">
   <h1>Calendar house puzzle</h1>
-  <p class="sub">Pick today's month, date and weekday — the solver arranges the 12 house pieces so only those three squares stay visible. Tap any square to uncover extras (weather, 日–土).</p>
+  <p class="sub">Pick a date and the solver arranges the house pieces so only those squares stay visible. Or switch to <em>Pick squares</em> and choose any of them yourself — tap a square to toggle it.</p>
 
   <div class="controls">
+    <select id="modeSel" aria-label="Selection mode">
+      <option value="date">By date</option>
+      <option value="free">Pick squares</option>
+    </select>
     <select id="monthSel"></select>
     <select id="dateSel"></select>
     <select id="wdSel"></select>
@@ -92,16 +102,26 @@
   </div>
 
   <div class="play">
-    <div class="frame"><div id="board"></div></div>
+    <div class="frame"><div id="board"></div><div id="notchRow"></div></div>
     <div class="legend" id="legend"></div>
   </div>
-  <p class="note">A faded chip means that piece isn't needed for this date (the 1×1 block rests in the frame's bottom notch when three squares show). Turn off flipping if your wooden pieces are painted on one side only.</p>
+  <p class="note">The 1×1 block lives in the notch under the board. Leave three squares uncovered and it stays there; leave four and it comes out of the puzzle altogether, freeing the notch for the other pieces. Every piece you set aside frees five more squares, so 3, 4, 8, 9, 13&hellip; all work. Turn off flipping if your wooden pieces are painted on one side only.</p>
 </div>
 
 <script>
 "use strict";
 /* ---------- Board (7 cols x 9 rows) ---------- */
-const ROWS=9, COLS=7, N=63;
+/* The physical board is 63 labelled squares plus a 1x1 notch centred under the
+   bottom row: 64 playable spaces. Row 10 exists only to carry that notch, so
+   its other six indices are blocked out. Any piece may reach into the notch.
+
+   Piece areas are 12 pentominoes (5 each) plus one 1x1, so a covered count has
+   to be 5p or 5p+1 with p<=12. On 64 spaces that makes the number of squares
+   you can leave uncovered 3 or 4, plus 5 more for every piece left out. */
+const ROWS=10, COLS=7, N=70;
+const NOTCH=66;
+const BLOCKED=new Set([63,64,65,67,68,69]);
+const PLAYABLE=N-BLOCKED.size;
 const LABELS=[
  "Jan","Feb","Mar","Apr","Sun","Mon","Tue",
  "May","Jun","Jul","Aug","Wed","Thu","Fri",
@@ -111,7 +131,8 @@ const LABELS=[
  "11","12","13","14","15","16","17",
  "18","19","20","21","22","日","月",
  "23","24","25","26","27","火","水",
- "28","29","30","31","木","金","土"];
+ "28","29","30","31","木","金","土",
+ null,null,null,"",null,null,null];
 const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const MONTH_CELL={Jan:0,Feb:1,Mar:2,Apr:3,May:7,Jun:8,Jul:9,Aug:10,Sep:14,Oct:15,Nov:16,Dec:17};
 const WEEKDAYS=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -181,8 +202,19 @@ function regionsOk(board,used){
 function makeSolver(exposedSet,allowFlip){
   const orients=PIECES.map(p=>orientations(p.cells,allowFlip));
   const board=new Int8Array(N).fill(-1);
+  BLOCKED.forEach(i=>{board[i]=-3;});
   exposedSet.forEach(i=>{board[i]=-2;});
   const used=new Array(PIECES.length).fill(false);
+  /* The 1x1 is never placed freely. Either it sits in the notch where it
+     physically lives, or it is off the board altogether and the notch is open
+     to the pentominoes. Which one applies follows from the count: pentominoes
+     only ever cover multiples of five, so a covered total of 5p+1 means the
+     1x1 is in, and 5p means it is out. Marking it used keeps it out of the
+     choice list either way, and also tells regionsOk that no lone empty
+     square can be rescued. */
+  const unitInNotch=(PLAYABLE-exposedSet.size)%5===1;
+  used[UNIT_IDX]=true;
+  if(unitInNotch)board[NOTCH]=UNIT_IDX;
   const stack=[];
   let nodes=0,done=false,solution=null,started=false;
   function firstEmpty(){for(let i=0;i<N;i++)if(board[i]===-1)return i;return -1;}
@@ -237,6 +269,7 @@ function makeSolver(exposedSet,allowFlip){
 
 /* ---------- UI state ---------- */
 const $=id=>document.getElementById(id);
+let mode="date";
 let month,date,weekday,extra=new Set(),solution=null,status="idle",nodes=0,runId=0;
 
 const monthSel=$("monthSel"),dateSel=$("dateSel"),wdSel=$("wdSel");
@@ -244,13 +277,15 @@ MONTHS.forEach(m=>monthSel.add(new Option(m,m)));
 for(let d=1;d<=31;d++)dateSel.add(new Option(d,d));
 WEEKDAYS.forEach(w=>wdSel.add(new Option(w,w)));
 
-const boardEl=$("board"),cellEls=[];
+const boardEl=$("board"),notchEl=$("notchRow"),cellEls=[];
 LABELS.forEach((lab,i)=>{
+  if(BLOCKED.has(i)){cellEls.push(null);return;}
   const b=document.createElement("button");
-  b.className="cell"+(lab.length>2?" small":"");
-  b.textContent=lab;
+  b.className="cell"+(lab&&lab.length>2?" small":"")+(i===NOTCH?" notch":"");
+  b.textContent=lab||"";
+  if(i===NOTCH)b.title="Notch \u2014 where the 1\u00d71 block sits";
   b.addEventListener("click",()=>toggleCell(i));
-  boardEl.appendChild(b);cellEls.push(b);
+  (i===NOTCH?notchEl:boardEl).appendChild(b);cellEls.push(b);
 });
 
 const legendEl=$("legend"),legendChips=[];
@@ -272,12 +307,20 @@ PIECES.forEach(p=>{
   legendEl.appendChild(chip);legendChips.push(chip);
 });
 
-function autoCells(){return [MONTH_CELL[month],dateCell(date),WD_CELL[weekday]];}
+/* in free mode nothing is pinned, so every square is yours to toggle */
+function autoCells(){return mode==="free"?[]:[MONTH_CELL[month],dateCell(date),WD_CELL[weekday]];}
 function exposedSet(){const s=new Set(autoCells());extra.forEach(i=>s.add(i));return s;}
 function feasible(){
-  const covered=N-exposedSet().size;
-  return covered<=61&&(covered%5===0?covered/5<=12:(covered%5===1&&(covered-1)/5<=12));
+  const exp=exposedSet();
+  const covered=PLAYABLE-exp.size;
+  if(covered<0)return false;
+  const m=covered%5;
+  if(m===0)return covered/5<=12;                 // 1x1 set aside, notch playable
+  if(m===1)return (covered-1)/5<=12&&!exp.has(NOTCH); // 1x1 in the notch
+  return false;
 }
+/* true when the count implies the 1x1 sits in the notch */
+function unitInNotch(){return (PLAYABLE-exposedSet().size)%5===1;}
 function toggleCell(i){
   if(autoCells().includes(i))return;
   extra.has(i)?extra.delete(i):extra.add(i);
@@ -296,6 +339,7 @@ function render(){
   const exp=exposedSet();
   const edge="2px solid rgba(30,22,14,0.85)",none="2px solid transparent";
   cellEls.forEach((el,i)=>{
+    if(!el)return;
     const pi=solution&&solution[i]>=0?solution[i]:-1;
     el.classList.toggle("exposed",exp.has(i)&&pi<0);
     el.classList.toggle("piece",pi>=0);
@@ -315,16 +359,27 @@ function render(){
     }
   });
   legendChips.forEach((chip,i)=>chip.classList.toggle("unused",!!(solution&&!solution.includes(i))));
+  const byDate=mode==="date";
+  [monthSel,dateSel,wdSel,$("todayBtn")].forEach(el=>{el.disabled=!byDate;});
   const st=$("status"),btn=$("solveBtn");
   btn.textContent=status==="solving"?"Stop":"Solve";
   btn.classList.toggle("stop",status==="solving");
-  const e=exp.size,covered=N-e;
+  const e=exp.size,covered=PLAYABLE-e;
   if(status==="solving")st.textContent=`Searching… ${nodes.toLocaleString()} placements tried`;
   else if(status==="solved")st.textContent=`Solved — ${nodes.toLocaleString()} placements tried`;
   else if(status==="none")st.textContent=feasible()
-    ?"No arrangement found for this selection."
-    :`${e} uncovered squares can't match the pieces — uncover ${covered%5===4?"one more":"a different number of"} square(s).`;
-  else st.textContent=feasible()?"":`Note: with ${e} squares uncovered the piece areas can't fit exactly.`;
+    ?"No arrangement fits that selection."
+    :hint(e);
+  else st.textContent=feasible()
+    ?(unitInNotch()?"1×1 in the notch.":"1×1 set aside, notch playable.")
+    :hint(e);
+}
+
+/* Which counts work: 3 or 4 uncovered, plus 5 for each piece left out. */
+function hint(e){
+  const lo=e-((e-3)%5+5)%5, hi=lo+1;
+  const near=[lo,hi,lo+5,hi+5].filter(n=>n>=3&&n<=PLAYABLE-5);
+  return `${e} uncovered can't match the piece areas — try ${near.slice(0,3).join(", ")}…`;
 }
 
 /* ---------- Solve loop ---------- */
@@ -353,6 +408,11 @@ dateSel.addEventListener("change",e=>{date=+e.target.value;invalidate();});
 wdSel.addEventListener("change",e=>{weekday=e.target.value;invalidate();});
 $("flipChk").addEventListener("change",invalidate);
 $("labelChk").addEventListener("change",render);
+$("modeSel").addEventListener("change",e=>{
+  mode=e.target.value;
+  extra=new Set();
+  invalidate();
+});
 $("todayBtn").addEventListener("click",setToday);
 $("solveBtn").addEventListener("click",solve);
 setToday();
