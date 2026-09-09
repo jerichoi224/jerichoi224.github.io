@@ -135,9 +135,28 @@ public/apps/calendar-puzzle/index.html   →   /apps/calendar-puzzle/
 ```
 
 Anything under `public/` is copied to the site root verbatim and never touched
-by the build, so an app can use whatever it likes — its own fonts, its own
-palette, inline scripts, a framework, nothing at all. No schema, no front
-matter, no bundling. This is the same mechanism that carries `/history`.
+by the build. No schema, no front matter, no bundling — this is the same
+mechanism that carries `/history`.
+
+**Start from [`docs/app-template.html`](app-template.html).** Copy it to
+`public/apps/<slug>/index.html`, change the title, breadcrumb label and the
+contents of `<main>`, and you inherit the site's look for free: the palette
+tokens, Helvetica, the 620px column, the breadcrumb, the control and button
+styles, and the two breakpoints. Keep to it unless a particular app has a
+reason not to — the calendar puzzle arrived with its own warm identity and
+webfonts, and it read as a different site until it was brought onto these.
+
+Things the template settles, so you don't rediscover them:
+
+- **Tokens are inlined, not imported.** A `public/` file can't link the built
+  stylesheet, whose filename is content-hashed. If the site palette changes,
+  these copies need the same edit.
+- **The breadcrumb sits in the page flow**, not fixed to a corner — a floating
+  pill overlaps content on a phone.
+- **No webfonts.** The site uses a system stack; loading Google Fonts adds an
+  external dependency for nothing.
+- **Supporting detail goes in the side column**, not under the main panel, which
+  is what lets a page fit one screen.
 
 Then add a row to `src/data/apps.ts` so it appears on `/apps/`:
 
