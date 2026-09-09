@@ -125,6 +125,79 @@ Rows without one render as plain text.
 
 ---
 
+## Adding a small app or standalone page
+
+Posts are for writing. Self-contained pages — a solver, a toy, a one-off
+visualisation — go in `public/apps/<slug>/` as plain files:
+
+```
+public/apps/calendar-puzzle/index.html   →   /apps/calendar-puzzle/
+```
+
+Anything under `public/` is copied to the site root verbatim and never touched
+by the build. No schema, no front matter, no bundling — this is the same
+mechanism that carries `/history`.
+
+**Start from [`docs/app-template.html`](app-template.html).** Copy it to
+`public/apps/<slug>/index.html`, change the title, breadcrumb label and the
+contents of `<main>`, and you inherit the site's look for free: the palette
+tokens, Helvetica, the 620px column, the breadcrumb, the control and button
+styles, and the two breakpoints. Keep to it unless a particular app has a
+reason not to — the calendar puzzle arrived with its own warm identity and
+webfonts, and it read as a different site until it was brought onto these.
+
+Things the template settles, so you don't rediscover them:
+
+- **Tokens are inlined, not imported.** A `public/` file can't link the built
+  stylesheet, whose filename is content-hashed. If the site palette changes,
+  these copies need the same edit.
+- **The breadcrumb sits in the page flow**, not fixed to a corner — a floating
+  pill overlaps content on a phone.
+- **No webfonts.** The site uses a system stack; loading Google Fonts adds an
+  external dependency for nothing.
+- **Supporting detail goes in the side column**, not under the main panel, which
+  is what lets a page fit one screen.
+
+Then add a row to `src/data/apps.ts` so it appears on `/apps/`:
+
+```ts
+{
+  name: 'Calendar house puzzle',
+  href: '/apps/calendar-puzzle/',
+  year: '2026',
+  description: 'One line, shown under the name.',
+  thumbnail: '/images/apps/calendar-puzzle.png',   // optional
+}
+```
+
+`thumbnail` is a screenshot shown beside the entry. Save it under
+`public/images/apps/` at roughly 2x its rendered width (108px, so ~240px
+wide) and crop it tight — the whole page shrunk down reads as noise, whereas
+the one thing the app *is* reads instantly.
+
+To capture one reliably, don't try to find the interesting element by colour
+in a full-page screenshot. Serve a throwaway copy of the page with a `<style>`
+block that hides everything except that element and zeroes the body padding,
+plus a script that puts the app into a representative state (for the puzzle,
+clicking Solve — an empty board shows nothing of what it does). Then screenshot
+at 2x and trim the flat background. The board is the only thing in frame, so
+the crop is exact.
+
+If an app has its own build step, build it elsewhere and copy the *output*
+into `public/apps/<slug>/` — don't wire a second build into this repo.
+
+Worth adding a breadcrumb inside the app itself, or visitors who land on it
+directly have no way into the rest of the site:
+
+```html
+<nav class="crumbs">
+  <a href="/">Daniel Choi</a> <span>/</span> <a href="/apps/">Apps</a>
+</nav>
+```
+
+Put it in the page flow rather than fixed to a corner — a floating pill
+overlaps the content on a phone.
+
 ## Routes
 
 | URL | Source |
@@ -133,6 +206,8 @@ Rows without one render as plain text.
 | `/about/` | `src/pages/about.astro` |
 | `/posts/` | `src/pages/posts/index.astro` |
 | `/posts/<slug>/` | `src/pages/posts/[...slug].astro`, one page per markdown file |
+| `/apps/` | `src/pages/apps/index.astro`, listing `src/data/apps.ts` |
+| `/apps/<slug>/` | static files in `public/apps/<slug>/` — not built |
 | `/rss.xml` | `src/pages/rss.xml.js` |
 | `/history/…` | static files in `public/history/` — not built, see README |
 

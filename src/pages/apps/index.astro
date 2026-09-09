@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro'
+import { apps } from '../../data/apps'
+---
+
+<Base title="Apps" description="Small self-contained tools and pages by Daniel Choi.">
+  <main class="app-list">
+    {
+      apps.map((app) => (
+        <a class="app-item" href={app.href}>
+          <div class="date">{app.year}</div>
+          <div class="meta">
+            <div>{app.name}</div>
+            {app.description && <div class="excerpt">{app.description}</div>}
+          </div>
+          {app.thumbnail && (
+            /* alt is empty on purpose: the link text already names it */
+            <img class="thumb" src={app.thumbnail} alt="" width="108" loading="lazy" />
+          )}
+        </a>
+      ))
+    }
+  </main>
+</Base>
