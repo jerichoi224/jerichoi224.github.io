@@ -14,28 +14,28 @@
   *{box-sizing:border-box}
   body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);
     font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;padding:72px 28px 96px}
+    -webkit-font-smoothing:antialiased;padding:32px 28px 36px}
   .wrap{max-width:620px;margin:0 auto}
   h1{font-size:22px;font-weight:500;line-height:1.35;margin:0 0 6px;letter-spacing:-.01em}
-  .sub{margin:0 0 26px;font-size:15px;color:var(--soft);text-wrap:pretty}
+  .sub{margin:0 0 16px;max-width:56ch;font-size:15px;color:var(--soft);text-wrap:pretty}
   .sub em{font-style:normal;color:var(--ink)}
-  .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;align-items:center}
   select,button.chip{background:var(--panel);border:1px solid var(--rule);border-radius:3px;
     padding:7px 10px;font-size:15px;font-family:inherit;color:var(--ink)}
   select:hover,button.chip:hover{border-color:var(--muted)}
+  select:disabled,button.chip:disabled{opacity:.45;cursor:default;border-color:var(--rule)}
   button{cursor:pointer}
-  label.flip{display:flex;gap:7px;align-items:center;font-size:15px;margin-bottom:6px;
-    color:var(--soft)}
-  .actions{display:flex;gap:14px;align-items:center;margin:18px 0 22px}
+  label.flip{display:flex;gap:7px;align-items:center;font-size:15px;color:var(--soft)}
+  .actions{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:0 0 8px}
   #solveBtn{background:var(--ink);color:#fff;border:none;border-radius:3px;
     padding:10px 20px;font-size:15px;font-weight:500;font-family:inherit}
   #solveBtn:hover{background:#333}
   #solveBtn.stop{background:var(--muted)}
-  #status{font-size:15px;color:var(--muted)}
+  #status{font-size:14px;color:var(--muted);min-height:1.4em;margin-bottom:12px}
   .play{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
   .frame{background:var(--panel);padding:10px;border-radius:4px;border:1px solid var(--rule);
-    flex:0 1 420px;min-width:0;max-width:100%}
-  #board{background:var(--field);border-radius:2px;padding:5px;display:grid;
+    flex:0 1 350px;min-width:0;max-width:100%}
+  #board{background:var(--field);border-radius:2px 2px 0 0;padding:5px 5px 0;display:grid;
     grid-template-columns:repeat(7,minmax(0,1fr))}
   .cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;
     font-weight:500;font-family:inherit;padding:0;position:relative;background:transparent;
@@ -51,24 +51,40 @@
   /* beside the board rather than under it, so the page stays short */
   /* the notch sits outside the 7-column grid, aligned to its centre column,
      so row 10 isn't a mostly-empty band across the board */
-  #notchRow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
-    padding:0 5px 5px}
+  /* the notch hangs directly off the bottom of the board, no gap, so the 1x1
+     reads as sitting in the board rather than floating below it */
+  #notchRow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));padding:0 5px}
   .cell.notch{grid-column:4;background:var(--field);border-radius:0 0 3px 3px}
-  .legend{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;
-    flex:1 1 150px;min-width:150px}
+  .side{flex:1 1 160px;min-width:160px;display:flex;flex-direction:column;gap:14px}
+  .legend{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start}
   .lg{display:inline-flex;align-items:center;gap:7px;background:var(--panel);
     border:1px solid var(--rule);border-radius:3px;padding:5px 9px;font-size:13px;
     color:var(--soft)}
   .lg.unused{opacity:.4}
   .mini{display:grid;gap:1px}
   .mini span{width:7px;height:7px;border-radius:1px}
-  .note{font-size:13px;color:var(--muted);margin-top:14px;text-wrap:pretty}
-  @media (max-width:520px){
-    body{padding:56px 22px 80px}
+  .note{font-size:12.5px;line-height:1.5;color:var(--muted);margin:0;text-wrap:pretty}
+  @media (max-width:640px){
+    body{padding:20px 16px 32px}
+    h1{font-size:19px;margin-bottom:4px}
+    .sub{font-size:13.5px;margin-bottom:12px}
+    .controls{gap:6px;margin-bottom:8px}
+    select,button.chip{padding:6px 8px;font-size:14px}
+    #solveBtn{padding:9px 16px}
+    .actions{gap:8px 14px}
+    label.flip{font-size:14px}
+    #status{font-size:13px;margin-bottom:8px}
     .play{gap:14px}
+    .frame{flex:1 1 100%}
+    .side{flex:1 1 100%;min-width:0}
     /* the cells get small on a phone; shrink the labels to match */
     .cell:not(.small){font-size:13px}
     .cell.small{font-size:10px}
+    .note{font-size:12px}
+  }
+  @media (max-width:380px){
+    .cell:not(.small){font-size:11px}
+    .cell.small{font-size:9px}
   }
 </style>
 <style>
@@ -81,7 +97,7 @@
 <body>
 <div class="wrap">
   <h1>Calendar house puzzle</h1>
-  <p class="sub">Pick a date and the solver arranges the house pieces so only those squares stay visible. Or switch to <em>Pick squares</em> and choose any of them yourself — tap a square to toggle it.</p>
+  <p class="sub">Arranges the house pieces so only your chosen squares stay visible. Switch to <em>Pick squares</em> to choose them by hand.</p>
 
   <div class="controls">
     <select id="modeSel" aria-label="Selection mode">
@@ -92,20 +108,22 @@
     <select id="dateSel"></select>
     <select id="wdSel"></select>
     <button class="chip" id="todayBtn">Today</button>
+    <button class="chip" id="clearBtn">Clear</button>
   </div>
-  <label class="flip"><input type="checkbox" id="flipChk" checked> Allow flipping pieces over</label>
-  <label class="flip"><input type="checkbox" id="labelChk" checked> See labels through placed pieces</label>
-
   <div class="actions">
     <button id="solveBtn">Solve</button>
-    <span id="status" aria-live="polite"></span>
+    <label class="flip"><input type="checkbox" id="flipChk" checked> Flip pieces</label>
+    <label class="flip"><input type="checkbox" id="labelChk" checked> Labels through pieces</label>
   </div>
+  <div id="status" aria-live="polite"></div>
 
   <div class="play">
     <div class="frame"><div id="board"></div><div id="notchRow"></div></div>
-    <div class="legend" id="legend"></div>
+    <div class="side">
+      <div class="legend" id="legend"></div>
+      <p class="note">The 1×1 block lives in the notch under the board. Leave three squares uncovered and it stays there; leave four and it comes out of the puzzle altogether, freeing the notch for the other pieces. Every piece you set aside frees five more squares, so 3, 4, 8, 9, 13&hellip; all work. Turn off flipping if your wooden pieces are painted on one side only.</p>
+    </div>
   </div>
-  <p class="note">The 1×1 block lives in the notch under the board. Leave three squares uncovered and it stays there; leave four and it comes out of the puzzle altogether, freeing the notch for the other pieces. Every piece you set aside frees five more squares, so 3, 4, 8, 9, 13&hellip; all work. Turn off flipping if your wooden pieces are painted on one side only.</p>
 </div>
 
 <script>
@@ -361,6 +379,7 @@ function render(){
   legendChips.forEach((chip,i)=>chip.classList.toggle("unused",!!(solution&&!solution.includes(i))));
   const byDate=mode==="date";
   [monthSel,dateSel,wdSel,$("todayBtn")].forEach(el=>{el.disabled=!byDate;});
+  $("clearBtn").disabled=extra.size===0;
   const st=$("status"),btn=$("solveBtn");
   btn.textContent=status==="solving"?"Stop":"Solve";
   btn.classList.toggle("stop",status==="solving");
@@ -413,6 +432,9 @@ $("modeSel").addEventListener("change",e=>{
   extra=new Set();
   invalidate();
 });
+/* clears the hand-picked squares; in date mode the month/date/weekday stay
+   pinned, in free mode this empties the selection entirely */
+$("clearBtn").addEventListener("click",()=>{extra=new Set();invalidate();});
 $("todayBtn").addEventListener("click",setToday);
 $("solveBtn").addEventListener("click",solve);
 setToday();
